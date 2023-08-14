@@ -1565,4 +1565,264 @@ Interrupt_CounterSpell_MindFlayer
     EnableCondition: HasActionResource('Interupt_CounterSpell_MindFlayer', 1, 0, false, false, context.Source) and (not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER'))
     EnableContext: 
 
+Shield Blow
+Interrupt_ShieldBlow
+    using: Interrupt_Riposte
+    DisplayName: Shield Blow
+    Description: When struck by a melee attack, your attacker must succeed a Dexterity <LSTag Tooltip="SavingThrow">Saving Throw</LSTag> or fall <LSTag Type="Status" Tooltip="PRONE">Prone</LSTag>.
+    Icon: Action_Bash
+    Conditions: IsAbleToReact(context.Observer) and Enemy(context.Source,context.Observer) and IsMeleeAttack() and (IsHit() or IsCritical()) and not HasStatus('INVISIBILITY') and HasLastAttackTriggered()
+    Properties: UseSpell(SWAP,Target_ShieldBlow_Riposte,true,true,true);ApplyStatus(OBSERVER_OBSERVER,INTERRUPT_RIPOSTE,100,0)
+    Cost: ReactionActionPoint:1
+    Cooldown: OncePerTurn
+    InterruptDefaultValue: Enabled;Ask
+
+Bulwark Rebuke
+Interrupt_Legendary_ShieldBlow
+    using: Interrupt_ShieldBlow
+    DisplayName: Bulwark Rebuke
+    Description: When a creature damages you, deal it [1] and possibly knock it <LSTag Type="Status" Tooltip="PRONE">Prone</LSTag>.
+    DescriptionParams: DealDamage(2d4, Force)
+    ExtraDescription: The creature takes half damage on a successful <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>..
+    Properties: UseSpell(SWAP,Target_Legendary_ShieldBlow_Riposte,true,true,true);ApplyStatus(OBSERVER_OBSERVER,INTERRUPT_RIPOSTE,100,0)
+
+True Strike Riposte
+Interrupt_TheClover_TrueStrike_Riposte
+    using: Interrupt_Riposte
+    DisplayName: True Strike Riposte
+    Description: When a creature misses you with a melee attack, you may retaliate and gain <LSTag Type="Status" Tooltip="TRUE_STRIKE">True Strike</LSTag>.
+    Properties: UseSpell(SWAP,Target_MAG_TheClover_TrueStrike_Riposte,true,true,true);ApplyStatus(OBSERVER_OBSERVER,INTERRUPT_RIPOSTE,100,0)
+    Cost: ReactionActionPoint:1
+
+Withering Cut
+Interrupt_TheDueller_WitheringCut
+    using: Interrupt_Smite_Divine
+    DisplayName: Withering Cut
+    Description: When you hit a creature with melee weapon, you can spend a reaction to deal additional Necrotic damage equal to your <LSTag Tooltip="ProficiencyBonus">Proficiency Bonus</LSTag>.
+    DescriptionParams: 
+    ExtraDescription: 
+    ExtraDescriptionParams: 
+    Icon: GenericIcon_DamageType_Necrotic
+    Conditions: IsAbleToReact(context.Observer) and not Item() and IsMeleeAttack() and Self(context.Source,context.Observer) and HasDamageEffectFlag(DamageFlags.Hit) and IsWeaponAttack()
+    Properties: DealDamage(ProficiencyBonus, Necrotic);ApplyStatus(MAG_NECROTIC_NECROTIC_BLAST_TECHNICAL,100, 0)
+    Cost: ReactionActionPoint:1
+    Stack: 
+    InterruptDefaultValue: Enabled;Ask
+
+Counterspell
+Interrupt_MAG_Counterspell
+    using: Interrupt_Counterspell
+    DisplayName: Counterspell
+    Success: Counterspell();UseSpell(OBSERVER_SOURCE,Target_MAG_CounterSpell_Success,true,true,true)
+    Cost: ReactionActionPoint:1;Interrupt_MAG_Counterspell:1
+    Cooldown: OncePerRestPerItem
+    EnableCondition: HasActionResource('Interrupt_MAG_Counterspell', 1, 0, false, false, context.Source)
+    EnableContext: OnActionResourcesChanged
+
+Scarab of Protection
+Interrupt_Scarab_Of_Protection
+    using: Interrupt_RingOfEvasion
+    DisplayName: Scarab of Protection
+    Description: Once per <LSTag Tooltip="LongRest">Long Rest</LSTag>, when you fail a <LSTag Tooltip="SavingThrow">Saving Throw</LSTag> against necromancy spells or spells cast by undead foes, you can use your reaction to succeed instead.
+    Icon: PassiveFeature_Generic_Magical
+    Conditions: Self(context.Target,context.Observer) and IsSavingThrow() and (Tagged('UNDEAD', context.Source) or IsSpellOfSchool(SpellSchool.Necromancy))
+    Cost: ReactionActionPoint:1;Interrupt_Scarab_Of_Protection:1
+    Cooldown: OncePerRestPerItem
+    EnableCondition: HasActionResource('Interrupt_Scarab_Of_Protection', 1, 0, false, false, context.Source)
+    EnableContext: OnActionResourcesChanged
+
+Infernal Resistance
+Interrupt_Legendary_InfernalResistance
+    using: Interrupt_RingOfEvasion
+    DisplayName: Infernal Resistance
+    Description: Once per <LSTag Tooltip="LongRest">Long Rest</LSTag>, when you fail a <LSTag Tooltip="SavingThrow">Saving Throw</LSTag>, you may succeed instead.
+    Icon: PassiveFeature_Generic_Magical
+    Conditions: Self(context.Target,context.Observer) and IsSavingThrow() and IsSpell()
+    Properties: AdjustRoll(99)
+    Cost: ReactionActionPoint:1;Interrupt_Legendary_InfernalResistance:1
+    Cooldown: OncePerRestPerItem
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: HasActionResource('Interrupt_Legendary_InfernalResistance', 1, 0, false, false, context.Source)
+    EnableContext: OnActionResourcesChanged
+
+Legendary Protection
+Interrupt_LegendaryEvasion_Protection
+    using: Interrupt_FightingStyle_Protection
+    DisplayName: Legendary Protection
+    Description: When your ally is about to be hit by a foe, you can use your <LSTag Type="ActionResource" Tooltip="ReactionActionPoint">reaction</LSTag> to make it automatically miss. Used once per <LSTag Tooltip="ShortRest">Short Rest</LSTag>.
+    DescriptionParams: 
+    Conditions: IsAbleToReact(context.Observer) and HasInterruptedAttack() and Enemy(context.Source,context.Observer) and not Self(context.Target, context.Observer) 
+    Properties: AdjustRoll(OBSERVER_OBSERVER,-99)
+    Cost: ReactionActionPoint:1;Interrupt_LegendaryEvasion_Protection:1
+    Cooldown: OncePerRestPerItem
+    EnableCondition: HasActionResource('Interrupt_LegendaryEvasion_Protection', 1, 0, false, false, context.Source)
+    EnableContext: OnActionResourcesChanged
+
+Soul Catching Boon
+Interrupt_Legendary_SoulCatching_Attack
+    using: Interrupt_BardicInspiration_Attack
+    DisplayName: Soul Catching Boon
+    Description: Gain <LSTag Tooltip="Advantage">Advantage</LSTag> on your next <LSTag Tooltip="AttackRoll">Attack Roll</LSTag>.
+    DescriptionParams: 
+    ExtraDescription: 
+    Icon: GenericIcon_Intent_Buff
+    Properties: AdjustRoll(5);RemoveStatus(SELF, MAG_SOUL_CATCHING)
+    Cost: 
+    Stack: 
+    Cooldown: OncePerTurn
+    InterruptDefaultValue: Enabled;Ask
+
+Soul Catching Prowess
+Interrupt_Legendary_SoulCatching_SavingThrow
+    using: Interrupt_BardicInspiration_SavingThrow
+    DisplayName: Soul Catching Prowess
+    Description: Gain <LSTag Tooltip="Advantage">Advantage</LSTag> on your next <LSTag Tooltip="SavingThrow">Saving Throws</LSTag>.
+    DescriptionParams: 
+    ExtraDescription: 
+    Icon: Action_Monster_GortashMachine_ShieldCapacitor
+    Properties: AdjustRoll(5);RemoveStatus(SELF, MAG_SOUL_CATCHING)
+    Cost: 
+    Stack: 
+    Cooldown: OncePerTurn
+    InterruptDefaultValue: Enabled;Ask
+
+Shield
+Interrupt_MAG_Shield
+    using: Interrupt_Shield_Wizard
+    DisplayName: Shield
+    Properties: IF(HasInterruptedAttack()):AdjustRoll(-5);ApplyStatus(INTERRUPT_SHIELD_WIZARD,100,0);RemoveStatus(MAG_SHIELD_RESOURCE)
+    Cost: ReactionActionPoint:1;Interrupt_MAG_Shield:1
+    Cooldown: OncePerRestPerItem
+    EnableCondition: HasActionResource('Interrupt_MAG_Shield', 1, 0, false, false, context.Source)
+    EnableContext: OnActionResourcesChanged
+
+Kushigo Counter
+Interrupt_MAG_Monk_KushigoCounter
+    using: Interrupt_Riposte
+    DisplayName: Kushigo Counter
+    Description: While <LSTag Type="Status" Tooltip="PATIENT_DEFENCE">Patient Defence</LSTag> is active: the wearer can use their reaction to make an unarmed strike against any attacker that misses.
+    Icon: Spell_Abjuration_MageArmor
+    Conditions: HasStatus('PATIENT_DEFENCE') and IsAbleToReact(context.Observer) and Enemy(context.Source,context.Observer) and IsMeleeAttack() and IsMiss() and not HasStatus('INVISIBILITY') and HasLastAttackTriggered()
+    Properties: UseSpell(SWAP,Target_UnarmedAttack,true,true,true);ApplyStatus(OBSERVER_OBSERVER,INTERRUPT_RIPOSTE,100,0)
+    Cost: ReactionActionPoint:1
+    InterruptDefaultValue: Enabled;Ask
+
+Greater Kushigo Counter
+Interrupt_MAG_Monk_KushigoCounterEx
+    using: Interrupt_MAG_Monk_KushigoCounter
+    DisplayName: Greater Kushigo Counter
+    Description: The wearer can use their reaction to make an unarmed strike against any attacker that misses.
+    Icon: Spell_Abjuration_MageArmor
+    Conditions: IsAbleToReact(context.Observer) and Enemy(context.Source,context.Observer) and IsMeleeAttack() and IsMiss() and not HasStatus('INVISIBILITY') and HasLastAttackTriggered()
+
+Shield
+Interrupt_MAG_Shield_LeatherArmor
+    using: Interrupt_MAG_Shield
+    DisplayName: Shield
+    Properties: IF(HasInterruptedAttack()):AdjustRoll(-5);ApplyStatus(INTERRUPT_SHIELD_WIZARD,100,0);RemoveStatus(MAG_LEATHER_ARMOR_SHIELD_RESOURCE)
+    Cost: ReactionActionPoint:1;Interrupt_MAG_Shield_LeatherArmor:1
+    Cooldown: OncePerShortRestPerItem
+    EnableCondition: HasActionResource('Interrupt_MAG_Shield_LeatherArmor', 1, 0, false, false, context.Source)
+
+Defensive Attack
+Interrupt_MAG_Defender_Weapon
+    using: Interrupt_RecklessAttack
+    DisplayName: Defensive Attack
+    Description: At the start of a round, you can reduce the weapon's additional attack bonus by [1] to increase your <LSTag Tooltip="ArmourClass">Armour Class</LSTag> and <LSTag Tooltip="SavingThrow">Saving Throws</LSTag> by [1].
+    DescriptionParams: 1
+    Icon: Action_Monster_Duergar_MindMastery
+    InterruptContext: OnPostRoll
+    Conditions: not Dead(context.Observer) and HasInterruptedAttack() and Self(context.Observer,context.Source) and IsMeleeWeaponAttack() and not HasStatus('MAG_DEFENDER_WEAPON_ENCHANTMENT_TECHNICAL',context.Observer) and not HasStatus('MAG_DEFENDER_FIRST_ATTACK',context.Observer)
+    Properties: AdjustRoll(-1);ApplyStatus(OBSERVER_OBSERVER,MAG_DEFENDER_WEAPON_ENCHANTMENT_TECHNICAL,100,1)
+
+Paralysing Critical
+Interrupt_MAG_ParalyzingCritical
+    using: Interrupt_Smite_Divine_Critical
+    DisplayName: Paralysing Critical
+    Description: Once per <LSTag Tooltip="LongRest">Long Rest</LSTag>, when scoring a <LSTag Tooltip="CriticalHit">Critical Hit</LSTag> on a humanoid, you can <LSTag Type="Status" Tooltip="PARALYZED">Paralyse</LSTag> the target for [1] turns.
+    DescriptionParams: 2
+    ExtraDescription: 
+    ExtraDescriptionParams: 
+    Icon: Status_Paralyzed
+    Conditions: Tagged('HUMANOID') and IsAbleToReact(context.Observer) and not Item() and Self(context.Source,context.Observer) and HasDamageEffectFlag(DamageFlags.Hit) and IsCritical() and not IsKillingBlow()
+    Properties: ApplyStatus(PARALYZED, 100, 2);RemoveStatus(SELF, MAG_PARALYZING_CRITICAL_OWNER)
+    Cost: Interrupt_MAG_ParalyzingCritical:1
+    Stack: 
+    Cooldown: OncePerRestPerItem
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: HasActionResource('Interrupt_MAG_ParalyzingCritical', 1, 0, false, false, context.Source)
+    EnableContext: OnActionResourcesChanged
+
+Executioner
+Interrupt_MAG_CriticalExecution
+    using: Interrupt_MAG_ParalyzingCritical
+    DisplayName: Executioner
+    Description: Once per <LSTag Tooltip="LongRest">Long Rest</LSTag> when you kill a creature, your next <LSTag Tooltip="AttackRoll">Attack Roll</LSTag> will be a <LSTag Tooltip="CriticalHit">Critical Hit</LSTag>.
+    DescriptionParams: 
+    Icon: statIcons_ExterminateThreat
+    InterruptContext: OnPostRoll
+    Conditions: IsAbleToReact(context.Observer) and not Item() and Self(context.Source,context.Observer) and IsWeaponAttack() and not IsCritical()
+    Properties: SetRoll(20);RemoveStatus(SELF, MAG_CRITICAL_CRITICAL_EXECUTION)
+    Cost: 
+    EnableCondition: 
+    EnableContext: 
+
+Cunning Combo
+Interrupt_MAG_Cunning_Combo_HandCrossbow
+    using: Interrupt_Smite_Divine
+    DisplayName: Cunning Combo
+    Description: When you shoot a target at close range, you can make an additional melee attack against it as a <LSTag Type="ActionResource" Tooltip="ReactionActionPoint">reaction</LSTag>.
+    DescriptionParams: 
+    ExtraDescriptionParams: 
+    InterruptContext: OnCastHit
+    Conditions: not DistanceToEntityGreaterThan(2, context.ObserverPosition, context.Target) and IsAbleToReact(context.Observer) and not Item() and IsRangedAttack() and Self(context.Source,context.Observer) and HasDamageEffectFlag(DamageFlags.Hit) and IsWeaponAttack() and not IsKillingBlow() and HasLastAttackTriggered()
+    Properties: UseAttack()
+    Cost: ReactionActionPoint:1
+    Stack: 
+
+Shield
+Interrupt_MAG_Shield_HarpersAmulet
+    using: Interrupt_MAG_Shield
+    DisplayName: Shield
+    Properties: IF(HasInterruptedAttack()):AdjustRoll(-5);ApplyStatus(INTERRUPT_SHIELD_WIZARD,100,0);RemoveStatus(MAG_HARPERS_AMULET_SHIELD_RESOURCE)
+    Cost: ReactionActionPoint:1;Interrupt_MAG_Shield_HarpersAmulet:1
+    EnableCondition: HasActionResource('Interrupt_MAG_Shield_HarpersAmulet', 1, 0, false, false, context.Source)
+
+Second Chance
+Interrupt_MAG_SecondChance
+    using: Interrupt_Lucky_RollAdditionalDie
+    DisplayName: Second Chance
+    Description: Once per <LSTag Tooltip="LongRest">Long Rest</LSTag>, you can spend a <LSTag Type="ActionResource" Tooltip="ReactionActionPoint">reaction</LSTag> to make an <LSTag Tooltip="AttackRoll">Attack Roll</LSTag> or <LSTag Tooltip="SavingThrow">Saving Throw</LSTag> with <LSTag Tooltip="Advantage">Advantage</LSTag>.
+    Cost: ReactionActionPoint:1;Interrupt_MAG_SecondChance:1
+    Cooldown: OncePerRestPerItem
+    EnableCondition: HasActionResource('Interrupt_MAG_SecondChance', 1, 0, false, false, context.Source)
+    EnableContext: OnActionResourcesChanged
+
+Missile Snaring
+Interrupt_MAG_MissileSnaring
+    using: Interrupt_DeflectMissiles
+    DisplayName: Missile Snaring
+    Description: Reduce damage from a ranged weapon by [1] + your Dexterity <LSTag Tooltip="AbilityModifier">Modifier</LSTag>.
+    DescriptionParams: 1d10
+    ExtraDescription: 
+    Properties: AdjustRoll(OBSERVER_OBSERVER,-(1d10+DexterityModifier));ApplyStatus(OBSERVER_TARGET,INTERRUPT_DEFLECT_MISSILES_HIT,100,1)
+    Cooldown: 
+    EnableCondition: 
+    EnableContext: 
+
+Absorb Elements
+Interrupt_AbsorbElements
+    using: Interrupt_DampenElements
+    DisplayName: Absorb Elements
+    Description: Absorb elemental damage once per <LSTag Tooltip="ShortRest">Short Rest</LSTag>. Take half damage from the next elemental attack targetting you, and deal an additional [1] of that element type on your next attack.
+    DescriptionParams: 1d6
+    Icon: PassiveFeature_AbsorbElements
+    InterruptContextScope: Self
+    Conditions: IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and (SpellDamageTypeIs(DamageType.Acid) or SpellDamageTypeIs(DamageType.Cold) or SpellDamageTypeIs(DamageType.Fire) or SpellDamageTypeIs(DamageType.Lightning) or SpellDamageTypeIs(DamageType.Thunder)) and not AnyEntityIsItem()
+    Properties: SetDamageResistance(Acid);SetDamageResistance(Cold);SetDamageResistance(Fire);SetDamageResistance(Lightning);SetDamageResistance(Thunder);ApplyStatus(OBSERVER_TARGET, ABSORB_ELEMENTS_ACTIVE,100,1)
+    Cost: ReactionActionPoint:1;Interrupt_AbsorbElements:1
+    Cooldown: OncePerShortRestPerItem
+    EnableCondition: not HasStatus('SG_Polymorph') and HasActionResource('Interrupt_AbsorbElements', 1, 0, false, false, context.Source)
+    EnableContext: OnActionResourcesChanged
+
 ===== Parsing finished =====

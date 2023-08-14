@@ -8,6 +8,8 @@ xml_localization = Nokogiri::XML(file, nil, Encoding::UTF_8.to_s)
 # XXX_pak is the folder where I unpacked XXX.pak
 file1 = 'E:\BG3_Unpack\Shared_pak\Public\Shared\Stats\Generated\Data\Interrupt.txt'
 file2 = 'E:\BG3_Unpack\Shared_pak\Public\SharedDev\Stats\Generated\Data\Interrupt.txt'
+#file3 = 'E:\BG3_Unpack\Gustav_pak\Public\Gustav\Stats\Generated\Data\Interrupt.txt' # No file there
+file4 = 'E:\BG3_Unpack\Gustav_pak\Public\GustavDev\Stats\Generated\Data\Interrupt.txt'
 
 # Redirect output to a file instead of the console
 $stdout = File.new( './Interrupt.txt', 'w' )
@@ -27,7 +29,7 @@ myreg = Regexp.new(/"([^"]+)"/)
 data = {}
 curr_item = ""
 # Read the files line by line, store everything in data as hashes
-for file in [file1, file2] do
+for file in [file1, file2, file4] do
     IO.readlines(file).each do |line|
         if line[0..8] == "new entry"
             myreg.match(line)

@@ -8,6 +8,8 @@ xml_localization = Nokogiri::XML(file, nil, Encoding::UTF_8.to_s)
 # XXX_pak is the folder where I unpacked XXX.pak
 file1 = 'E:\BG3_Unpack\Shared_pak\Public\Shared\Stats\Generated\Data\Weapon.txt'
 file2 = 'E:\BG3_Unpack\Shared_pak\Public\SharedDev\Stats\Generated\Data\Weapon.txt'
+file3 = 'E:\BG3_Unpack\Gustav_pak\Public\Gustav\Stats\Generated\Data\Weapon.txt'
+file4 = 'E:\BG3_Unpack\Gustav_pak\Public\GustavDev\Stats\Generated\Data\Weapon.txt'
 
 # Redirect output to a file instead of the console
 $stdout = File.new( './Weapon.txt', 'w' )
@@ -27,7 +29,7 @@ myreg = Regexp.new(/"([^"]+)"/)
 data = {}
 curr_item = ""
 # Read the files line by line, store everything in data as hashes
-for file in [file1, file2] do
+for file in [file1, file2, file3, file4] do
     IO.readlines(file).each do |line|
         if line[0..8] == "new entry"
             myreg.match(line)
@@ -51,9 +53,48 @@ for file in [file1, file2] do
     end
 end
 
+# Loop for loading all the RootTemplates
+template = {}
+data.each do |id, param|
+    filename = ""
+    if not param["RootTemplate"].nil?
+        # There are like 4 different places for game object templates ! Can't they sort their stuff ?!
+        if File.exists?('E:\BG3_Unpack\Shared_pak\Public\Shared\RootTemplates_xml\\' + param["RootTemplate"] + '.lsx')
+            filename = 'E:\BG3_Unpack\Shared_pak\Public\Shared\RootTemplates_xml\\' + param["RootTemplate"] + '.lsx'
+        elsif File.exists?('E:\BG3_Unpack\Shared_pak\Public\SharedDev\RootTemplates_xml\\' + param["RootTemplate"] + '.lsx')
+            filename = 'E:\BG3_Unpack\Shared_pak\Public\SharedDev\RootTemplates_xml\\' + param["RootTemplate"] + '.lsx'
+        elsif File.exists?('E:\BG3_Unpack\Gustav_pak\Public\Gustav\RootTemplates_xml\\' + param["RootTemplate"] + '.lsx')
+            filename = 'E:\BG3_Unpack\Gustav_pak\Public\Gustav\RootTemplates_xml\\' + param["RootTemplate"] + '.lsx'
+        elsif File.exists?('E:\BG3_Unpack\Gustav_pak\Public\GustavDev\RootTemplates_xml\\' + param["RootTemplate"] + '.lsx')
+            filename = 'E:\BG3_Unpack\Gustav_pak\Public\GustavDev\RootTemplates_xml\\' + param["RootTemplate"] + '.lsx'
+        else
+            puts 'xxxxx KO xxxxxx   ' + param["RootTemplate"]
+        end
+        # Open the file, parse the file
+        file = File.open(filename, "r:UTF-8", &:read)
+        xml1 = Nokogiri::XML(file, nil, Encoding::UTF_8.to_s)
+        # Create hash
+        template[param["RootTemplate"]] = {}
+        # Fill up hash
+        pathx = '//node[@id="GameObjects"]'
+        xml1.xpath(pathx).each do |item|
+            # Store each attribute and its value
+            storage = {}
+            item.xpath('attribute').each do |attr|
+                # If parameter doesn't have a 'value' param, use 'handle' instead
+                storage[attr["id"]] = attr["value"] != nil ? attr["value"] : attr["handle"]  
+            end
+            template[storage["MapKey"]] = storage;
+        end
+    end
+end
+
 # Display the data
 data.each do |id, param|
-    puts id
+    
+    puts loca[template[param["RootTemplate"]]["DisplayName"]] if not param["RootTemplate"].nil?
+    puts "id: #{id}"
+    puts "    descr: " + loca[template[param["RootTemplate"]]["Description"]].to_s if not param["RootTemplate"].nil?
     param.each do |key, val|
         case key
         when "RootTemplate"
@@ -63,19 +104,6 @@ data.each do |id, param|
         end
     end
     puts ""
-end
-
-# Loop for loading all the RootTemplates
-data.each do |id, param|
-    if not param["RootTemplate"].nil?
-        if File.exists?('E:\BG3_Unpack\Shared_pak\Public\Shared\RootTemplates_xml\\' + param["RootTemplate"] + '.lsx')
-            puts 'OK! ' + param["RootTemplate"]
-        elsif File.exists?('E:\BG3_Unpack\Shared_pak\Public\SharedDev\RootTemplates_xml\\' + param["RootTemplate"] + '.lsx')
-            puts 'OK! ' + param["RootTemplate"]
-        else
-            puts 'xxxxx KO xxxxxx'
-        end
-    end
 end
 
 puts "===== Parsing finished ====="

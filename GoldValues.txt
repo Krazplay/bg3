@@ -1,0 +1,371 @@
+=====  Parsing start   =====
+
+GoldValue ZeroValue
+    Level1: 0
+    Name: ZeroValue
+    ParentScale: 1
+    UUID: 8b2ad47c-891e-4a19-bab8-43cd5e964cb1
+
+GoldValue Junk
+    Level1: 1
+    Level10: 1
+    Level2: 1
+    Level3: 1
+    Level4: 1
+    Level5: 1
+    Level6: 1
+    Level7: 1
+    Level8: 1
+    Level9: 1
+    Name: Junk
+    ParentScale: 1
+    UUID: 91696f37-5a03-4f10-b636-2e5e2096a594
+
+GoldValue Tools
+    Level1: 25
+    Name: Tools
+    ParentScale: 1
+    UUID: aba2b73e-a68a-4c0a-a76b-f7d56aecdde6
+
+GoldValue ScrollsRevivify
+    Level1: 100
+    Name: ScrollsRevivify
+    ParentScale: 1
+    UUID: 124a46ba-3465-4a69-8b82-108d643c1e09
+
+GoldValue BaseProgression
+    Level1: 10
+    Level10: 100
+    Level11: 120
+    Level12: 150
+    Level2: 13
+    Level3: 16
+    Level4: 20
+    Level5: 25
+    Level6: 32
+    Level7: 45
+    Level8: 60
+    Level9: 80
+    Name: BaseProgression
+    ParentScale: 1
+    UUID: 7190ea94-c758-489b-ad39-c25d6c2ac038
+
+GoldValue QuestReward_Normal
+    Name: QuestReward_Normal
+    ParentScale: 10
+    ParentUUID: BaseProgression
+    UUID: 8447f120-18a3-457b-93a9-34f86502473e
+
+GoldValue QuestReward_Poor
+    Name: QuestReward_Poor
+    ParentScale: 0.40000000000000002
+    ParentUUID: QuestReward_Normal
+    UUID: 13386968-4644-4ef6-ae73-e6f5c4e67045
+
+GoldValue QuestReward_Modest
+    Name: QuestReward_Modest
+    ParentScale: 0.69999999999999996
+    ParentUUID: QuestReward_Normal
+    UUID: 7a7ca381-3e3f-4031-bd61-c9156344217f
+
+GoldValue QuestReward_Wealthy
+    Name: QuestReward_Wealthy
+    ParentScale: 2
+    ParentUUID: QuestReward_Normal
+    UUID: f6d80512-45e9-44f5-85f2-50235d660bb1
+
+GoldValue QuestReward_Opulent
+    Name: QuestReward_Opulent
+    ParentScale: 4
+    ParentUUID: QuestReward_Normal
+    UUID: 87affae5-8b81-4e82-af05-df576041cc9f
+
+GoldValue ConsumablesCommon
+    Name: ConsumablesCommon
+    ParentScale: 1
+    ParentUUID: BaseProgression
+    UUID: 1f40e7a6-fb87-41ab-9da9-282a359b7e89
+
+GoldValue ConsumablesRare
+    Name: ConsumablesRare
+    ParentScale: 2
+    ParentUUID: ConsumablesCommon
+    UUID: d6378d27-882e-4b51-aee6-31e999ea1d81
+
+GoldValue ExtractCommon
+    Name: ExtractCommon
+    ParentScale: 0.80000000000000004
+    ParentUUID: ConsumablesCommon
+    UUID: e34cfb3f-5ff2-44b7-b45e-cb9b18b60596
+
+GoldValue ExtractRare
+    Name: ExtractRare
+    ParentScale: 0.90000000000000002
+    ParentUUID: ConsumablesRare
+    UUID: e2ee29a1-08a7-4836-865a-a2179100e65c
+
+GoldValue IngredientCommon
+    Name: IngredientCommon
+    ParentScale: 0.20000000000000001
+    ParentUUID: ExtractCommon
+    UUID: b179039d-474f-4090-beb5-9468bcb6fba8
+
+GoldValue IngredientRare
+    Name: IngredientRare
+    ParentScale: 0.29999999999999999
+    ParentUUID: ExtractRare
+    UUID: 560798f9-9c28-4c8d-be75-ad81c613b91f
+
+GoldValue ConsumablesPotions
+    Name: ConsumablesPotions
+    ParentScale: 1
+    ParentUUID: ConsumablesCommon
+    UUID: 76f5b0ab-ca1c-4c19-9787-f2310ca386a4
+
+GoldValue ConsumablesPoisons
+    Name: ConsumablesPoisons
+    ParentScale: 1.3999999999999999
+    ParentUUID: ConsumablesCommon
+    UUID: fdf4e15b-b32a-45e0-82ce-0c94cfde957a
+
+GoldValue ConsumablesGrenades
+    Name: ConsumablesGrenades
+    ParentScale: 1.8
+    ParentUUID: ConsumablesCommon
+    UUID: 456af046-e41f-4b11-8db0-166318323ce7
+
+GoldValue ConsumablesArrows
+    Name: ConsumablesArrows
+    ParentScale: 0.80000000000000004
+    ParentUUID: ConsumablesCommon
+    UUID: 00f95a45-6f2c-4786-8c17-e4d65517166a
+
+GoldValue ConsumablesScrolls
+    Name: ConsumablesScrolls
+    ParentScale: 4
+    ParentUUID: ConsumablesCommon
+    UUID: 903e4dee-a3d5-4f72-8b72-c81541fd29aa
+
+GoldValue BaseLoot
+    Name: BaseLoot
+    ParentScale: 1.3999999999999999
+    ParentUUID: BaseProgression
+    UUID: 4c5217d8-0232-4592-9e32-2fd729123f53
+
+GoldValue LootRing
+    Name: LootRing
+    ParentScale: 1
+    ParentUUID: BaseLoot
+    UUID: fbbb62e3-5337-4962-98b4-27870acabb81
+
+GoldValue LootNecklace
+    Name: LootNecklace
+    ParentScale: 1.5
+    ParentUUID: LootRing
+    UUID: 6d47141f-ec77-4d69-b37b-b065a667ed1c
+
+GoldValue LootGem
+    Name: LootGem
+    ParentScale: 2
+    ParentUUID: BaseLoot
+    UUID: f2e027f7-e7bf-475e-9143-44c8bf5a5d40
+
+GoldValue LootTreasure
+    Name: LootTreasure
+    ParentScale: 2
+    ParentUUID: BaseLoot
+    UUID: 870797b7-fb40-47ae-be7a-544c05c158c8
+
+GoldValue AttitudePoints
+    Name: AttitudePoints
+    ParentScale: 0.29999999999999999
+    ParentUUID: BaseProgression
+    UUID: cb15f73a-5aca-404a-9186-5e172b7cf6c3
+
+GoldValue BaseWeapon
+    Name: BaseWeapon
+    ParentScale: 3.2000000000000002
+    ParentUUID: BaseProgression
+    UUID: 3ae7de83-816a-43e3-a0e1-4d5b78664fc6
+
+GoldValue Weapon_1
+    Name: Weapon_1
+    ParentScale: 1.3
+    ParentUUID: BaseWeapon
+    UUID: 4cd41c74-9c86-4233-922e-4db5bc750df5
+
+GoldValue Weapon_2
+    Name: Weapon_2
+    ParentScale: 3
+    ParentUUID: BaseWeapon
+    UUID: 71191c11-966f-4c19-b4ee-eb36d31c4944
+
+GoldValue WeaponUncommon
+    Name: WeaponUncommon
+    ParentScale: 2
+    ParentUUID: BaseWeapon
+    UUID: 86e7e503-a225-4b48-819e-2e24de1f904a
+
+GoldValue WeaponRare
+    Name: WeaponRare
+    ParentScale: 6
+    ParentUUID: BaseWeapon
+    UUID: 9b6a4ab2-323b-4030-89ab-030252bb6214
+
+GoldValue WeaponVeryRare
+    Name: WeaponVeryRare
+    ParentScale: 15
+    ParentUUID: BaseWeapon
+    UUID: 81764c3c-c7a9-49a7-b145-d31ffd5aebe1
+
+GoldValue WeaponLegendary
+    Name: WeaponLegendary
+    ParentScale: 20
+    ParentUUID: BaseWeapon
+    UUID: d24c441f-7ebe-4229-8522-cf34c257ff20
+
+GoldValue BaseArmor
+    Name: BaseArmor
+    ParentScale: 4
+    ParentUUID: BaseProgression
+    UUID: 9495e96a-7e7c-4e3a-8d81-51611908908c
+
+GoldValue Armor_1
+    Name: Armor_1
+    ParentScale: 2
+    ParentUUID: BaseArmor
+    UUID: 4024ce6c-f02d-4d7c-8033-869ada06ef82
+
+GoldValue Armor_2
+    Name: Armor_2
+    ParentScale: 6
+    ParentUUID: BaseArmor
+    UUID: f0307da3-feb7-40b0-bd62-18eea9167021
+
+GoldValue ArmorUncommon
+    Name: ArmorUncommon
+    ParentScale: 2.5
+    ParentUUID: BaseArmor
+    UUID: be545ee9-311c-4ab8-ab14-fefcc552cace
+
+GoldValue ArmorRare
+    Name: ArmorRare
+    ParentScale: 8
+    ParentUUID: BaseArmor
+    UUID: 240eb257-ef20-4877-89bd-6956b4b7c41a
+
+GoldValue ArmorVeryRare
+    Name: ArmorVeryRare
+    ParentScale: 16
+    ParentUUID: BaseArmor
+    UUID: adfdafe5-f4da-4c64-a1e6-a33d626437d2
+
+GoldValue ArmorLegendary
+    Name: ArmorLegendary
+    ParentScale: 20
+    ParentUUID: BaseArmor
+    UUID: a57433fc-8be8-4efb-ac6b-a625b3bdcd18
+
+GoldValue MagicRingUncommon
+    Name: MagicRingUncommon
+    ParentScale: 3
+    ParentUUID: LootRing
+    UUID: cdc711a8-7fed-48c5-8fac-e260cefc671f
+
+GoldValue MagicRingRare
+    Name: MagicRingRare
+    ParentScale: 5
+    ParentUUID: LootRing
+    UUID: 94356ef2-bb14-4595-88cf-86f544ef12eb
+
+GoldValue MagicRingVeryRare
+    Name: MagicRingVeryRare
+    ParentScale: 10
+    ParentUUID: LootRing
+    UUID: 3e8b9d6e-7e83-4fd7-bc99-bb4956d67a2a
+
+GoldValue MagicRingLegendary
+    Name: MagicRingLegendary
+    ParentScale: 15
+    ParentUUID: LootRing
+    UUID: 4b9657a0-5a00-442a-b76e-535715cbaa86
+
+GoldValue MagicAmuletUncommon
+    Name: MagicAmuletUncommon
+    ParentScale: 3
+    ParentUUID: LootNecklace
+    UUID: 12dbd881-5b36-4679-930e-c1ce5be5bb48
+
+GoldValue MagicAmuletRare
+    Name: MagicAmuletRare
+    ParentScale: 6
+    ParentUUID: LootNecklace
+    UUID: 7da97bda-6776-4796-8b0b-d3b96ff3c9fb
+
+GoldValue MagicAmuletVeryRare
+    Name: MagicAmuletVeryRare
+    ParentScale: 10
+    ParentUUID: LootNecklace
+    UUID: ccaceafa-6dc1-41c7-bd43-db6d4da8a3d8
+
+GoldValue MagicAmuletLegendary
+    Name: MagicAmuletLegendary
+    ParentScale: 15
+    ParentUUID: LootNecklace
+    UUID: 589981db-3c73-421f-9c2f-afca259e499d
+
+GoldValue BaseAccessory
+    Name: BaseAccessory
+    ParentScale: 1.5
+    ParentUUID: BaseProgression
+    UUID: 53cd3b64-3988-4e5d-a4f5-d4b4ec7ba0e9
+
+GoldValue AccessoryUncommon
+    Name: AccessoryUncommon
+    ParentScale: 3
+    ParentUUID: BaseAccessory
+    UUID: f0e7be35-8be4-483d-afa8-dc9a104ea758
+
+GoldValue AccessoryRare
+    Name: AccessoryRare
+    ParentScale: 8
+    ParentUUID: BaseAccessory
+    UUID: a229f048-70b0-4b0c-88cb-29b5c6bdb2d0
+
+GoldValue AccessoryVeryRare
+    Name: AccessoryVeryRare
+    ParentScale: 15
+    ParentUUID: BaseAccessory
+    UUID: c5ad02e9-b4d4-4df1-a9cd-02b80d017eaa
+
+GoldValue AccessoryLegendary
+    Name: AccessoryLegendary
+    ParentScale: 20
+    ParentUUID: BaseAccessory
+    UUID: f46eb019-edd0-4216-99df-9dae89a83ce7
+
+GoldValue BribesNonSevereCrimeMin
+    Name: BribesNonSevereCrimeMin
+    ParentScale: 5
+    ParentUUID: BaseProgression
+    UUID: d6a0f75a-a24f-4a8a-ac36-fd5f68ce074f
+
+GoldValue BribesNonSevereCrimeMax
+    Name: BribesNonSevereCrimeMax
+    ParentScale: 1.3
+    ParentUUID: BribesNonSevereCrimeMin
+    UUID: 53745024-caa7-490a-b106-8dc4f6e36be2
+
+GoldValue BribesSevereCrimeMin
+    Name: BribesSevereCrimeMin
+    ParentScale: 4
+    ParentUUID: BribesNonSevereCrimeMin
+    UUID: 73b8c1f6-1e2e-4f65-a80f-26a38da9e41f
+
+GoldValue BribesSevereCrimeMax
+    Name: BribesSevereCrimeMax
+    ParentScale: 1.3
+    ParentUUID: BribesSevereCrimeMin
+    UUID: d9876116-9c83-4f6e-8efa-cc5d9c2328be
+
+===== Parsing finished =====

@@ -6,10 +6,8 @@ file = File.open('english.xml', "r:UTF-8", &:read)
 xml_localization = Nokogiri::XML(file, nil, Encoding::UTF_8.to_s)
 
 # XXX_pak is the folder where I unpacked XXX.pak
-# Shared_pak\Public\Shared\ClassDescriptions\ClassDescriptions.lsx
 file = File.open('E:\BG3_Unpack\Shared_pak\Public\Shared\Gods\Gods.lsx', "r:UTF-8", &:read)
 xml1 = Nokogiri::XML(file, nil, Encoding::UTF_8.to_s)
-# Shared_pak\Public\SharedDev\ClassDescriptions\ClassDescriptions.lsx
 file = File.open('E:\BG3_Unpack\Shared_pak\Public\SharedDev\Gods\Gods.lsx', "r:UTF-8", &:read)
 xml2 = Nokogiri::XML(file, nil, Encoding::UTF_8.to_s)
 
@@ -27,7 +25,7 @@ xml_localization.xpath('/contentList/content').each do |item|
     loca[item["contentuid"]] = item.text
 end
 
-# Loop on ClassDescription of both file
+# Loop on the interesting nodes of both file
 pathx = '//node[@id="God"]'
 (xml1.xpath(pathx)+xml2.xpath(pathx)).each do |item|
     # Store each attribute and its value

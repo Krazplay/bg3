@@ -1,0 +1,433 @@
+=====  Parsing start   =====
+
+LevelMapSeries D4Cantrip
+    Level1: 1d4
+    Level10: 3d4
+    Level2: 1d4
+    Level3: 1d4
+    Level4: 1d4
+    Level5: 2d4
+    Level6: 2d4
+    Level7: 2d4
+    Level8: 2d4
+    Level9: 2d4
+    Name: D4Cantrip
+    UUID: b183a804-e9c6-4990-8984-c76d3ed67a9f
+
+LevelMapSeries D6Cantrip
+    Level1: 1d6
+    Level10: 3d6
+    Level2: 1d6
+    Level3: 1d6
+    Level4: 1d6
+    Level5: 2d6
+    Level6: 2d6
+    Level7: 2d6
+    Level8: 2d6
+    Level9: 2d6
+    Name: D6Cantrip
+    UUID: dc4e3a14-ccc9-4177-8098-bfc3fcb18bc6
+
+LevelMapSeries D8Cantrip
+    Level1: 1d8
+    Level10: 3d8
+    Level2: 1d8
+    Level3: 1d8
+    Level4: 1d8
+    Level5: 2d8
+    Level6: 2d8
+    Level7: 2d8
+    Level8: 2d8
+    Level9: 2d8
+    Name: D8Cantrip
+    UUID: 86c6a562-3e9b-4362-bfac-46a67069efa9
+
+LevelMapSeries D10Cantrip
+    Level1: 1d10
+    Level10: 3d10
+    Level2: 1d10
+    Level3: 1d10
+    Level4: 1d10
+    Level5: 2d10
+    Level6: 2d10
+    Level7: 2d10
+    Level8: 2d10
+    Level9: 2d10
+    Name: D10Cantrip
+    UUID: e18c6db5-f743-45dc-8fd9-786ea75242c8
+
+LevelMapSeries D12Cantrip
+    Level1: 1d12
+    Level10: 3d12
+    Level2: 1d12
+    Level3: 1d12
+    Level4: 1d12
+    Level5: 2d12
+    Level6: 2d12
+    Level7: 2d12
+    Level8: 2d12
+    Level9: 2d12
+    Name: D12Cantrip
+    UUID: 67432a46-f078-4c62-bade-e5a0f96db334
+
+LevelMapSeries EldritchBlast
+    Level1: 1
+    Level10: 3
+    Level2: 1
+    Level3: 1
+    Level4: 1
+    Level5: 2
+    Level6: 2
+    Level7: 2
+    Level8: 2
+    Level9: 2
+    Name: EldritchBlast
+    UUID: ecad9e7a-389d-4789-ba69-898cfd34da3c
+
+LevelMapSeries StandardProficiencyBonusScale
+    Level1: 2
+    Level5: 3
+    Level9: 4
+    Name: StandardProficiencyBonusScale
+    UUID: 265d62c4-9b82-4ed6-9a86-da675b4ef8fe
+
+LevelMapSeries SneakAttack
+    Level1: 1d6
+    Level3: 2d6
+    Level5: 3d6
+    Level7: 4d6
+    Level9: 5d6
+    Name: SneakAttack
+    PreferredClassUUID: e8b1eab0-ef11-40a2-8a0b-cee8d062bf2a
+    UUID: a8d270e8-56d4-4d08-95f9-40949a450ed9
+
+LevelMapSeries BardicInspiration
+    Level1: 1d6
+    Level10: 1d10
+    Level5: 1d8
+    Name: BardicInspiration
+    PreferredClassUUID: 92cd50b6-eb1b-4824-8adb-853e90c34c90
+    UUID: d627b1c2-d215-476d-a3b1-3ba652d1c0c3
+
+LevelMapSeries SuperiorityDie
+    FallbackValue: 1d8
+    Level1: 1d8
+    Level10: 1d10
+    Name: SuperiorityDie
+    PreferredClassUUID: 721dfac3-92d4-41f5-b773-b7072a86232f
+    UUID: f81e8e9e-ffe0-4173-83d6-7cd8cf718477
+
+LevelMapSeries RageDamage
+    Level1: 2
+    Level9: 3
+    Name: RageDamage
+    PreferredClassUUID: d8cadb42-0ff9-4049-afaf-e5d78d06a399
+    UUID: 47925e09-30f6-4549-8252-60ea7f87b7a6
+
+LevelMapSeries MartialArts
+    Level1: 1d4
+    Level10: 1d8
+    Level11: 1d8
+    Level12: 1d8
+    Level2: 1d4
+    Level3: 1d6
+    Level4: 1d6
+    Level5: 1d6
+    Level6: 1d6
+    Level7: 1d6
+    Level8: 1d6
+    Level9: 1d8
+    Name: MartialArts
+    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    UUID: b4136c95-a4f9-4fc1-96bc-00310232d27a
+
+LevelMapSeries RayOfFrost_Monk
+    Level1: 1d10
+    Level10: 2d10
+    Level11: 2d10
+    Level12: 2d10
+    Level2: 1d10
+    Level3: 1d10
+    Level4: 1d10
+    Level5: 1d10
+    Level6: 1d10
+    Level7: 1d10
+    Level8: 1d10
+    Level9: 2d10
+    Name: RayOfFrost_Monk
+    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    UUID: 8176b92f-f4b9-4484-8ebd-ea32a519a0c9
+
+LevelMapSeries FangsOfTheFireSnake
+    Level1: 1d10
+    Level10: 2d10
+    Level11: 2d10
+    Level12: 2d10
+    Level2: 1d10
+    Level3: 1d10
+    Level4: 1d10
+    Level5: 1d10
+    Level6: 1d10
+    Level7: 1d10
+    Level8: 1d10
+    Level9: 2d10
+    Name: FangsOfTheFireSnake
+    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    UUID: 912376b1-e1ee-4092-8f95-a356a8cdd967
+
+LevelMapSeries Thunderwave_Monk
+    Level1: 2d8
+    Level10: 3d8
+    Level11: 3d8
+    Level12: 3d8
+    Level2: 2d8
+    Level3: 2d8
+    Level4: 2d8
+    Level5: 2d8
+    Level6: 2d8
+    Level7: 2d8
+    Level8: 2d8
+    Level9: 3d8
+    Name: Thunderwave_Monk
+    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    UUID: 4dbc51d2-5d34-4652-8149-6d1df3ed02be
+
+LevelMapSeries FistOfUnbrokenAir
+    Level1: 3d10
+    Level10: 4d10
+    Level11: 4d10
+    Level12: 4d10
+    Level2: 3d10
+    Level3: 3d10
+    Level4: 3d10
+    Level5: 3d10
+    Level6: 3d10
+    Level7: 3d10
+    Level8: 3d10
+    Level9: 4d10
+    Name: FistOfUnbrokenAir
+    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    UUID: 340bb422-93bd-43de-90c2-cff7ff70908b
+
+LevelMapSeries ChromaticOrb_Monk
+    Level1: 2d8
+    Level10: 3d8
+    Level11: 3d8
+    Level12: 3d8
+    Level2: 2d8
+    Level3: 2d8
+    Level4: 2d8
+    Level5: 2d8
+    Level6: 2d8
+    Level7: 2d8
+    Level8: 2d8
+    Level9: 3d8
+    Name: ChromaticOrb_Monk
+    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    UUID: 2e10e5e6-ccd1-42eb-b402-ab20b6ce91eb
+
+LevelMapSeries ChromaticOrb_Thunder_Monk
+    Level1: 3d8
+    Level10: 4d8
+    Level11: 4d8
+    Level12: 4d8
+    Level2: 3d8
+    Level3: 3d8
+    Level4: 3d8
+    Level5: 3d8
+    Level6: 3d8
+    Level7: 3d8
+    Level8: 3d8
+    Level9: 4d8
+    Name: ChromaticOrb_Thunder_Monk
+    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    UUID: 79b640cb-4d4f-4b0f-ab42-5cf8627534f7
+
+LevelMapSeries BurningHands_Monk
+    Level1: 3d6
+    Level10: 4d6
+    Level11: 4d6
+    Level12: 4d6
+    Level2: 3d6
+    Level3: 3d6
+    Level4: 3d6
+    Level5: 3d6
+    Level6: 3d6
+    Level7: 3d6
+    Level8: 3d6
+    Level9: 4d6
+    Name: BurningHands_Monk
+    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    UUID: 160d650d-cc14-421f-9a2a-ed3babcf6a45
+
+LevelMapSeries ShockingGrasp_Monk
+    Level1: 1d10
+    Level10: 2d10
+    Level11: 2d10
+    Level12: 2d10
+    Level2: 1d10
+    Level3: 1d10
+    Level4: 1d10
+    Level5: 1d10
+    Level6: 1d10
+    Level7: 1d10
+    Level8: 1d10
+    Level9: 2d10
+    Name: ShockingGrasp_Monk
+    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    UUID: 049b4265-45e7-4073-81b9-895b9059c51e
+
+LevelMapSeries WaterWhip
+    Level1: 3d10
+    Level10: 4d10
+    Level11: 4d10
+    Level12: 4d10
+    Level2: 3d10
+    Level3: 3d10
+    Level4: 3d10
+    Level5: 3d10
+    Level6: 3d10
+    Level7: 3d10
+    Level8: 3d10
+    Level9: 4d10
+    Name: WaterWhip
+    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    UUID: 98dc3b1f-c1a1-4b0c-a306-56429ff837e2
+
+LevelMapSeries IceKnife_Monk
+    Level1: 1d10
+    Level10: 2d10
+    Level11: 2d10
+    Level12: 2d10
+    Level2: 1d10
+    Level3: 1d10
+    Level4: 1d10
+    Level5: 1d10
+    Level6: 1d10
+    Level7: 1d10
+    Level8: 1d10
+    Level9: 2d10
+    Name: IceKnife_Monk
+    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    UUID: 95c173c7-acc4-4671-bb4c-353472ba54a1
+
+LevelMapSeries Shatter_Monk
+    Level1: 3d8
+    Level10: 4d8
+    Level11: 4d8
+    Level12: 4d8
+    Level2: 3d8
+    Level3: 3d8
+    Level4: 3d8
+    Level5: 3d8
+    Level6: 3d8
+    Level7: 3d8
+    Level8: 3d8
+    Level9: 4d8
+    Name: Shatter_Monk
+    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    UUID: b3be9bb1-d0b7-434e-b7b1-fd09231fe565
+
+LevelMapSeries ScorchingRay_Monk
+    Level1: 3
+    Level10: 4
+    Level11: 4
+    Level12: 4
+    Level2: 3
+    Level3: 3
+    Level4: 3
+    Level5: 3
+    Level6: 3
+    Level7: 3
+    Level8: 3
+    Level9: 4
+    Name: ScorchingRay_Monk
+    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    UUID: d7164bb5-a770-43ac-8128-25a77f0052f2
+
+LevelMapSeries HoldPerson_Monk
+    Level1: 1
+    Level10: 2
+    Level11: 2
+    Level12: 2
+    Level2: 1
+    Level3: 1
+    Level4: 1
+    Level5: 1
+    Level6: 1
+    Level7: 1
+    Level8: 1
+    Level9: 2
+    Name: HoldPerson_Monk
+    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    UUID: 08f3a7a7-49b4-4663-8dfb-17ef41c1821f
+
+LevelMapSeries HaloOfSpores
+    Level1: 1d4
+    Level10: 1d8
+    Level11: 1d8
+    Level12: 1d8
+    Level2: 1d4
+    Level3: 1d4
+    Level4: 1d4
+    Level5: 1d4
+    Level6: 1d6
+    Level7: 1d6
+    Level8: 1d6
+    Level9: 1d6
+    Name: HaloOfSpores
+    PreferredClassUUID: 457d0a6e-9da8-4f95-a225-18382f0e94b5
+    UUID: ce736b6d-0a77-415c-a9f6-c71197459e2f
+
+LevelMapSeries SpiritualWeapon_1d8
+    Level1: 1d8
+    Name: SpiritualWeapon_1d8
+    UUID: d2d9ad30-7729-4afa-83df-79655f26c367
+
+LevelMapSeries SpiritualWeapon_2d8
+    Level1: 2d8
+    Name: SpiritualWeapon_2d8
+    UUID: b5e5c698-ef54-49ee-8c12-ac5e0a512d84
+
+LevelMapSeries SpiritualWeapon_3d8
+    Level1: 3d8
+    Name: SpiritualWeapon_3d8
+    UUID: 0d1ed86c-efa2-462b-a646-59f111d44f70
+
+LevelMapSeries WildShapeDamageLow
+    FallbackValue: 1
+    Level1: 0
+    Level10: 1d6
+    Level11: 1d6
+    Level12: 1d8
+    Level2: 0
+    Level3: 0
+    Level4: 1d4
+    Level5: 1d4
+    Level6: 1d4
+    Level7: 1d4
+    Level8: 1d6
+    Level9: 1d6
+    Name: WildShapeDamageLow
+    PreferredClassUUID: 457d0a6e-9da8-4f95-a225-18382f0e94b5
+    UUID: eddbd239-dc87-4bec-a2d9-e59bb77badb0
+
+LevelMapSeries WildShapeDamageMedium
+    FallbackValue: 1
+    Level1: 0
+    Level10: 1d8
+    Level11: 1d8
+    Level12: 1d10
+    Level2: 0
+    Level3: 0
+    Level4: 1d6
+    Level5: 1d6
+    Level6: 1d6
+    Level7: 1d6
+    Level8: 1d8
+    Level9: 1d8
+    Name: WildShapeDamageMedium
+    PreferredClassUUID: 457d0a6e-9da8-4f95-a225-18382f0e94b5
+    UUID: 48a8af33-c743-410c-8150-f64232a95c1c
+
+===== Parsing finished =====

@@ -1,0 +1,131 @@
+=====  Parsing start   =====
+
+TODO: Tags
+
+God Selûne
+    Description: The Lady of Silver presides over the moon, stars, and navigation. Her power over the heavens is constantly challenged by her sister Shar, who seeks to plunge the world into eternal shadow.
+    DisplayName: Selûne
+    Name: Selune
+    UUID: 7f990c80-7c33-4e29-a73c-0317f46e9dc6
+
+God Shar
+    Description: As the greater deity of darkness, Shar is feared for her power over the night, secrets, and loss. She is locked in eternal conflict with her twin sister Selûne, goddess of the moon.
+    DisplayName: Shar
+    Name: Shar
+    UUID: 2eb3557f-7ada-41d6-a892-e02def72ef77
+
+God Tempus
+    Description: Tempus is the Lord of Battles, overseeing war and its soldiers. He is the embodiment of honourable combat, and condemns needless bloodlust.
+    DisplayName: Tempus
+    Name: Tempus
+    UUID: 614180f6-1887-4a54-920b-b0428ebca99e
+
+God Tyr
+    Description: The Blind God rules over law and justice, encouraging valiant acts from his followers and relentlessly pursuing oathbreakers. 
+    DisplayName: Tyr
+    Name: Tyr
+    UUID: e32d20f7-a46f-40f1-ae4a-c47b45d6d348
+
+God Helm
+    Description: The Watcher is an eternal sentry among the gods, representing guardians across the planes. After more than a century of fading worship, Helm's power was restored with the Second Sundering.
+    DisplayName: Helm
+    Name: Helm
+    UUID: a6b25ccc-4df9-4a28-a599-7f409d9fbc4f
+
+God Ilmater
+    Description: The Crying God protects the oppressed and persecuted. His clergy is sworn to alleviate suffering, even if that means taking on that pain personally.
+    DisplayName: Ilmater
+    Name: Ilmater
+    UUID: ac739c37-99c5-4e8f-9658-de6bd84ba969
+
+God Mystra
+    Description: As the mother of all magic, Mystra oversees the Weave and spreads arcane knowledge to mortal spellcasters. Her clerics preserve ancient lore and protect bastions of magical energy.
+    DisplayName: Mystra
+    Name: Mystra
+    UUID: 3e1c9bfc-f15c-46c1-8c2d-725da5e4d896
+
+God Oghma
+    Description: Oghma is the god of inspiration and invention, sharing knowledge with the world through his bards and clerics. Unlike many other deities, Oghma accepts all moral alignments into his clergy.
+    DisplayName: Oghma
+    Name: Oghma
+    UUID: 182b6754-ca35-436a-a17a-8d30fe8e8179
+
+God Kelemvor
+    Description: Fair but distant, Kelemvor guides the dead to their appropriate plane in the afterlife. His clergy provides last rites across Faerûn, but also destroy undead that have escaped Kelemvor's judgement.
+    DisplayName: Kelemvor
+    Name: Kelemvor
+    UUID: 4dded16c-9936-4c54-9454-957d4ba9583a
+
+God Moradin
+    Description: The All-Hammer is a dwarven god worshipped by smiths, artisans, and miners alike. He and Laduguer are constantly at odds.
+    DisplayName: Moradin
+    Name: Moradin
+    UUID: 468fbf60-95c5-4b75-a315-dd4064ee39d8
+
+God Corellon Larethian
+    Description: Creator of the elves, Corellon Larethian oversees the elven pantheon as a whole, providing blessings to those who study art, magic, and nature.
+    DisplayName: Corellon Larethian
+    Name: Corellon_Larethian
+    UUID: c3fdb44c-1743-458d-a688-15a25fda4c06
+
+God Garl Glittergold
+    Description: The Watchful Protector is the king of gnomish gods - a deity of humour, gem-cutting, protection, and trickery.
+    DisplayName: Garl Glittergold
+    Name: Garl_Glittergold
+    UUID: f48231ce-96d1-4ff6-b974-d3bead8302c5
+
+God Yondalla
+    Description: As the mother of the halfling pantheon, Yondalla is known for her kindness and open mind, encouraging her followers to protect the home, hearth, and nature.
+    DisplayName: Yondalla
+    Name: Yondalla
+    UUID: 4bf364ec-f3ac-4ec1-9269-40a7f2a39a63
+
+God Lolth
+    Description: The much-reviled matriarch of the drow pantheon, Lolth holds sway over spiders, the Underdark, and the wicked creatures of the Demonweb Pits. Her primary goal is to corrupt all drow, transforming them into heartless cultists.
+    DisplayName: Lolth
+    Name: Lolth
+    UUID: 751cddf4-4aa1-40d8-9c49-b8cd8e48b52d
+
+God Laduguer
+    Description: The Exile is the tyrannical patron of the duergar. His clerics are the unquestioned rulers of duergar society, enforcing cold and callous behaviour among his worshippers.
+    DisplayName: Laduguer
+    Name: Laduguer
+    UUID: eba713d1-bfa3-4117-8680-6d07ce1f29f0
+
+God Vlaakith
+    Description: The Lich Queen is the sole respected leader of the githyanki. She encourages their worship and unquestioning devotion, essentially acting as a deity.
+    DisplayName: Vlaakith
+    Name: Vlaakith
+    UUID: 5d733ec3-ad9a-4d26-bc9c-46a597b109b3
+
+God Eilistraee
+    Description: Eilistraee is the goddess of good-aligned drow, beauty, song, and freedom. The Dark Maiden desires balance between all races, and struggles against her mother Lolth's corrupt aims.
+    DisplayName: Eilistraee
+    Name: Eilistraee
+    UUID: f7c7d010-40c4-4f32-baa0-433f8b0eb6e1
+
+God Lathander
+    Description: The Morninglord is the god of the dawn and spring, of birth and beginnings. He is invoked to christen both new ventures and new life. His followers embrace growth and renewal, and despise the undead.
+    DisplayName: Lathander
+    Name: Lathander
+    UUID: a3f608b1-2190-4761-8844-e5a398b37384
+
+God Talos
+    Description: Talos represents the uncaring and destructive force of nature. His followers see life as a set of random effects in a sea of chaos, and take what they can - for who can say when Talos will strike next?
+    DisplayName: Talos
+    Name: Talos
+    UUID: acb14573-c20c-41d7-9d63-007f0afe582b
+
+God Tymora
+    Description: Tymora is the bright-faced goddess of fortune, who favours those who gamble - and set out on adventure - with the utmost skill and daring.
+    DisplayName: Tymora
+    Name: Tymora
+    UUID: 24fe5266-6ec9-4864-83ab-de2d374638e3
+
+God Mielikki
+    Description: Mielikki is the goddess of forests and the creatures that live within them. She is a remote and spiritual deity, often spoken of in but the quietest of forests.
+    DisplayName: Mielikki
+    Name: Mielikki
+    UUID: 8985ae89-0e72-4ebb-b4f6-14e4ecdd2c74
+
+===== Parsing finished =====

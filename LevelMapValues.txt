@@ -98,7 +98,7 @@ LevelMapSeries SneakAttack
     Level7: 4d6
     Level9: 5d6
     Name: SneakAttack
-    PreferredClassUUID: e8b1eab0-ef11-40a2-8a0b-cee8d062bf2a
+    PreferredClassUUID: Rogue
     UUID: a8d270e8-56d4-4d08-95f9-40949a450ed9
 
 LevelMapSeries BardicInspiration
@@ -106,7 +106,7 @@ LevelMapSeries BardicInspiration
     Level10: 1d10
     Level5: 1d8
     Name: BardicInspiration
-    PreferredClassUUID: 92cd50b6-eb1b-4824-8adb-853e90c34c90
+    PreferredClassUUID: Bard
     UUID: d627b1c2-d215-476d-a3b1-3ba652d1c0c3
 
 LevelMapSeries SuperiorityDie
@@ -114,14 +114,14 @@ LevelMapSeries SuperiorityDie
     Level1: 1d8
     Level10: 1d10
     Name: SuperiorityDie
-    PreferredClassUUID: 721dfac3-92d4-41f5-b773-b7072a86232f
+    PreferredClassUUID: Fighter
     UUID: f81e8e9e-ffe0-4173-83d6-7cd8cf718477
 
 LevelMapSeries RageDamage
     Level1: 2
     Level9: 3
     Name: RageDamage
-    PreferredClassUUID: d8cadb42-0ff9-4049-afaf-e5d78d06a399
+    PreferredClassUUID: Barbarian
     UUID: 47925e09-30f6-4549-8252-60ea7f87b7a6
 
 LevelMapSeries MartialArts
@@ -138,7 +138,7 @@ LevelMapSeries MartialArts
     Level8: 1d6
     Level9: 1d8
     Name: MartialArts
-    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    PreferredClassUUID: Monk
     UUID: b4136c95-a4f9-4fc1-96bc-00310232d27a
 
 LevelMapSeries RayOfFrost_Monk
@@ -155,7 +155,7 @@ LevelMapSeries RayOfFrost_Monk
     Level8: 1d10
     Level9: 2d10
     Name: RayOfFrost_Monk
-    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    PreferredClassUUID: Monk
     UUID: 8176b92f-f4b9-4484-8ebd-ea32a519a0c9
 
 LevelMapSeries FangsOfTheFireSnake
@@ -172,7 +172,7 @@ LevelMapSeries FangsOfTheFireSnake
     Level8: 1d10
     Level9: 2d10
     Name: FangsOfTheFireSnake
-    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    PreferredClassUUID: Monk
     UUID: 912376b1-e1ee-4092-8f95-a356a8cdd967
 
 LevelMapSeries Thunderwave_Monk
@@ -189,7 +189,7 @@ LevelMapSeries Thunderwave_Monk
     Level8: 2d8
     Level9: 3d8
     Name: Thunderwave_Monk
-    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    PreferredClassUUID: Monk
     UUID: 4dbc51d2-5d34-4652-8149-6d1df3ed02be
 
 LevelMapSeries FistOfUnbrokenAir
@@ -206,7 +206,7 @@ LevelMapSeries FistOfUnbrokenAir
     Level8: 3d10
     Level9: 4d10
     Name: FistOfUnbrokenAir
-    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    PreferredClassUUID: Monk
     UUID: 340bb422-93bd-43de-90c2-cff7ff70908b
 
 LevelMapSeries ChromaticOrb_Monk
@@ -223,7 +223,7 @@ LevelMapSeries ChromaticOrb_Monk
     Level8: 2d8
     Level9: 3d8
     Name: ChromaticOrb_Monk
-    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    PreferredClassUUID: Monk
     UUID: 2e10e5e6-ccd1-42eb-b402-ab20b6ce91eb
 
 LevelMapSeries ChromaticOrb_Thunder_Monk
@@ -240,7 +240,7 @@ LevelMapSeries ChromaticOrb_Thunder_Monk
     Level8: 3d8
     Level9: 4d8
     Name: ChromaticOrb_Thunder_Monk
-    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    PreferredClassUUID: Monk
     UUID: 79b640cb-4d4f-4b0f-ab42-5cf8627534f7
 
 LevelMapSeries BurningHands_Monk
@@ -257,7 +257,7 @@ LevelMapSeries BurningHands_Monk
     Level8: 3d6
     Level9: 4d6
     Name: BurningHands_Monk
-    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    PreferredClassUUID: Monk
     UUID: 160d650d-cc14-421f-9a2a-ed3babcf6a45
 
 LevelMapSeries ShockingGrasp_Monk
@@ -274,7 +274,7 @@ LevelMapSeries ShockingGrasp_Monk
     Level8: 1d10
     Level9: 2d10
     Name: ShockingGrasp_Monk
-    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    PreferredClassUUID: Monk
     UUID: 049b4265-45e7-4073-81b9-895b9059c51e
 
 LevelMapSeries WaterWhip
@@ -291,7 +291,7 @@ LevelMapSeries WaterWhip
     Level8: 3d10
     Level9: 4d10
     Name: WaterWhip
-    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    PreferredClassUUID: Monk
     UUID: 98dc3b1f-c1a1-4b0c-a306-56429ff837e2
 
 LevelMapSeries IceKnife_Monk
@@ -308,7 +308,7 @@ LevelMapSeries IceKnife_Monk
     Level8: 1d10
     Level9: 2d10
     Name: IceKnife_Monk
-    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    PreferredClassUUID: Monk
     UUID: 95c173c7-acc4-4671-bb4c-353472ba54a1
 
 LevelMapSeries Shatter_Monk
@@ -325,7 +325,7 @@ LevelMapSeries Shatter_Monk
     Level8: 3d8
     Level9: 4d8
     Name: Shatter_Monk
-    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    PreferredClassUUID: Monk
     UUID: b3be9bb1-d0b7-434e-b7b1-fd09231fe565
 
 LevelMapSeries ScorchingRay_Monk
@@ -342,7 +342,7 @@ LevelMapSeries ScorchingRay_Monk
     Level8: 3
     Level9: 4
     Name: ScorchingRay_Monk
-    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    PreferredClassUUID: Monk
     UUID: d7164bb5-a770-43ac-8128-25a77f0052f2
 
 LevelMapSeries HoldPerson_Monk
@@ -359,7 +359,7 @@ LevelMapSeries HoldPerson_Monk
     Level8: 1
     Level9: 2
     Name: HoldPerson_Monk
-    PreferredClassUUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    PreferredClassUUID: Monk
     UUID: 08f3a7a7-49b4-4663-8dfb-17ef41c1821f
 
 LevelMapSeries HaloOfSpores
@@ -376,7 +376,7 @@ LevelMapSeries HaloOfSpores
     Level8: 1d6
     Level9: 1d6
     Name: HaloOfSpores
-    PreferredClassUUID: 457d0a6e-9da8-4f95-a225-18382f0e94b5
+    PreferredClassUUID: Druid
     UUID: ce736b6d-0a77-415c-a9f6-c71197459e2f
 
 LevelMapSeries SpiritualWeapon_1d8
@@ -409,7 +409,7 @@ LevelMapSeries WildShapeDamageLow
     Level8: 1d6
     Level9: 1d6
     Name: WildShapeDamageLow
-    PreferredClassUUID: 457d0a6e-9da8-4f95-a225-18382f0e94b5
+    PreferredClassUUID: Druid
     UUID: eddbd239-dc87-4bec-a2d9-e59bb77badb0
 
 LevelMapSeries WildShapeDamageMedium
@@ -427,7 +427,7 @@ LevelMapSeries WildShapeDamageMedium
     Level8: 1d8
     Level9: 1d8
     Name: WildShapeDamageMedium
-    PreferredClassUUID: 457d0a6e-9da8-4f95-a225-18382f0e94b5
+    PreferredClassUUID: Druid
     UUID: 48a8af33-c743-410c-8150-f64232a95c1c
 
 ===== Parsing finished =====

@@ -17,10 +17,31 @@ rescue
 end
 
 # Redirect output to a file instead of the console
-$stdout = File.new( './LevelMapValues.txt', 'w' )
+stdout = File.new( './LevelMapValues.txt', 'w' )
+
+# Need ClassDescriptions to replace PreferredClassUUID
+file = File.open('E:\BG3_Unpack\Shared_pak\Public\Shared\ClassDescriptions\ClassDescriptions.lsx', "r:UTF-8", &:read)
+xml3 = Nokogiri::XML(file, nil, Encoding::UTF_8.to_s)
+file = File.open('E:\BG3_Unpack\Shared_pak\Public\SharedDev\ClassDescriptions\ClassDescriptions.lsx', "r:UTF-8", &:read)
+xml4 = Nokogiri::XML(file, nil, Encoding::UTF_8.to_s)
 
 puts "=====  Parsing start   ====="
 puts ""
+
+#########################################
+# Filling up classDescription variable for later use
+pathx = '//node[@id="ClassDescription"]'
+classDescription = {}
+(xml3.xpath(pathx)+xml4.xpath(pathx)).each do |item|
+    # Store each attribute and its value
+    storage = {}
+    item.xpath('attribute').each do |attr|
+        # If parameter doesn't have a 'value' param, use 'handle' instead
+        storage[attr["id"]] = attr["value"] != nil ? attr["value"] : attr["handle"]  
+    end
+    classDescription[storage["UUID"]] = storage.clone();
+end
+#########################################
 
 # Parse the localization, create an hash: loca[UID] = human readable text
 loca = {}
@@ -50,6 +71,8 @@ data.each do |uid, storage|
             puts "    #{key}: #{loca[val]}"
         when "ParentUUID"
             puts "    #{key}: #{data[val]["Name"]}"
+        when "PreferredClassUUID"
+            puts "    #{key}: #{classDescription[val]["Name"]}"
         else
             puts "    #{key}: #{val}"
         end

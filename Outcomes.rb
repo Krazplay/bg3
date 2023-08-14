@@ -6,18 +6,18 @@ file = File.open('english.xml', "r:UTF-8", &:read)
 xml_localization = Nokogiri::XML(file, nil, Encoding::UTF_8.to_s)
 
 # XXX_pak is the folder where I unpacked XXX.pak
-file = File.open('E:\BG3_Unpack\Shared_pak\Public\Shared\Levelmaps\LevelMapValues.lsx', "r:UTF-8", &:read)
+file = File.open('E:\BG3_Unpack\Shared_pak\Public\Shared\RandomCasts\Outcomes.lsx', "r:UTF-8", &:read)
 xml1 = Nokogiri::XML(file, nil, Encoding::UTF_8.to_s)
 # Handle if the file doesn't exist in SharedDev
 begin
-    file = File.open('E:\BG3_Unpack\Shared_pak\Public\SharedDev\Levelmaps\LevelMapValues.lsx', "r:UTF-8", &:read)
+    file = File.open('E:\BG3_Unpack\Shared_pak\Public\SharedDev\RandomCasts\Outcomes.lsx', "r:UTF-8", &:read)
     xml2 = Nokogiri::XML(file, nil, Encoding::UTF_8.to_s)
 rescue
     xml2= Nokogiri::XML("")
 end
 
 # Redirect output to a file instead of the console
-$stdout = File.new( './LevelMapValues.txt', 'w' )
+$stdout = File.new( './Outcomes.txt', 'w' )
 
 # Need ClassDescriptions to replace PreferredClassUUID
 file = File.open('E:\BG3_Unpack\Shared_pak\Public\Shared\ClassDescriptions\ClassDescriptions.lsx', "r:UTF-8", &:read)
@@ -39,7 +39,7 @@ classDescription = {}
         # If parameter doesn't have a 'value' param, use 'handle' instead
         storage[attr["id"]] = attr["value"] != nil ? attr["value"] : attr["handle"]  
     end
-    classDescription[storage["UUID"]] = storage;
+    classDescription[storage["UUID"]] = storage.clone();
 end
 #########################################
 
@@ -50,7 +50,7 @@ xml_localization.xpath('/contentList/content').each do |item|
 end
 
 # Loop on the interesting nodes of both file
-pathx = '//node[@id="LevelMapSeries"]'
+pathx = '//node[@id="Outcome"]'
 data = {} # store all the data because of references (for example ParentUUID references an UUID in the same file)
 (xml1.xpath(pathx)+xml2.xpath(pathx)).each do |item|
     # Store each attribute and its value
@@ -64,14 +64,14 @@ end
 
 # Display the data
 data.each do |uid, storage|
-    puts "LevelMapSeries " + storage["Name"]
+    puts "Outcome " + storage["GroupName"]
     storage.each do |key, val|
         case key
         when "Description", "DisplayName"
             puts "    #{key}: #{loca[val]}"
         when "ParentUUID"
             puts "    #{key}: #{data[val]["Name"]}"
-        when "PreferredClassUUID"
+        when "ClassUUID", "PreferredClassUUID"
             puts "    #{key}: #{classDescription[val]["Name"]}"
         else
             puts "    #{key}: #{val}"

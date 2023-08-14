@@ -1,0 +1,1568 @@
+=====  Parsing start   =====
+
+Interrupt_ON_SPELL_CAST
+
+Counterspell
+Interrupt_Counterspell
+    DisplayName: Counterspell
+    Description: Make a creature fail when it casts a spell. Spells of 3rd level or lower can always be interrupted. Higher level spells are harder.
+    Icon: PassiveFeature_Counterspell
+    InterruptContext: OnSpellCast
+    InterruptContextScope: Nearby
+    Container: YesNoDecision
+    Conditions: not HasSpellCastBlocked(context.Observer) and IsAbleToReact(context.Observer) and not Self(context.Source, context.Observer) and Enemy(context.Source, context.Observer) and IsSpell() and not Uninterruptible() and not HasStringInSpellRoll('WeaponAttack') and not AnyEntityIsItem()
+    Roll: TryCounterspellHigherLevel(3)
+    Success: Counterspell();UseSpell(OBSERVER_SOURCE,Target_Counterspell_Success,true,true,true)
+    Failure: UseSpell(OBSERVER_SOURCE,Target_Counterspell_Failure,true,true,true)
+    Cost: ReactionActionPoint:1;SpellSlotsGroup:1:1:3
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Interrupt_Counterspell_Scroll
+    using: Interrupt_Counterspell
+    Cost: ReactionActionPoint:1
+
+Interrupt_ON_POST_ROLL
+
+Bardic Attack
+Interrupt_BardicInspiration_Attack
+    DisplayName: Bardic Attack
+    Description: Add a +[1] bonus to your <LSTag Tooltip="AttackRoll">Attack Roll</LSTag>.
+    DescriptionParams: 1d6
+    ExtraDescription: You will expend your <LSTag Type="Status" Tooltip="BARDIC_INSPIRATION">Bardic Inspiration</LSTag>.
+    Icon: PassiveFeature_BardicInspiration_Attack
+    InterruptContext: OnPostRoll
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: not Dead(context.Observer) and HasInterruptedAttack() and Self(context.Observer,context.Source) and not AnyEntityIsItem() and IsFlatValueInterruptInteresting(6, context.Source)
+    Properties: AdjustRoll(OBSERVER_OBSERVER,ResourceRoll(BardicInspiration,1));RemoveStatus(OBSERVER_OBSERVER,BARDIC_INSPIRATION);RemoveStatus(OBSERVER_OBSERVER,BARDIC_INSPIRATION_D8);ApplyStatus(OBSERVER_OBSERVER,INTERRUPT_BARDIC_INSPIRATION_ATTACK,100,0)
+    Cost: BardicInspiration:1
+    Stack: BardicInspiration
+    InterruptDefaultValue: Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Interrupt_BardicInspiration_Attack_d8
+    using: Interrupt_BardicInspiration_Attack
+    DescriptionParams: 1d8
+    Conditions: not Dead(context.Observer) and HasInterruptedAttack() and Self(context.Observer,context.Source) and not AnyEntityIsItem() and IsFlatValueInterruptInteresting(8, context.Source)
+
+Interrupt_BardicInspiration_Attack_d10
+    using: Interrupt_BardicInspiration_Attack
+    DescriptionParams: 1d10
+    Conditions: not Dead(context.Observer) and HasInterruptedAttack() and Self(context.Observer,context.Source) and not AnyEntityIsItem() and IsFlatValueInterruptInteresting(10, context.Source)
+
+Bardic Defence
+Interrupt_BardicInspiration_SavingThrow
+    using: Interrupt_BardicInspiration_Attack
+    DisplayName: Bardic Defence
+    Description: Add a +[1] bonus to your <LSTag Tooltip="SavingThrow">Saving Throw</LSTag>.
+    Icon: PassiveFeature_BardicInspiration_SavingThrow
+    InterruptContext: OnPostRoll
+    Conditions: not Dead(context.Observer) and HasInterruptedSavingThrow() and Self(context.Observer,context.Target) and not AnyEntityIsItem() and IsFlatValueInterruptInteresting(6)
+    Properties: AdjustRoll(OBSERVER_OBSERVER,ResourceRoll(BardicInspiration,1));RemoveStatus(OBSERVER_OBSERVER,BARDIC_INSPIRATION);RemoveStatus(OBSERVER_OBSERVER,BARDIC_INSPIRATION_D8);RemoveStatus(OBSERVER_OBSERVER,BARDIC_INSPIRATION_D10);RemoveStatus(OBSERVER_OBSERVER,BARDIC_INSPIRATION_D8);ApplyStatus(OBSERVER_OBSERVER,INTERRUPT_BARDIC_INSPIRATION_SAVINGTHROW,100,0)
+
+Interrupt_BardicInspiration_SavingThrow_d8
+    using: Interrupt_BardicInspiration_SavingThrow
+    DescriptionParams: 1d8
+    Conditions: not Dead(context.Observer) and HasInterruptedSavingThrow() and Self(context.Observer,context.Target) and not AnyEntityIsItem() and IsFlatValueInterruptInteresting(8)
+
+Interrupt_BardicInspiration_SavingThrow_d10
+    using: Interrupt_BardicInspiration_SavingThrow
+    DescriptionParams: 1d10
+    Conditions: not Dead(context.Observer) and HasInterruptedSavingThrow() and Self(context.Observer,context.Target) and not AnyEntityIsItem() and IsFlatValueInterruptInteresting(10)
+
+Valiant Attack
+Interrupt_CombatInspiration_Attack
+    using: Interrupt_BardicInspiration_Attack
+    DisplayName: Valiant Attack
+    Description: Add a +[1] bonus to your <LSTag Tooltip="AttackRoll">Attack Roll</LSTag>.
+    ExtraDescription: You will expend your <LSTag Type="Status" Tooltip="BARDIC_INSPIRATION_COMBAT">Combat Inspiration</LSTag>.
+    InterruptContext: OnPostRoll
+    Properties: AdjustRoll(OBSERVER_OBSERVER,ResourceRoll(BardicInspiration,1));RemoveStatus(OBSERVER_OBSERVER,BARDIC_INSPIRATION_COMBAT);RemoveStatus(OBSERVER_OBSERVER,BARDIC_INSPIRATION_COMBAT_D8);RemoveStatus(OBSERVER_OBSERVER,BARDIC_INSPIRATION_COMBAT_D10);RemoveStatus(OBSERVER_OBSERVER,BARDIC_INSPIRATION_COMBAT_D8);ApplyStatus(OBSERVER_OBSERVER,INTERRUPT_BARDIC_INSPIRATION_COMBAT_ATTACK,100,0)
+
+Interrupt_CombatInspiration_Attack_d8
+    using: Interrupt_CombatInspiration_Attack
+    DescriptionParams: 1d8
+    Conditions: not Dead(context.Observer) and HasInterruptedAttack() and Self(context.Observer,context.Source) and not AnyEntityIsItem() and IsFlatValueInterruptInteresting(8, context.Source)
+
+Interrupt_CombatInspiration_Attack_d10
+    using: Interrupt_CombatInspiration_Attack
+    DescriptionParams: 1d10
+    Conditions: not Dead(context.Observer) and HasInterruptedAttack() and Self(context.Observer,context.Source) and not AnyEntityIsItem() and IsFlatValueInterruptInteresting(10, context.Source)
+
+Valiant Defence
+Interrupt_CombatInspiration_SavingThrow_ArmorClass
+    using: Interrupt_CombatInspiration_Attack
+    DisplayName: Valiant Defence
+    Description: Add a +[1] bonus to your <LSTag Tooltip="SavingThrow">Saving Throw</LSTag> or <LSTag Tooltip="ArmourClass">Armour Class</LSTag>.
+    Icon: PassiveFeature_CombatInspiration_ArmorClassOrSavingThrow
+    InterruptContext: OnPostRoll
+    Conditions: not Dead(context.Observer) and ((HasInterruptedAttack() and IsFlatValueInterruptInteresting(6, context.Source)) or (HasInterruptedSavingThrow() and IsFlatValueInterruptInteresting(6))) and Self(context.Observer,context.Target) and not AnyEntityIsItem()
+    Properties: IF(HasInterruptedSavingThrow()):AdjustRoll(OBSERVER_OBSERVER,ResourceRoll(BardicInspiration,1));IF(HasInterruptedAttack()):AdjustRoll(OBSERVER_OBSERVER,0-ResourceRoll(BardicInspiration,1));RemoveStatus(OBSERVER_OBSERVER,BARDIC_INSPIRATION_COMBAT);ApplyStatus(OBSERVER_OBSERVER,INTERRUPT_BARDIC_INSPIRATION_COMBAT_DEFENSE,100,0)
+
+Interrupt_CombatInspiration_SavingThrow_ArmorClass_d8
+    using: Interrupt_CombatInspiration_SavingThrow_ArmorClass
+    DescriptionParams: 1d8
+    Conditions: not Dead(context.Observer) and ((HasInterruptedAttack() and IsFlatValueInterruptInteresting(8, context.Source)) or (HasInterruptedSavingThrow() and IsFlatValueInterruptInteresting(8))) and Self(context.Observer,context.Target) and not AnyEntityIsItem()
+
+Interrupt_CombatInspiration_SavingThrow_ArmorClass_d10
+    using: Interrupt_CombatInspiration_SavingThrow_ArmorClass
+    DescriptionParams: 1d10
+    Conditions: not Dead(context.Observer) and ((HasInterruptedAttack() and IsFlatValueInterruptInteresting(10, context.Source)) or (HasInterruptedSavingThrow() and IsFlatValueInterruptInteresting(10))) and Self(context.Observer,context.Target) and not AnyEntityIsItem()
+
+Cutting Words
+Interrupt_CuttingWords
+    DisplayName: Cutting Words
+    Description: The target receives a [1] penalty to <LSTag Tooltip="AttackRoll">Attack Roll</LSTag>, <LSTag Tooltip="AbilityCheck">Ability Check</LSTag> or damage dealt.
+    DescriptionParams: LevelMapValue(BardicInspiration)
+    Icon: PassiveFeature_CuttingWords
+    InterruptContext: OnPostRoll
+    InterruptContextScope: Nearby
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and Enemy(context.Source,context.Observer) and ((not ClassLevelHigherOrEqualThan(5,'Bard') and IsFlatValueInterruptInteresting(6, context.Source)) or (ClassLevelHigherOrEqualThan(5,'Bard') and not ClassLevelHigherOrEqualThan(10,'Bard') and IsFlatValueInterruptInteresting(8, context.Source)) or (ClassLevelHigherOrEqualThan(10,'Bard') and IsFlatValueInterruptInteresting(10, context.Source)))) or (HasInterruptedSavingThrow() and Enemy(context.Target,context.Observer) and ((not ClassLevelHigherOrEqualThan(5,'Bard') and IsFlatValueInterruptInteresting(6)) or (ClassLevelHigherOrEqualThan(5,'Bard') and not ClassLevelHigherOrEqualThan(10,'Bard') and IsFlatValueInterruptInteresting(8)) or (ClassLevelHigherOrEqualThan(10,'Bard') and IsFlatValueInterruptInteresting(10))))) and not AnyEntityIsItem()
+    Properties: AdjustRoll(OBSERVER_OBSERVER,0-LevelMapValue(BardicInspiration));ApplyStatus(OBSERVER_SOURCE,INTERRUPT_CUTTING_WORDS_TARGET,100,0);ApplyStatus(OBSERVER_OBSERVER,INTERRUPT_CUTTING_WORDS,100,0);IF(not Self(context.Target, context.Observer)):UseSpell(OBSERVER_SOURCE,Target_CuttingWords,true,true,true)
+    Cost: ReactionActionPoint:1;BardicInspiration:1
+    InterruptDefaultValue: Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Defensive Duellist
+Interrupt_DefensiveDuelist
+    DisplayName: Defensive Duellist
+    Description: When attacked with a melee attack, add your <LSTag Tooltip="ProficiencyBonus">Proficiency Bonus</LSTag> to your <LSTag Tooltip="ArmourClass">Armour Class</LSTag>, possibly causing attacks to miss.
+    DescriptionParams: ProficiencyBonus
+    ExtraDescription: Requires a <LSTag Tooltip="Finesse">Finesse Weapon</LSTag> you are <LSTag Tooltip="Proficiency">Proficient</LSTag> in.
+    Icon: PassiveFeature_DefensiveDualist
+    InterruptContext: OnPostRoll
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and HasInterruptedAttack() and Self(context.Target,context.Observer) and not AnyEntityIsItem() and IsMeleeAttack() and HasWeaponProperty(WeaponProperties.Finesse, GetActiveWeapon(context.Observer)) and IsProficientWith(context.Observer, GetActiveWeapon(context.Observer)) and IsFlatValueInterruptInteresting(context.Observer.ProficiencyBonus, context.Source)
+    Properties: AdjustRoll(OBSERVER_OBSERVER,0-ProficiencyBonus);ApplyStatus(SWAP,PASSIVE_DEFENSIVE_DUELIST,100,0);ApplyStatus(OBSERVER_OBSERVER,INTERRUPT_DEFENSIVE_DUELIST,100,0)
+    Cost: ReactionActionPoint:1
+    InterruptDefaultValue: Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Reckless Attack
+Interrupt_RecklessAttack
+    DisplayName: Reckless Attack
+    Description: Gain <LSTag Tooltip="Advantage">Advantage</LSTag> on <LSTag Tooltip="AttackRoll">Attack Rolls</LSTag> until the end of your turn, but enemies also have Advantage against you. 
+    Icon: Action_Barbarian_RecklessAttack
+    InterruptContext: OnPostRoll
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: not Dead(context.Observer) and HasInterruptedAttack() and Self(context.Observer,context.Source) and IsMeleeWeaponAttack() and not HasStatus('RECKLESS_ATTACK',context.Observer) and not SpellId('Target_RecklessAttack') and not AnyEntityIsItem() and IsRerollInterruptInteresting(context.Source)
+    Properties: SetAdvantage();ApplyStatus(OBSERVER_OBSERVER,RECKLESS_ATTACK,100,1)
+    Cooldown: OncePerTurn
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Warding Flare
+Interrupt_WardingFlare
+    DisplayName: Warding Flare
+    Description: Impose <LSTag Tooltip="Disadvantage">Disadvantage</LSTag> on an attacker, possibly causing their attack to miss.
+    ExtraDescription: Has no effect on creatures that can't be <LSTag Type="Status" Tooltip="BLINDED">Blinded</LSTag>.
+    Icon: PassiveAction_WardingFlare
+    InterruptContext: OnPostRoll
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and HasInterruptedAttack() and not AnyEntityIsItem() and IsRerollInterruptInteresting(context.Source)
+    Properties: SetDisadvantage();ApplyStatus(OBSERVER_TARGET,PASSIVE_WARDING_FLARE,100,0)
+    Cost: ReactionActionPoint:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Interrupt_ON_PRE_DAMAGE
+
+Shield Master: Block
+Interrupt_ShieldMaster
+    DisplayName: Shield Master: Block
+    Description: Shield yourself from a spell attack: when you fail a Dexterity <LSTag Tooltip="SavingThrow">Saving Throw</LSTag> on a spell, you only take half damage. When you succeed, you take no damage.
+    Icon: PassiveFeature_ShieldMaster_Block
+    InterruptContext: OnPreDamage
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and HasDamageEffectFlag(DamageFlags.SavingThrow) and HasSpellFlag(SpellFlags.CanAreaDamageEvade) and not AnyEntityIsItem()
+    Properties: SetRoll(0)
+    Cost: ReactionActionPoint:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: HasShieldEquipped(context.Source) and (not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER'))
+    EnableContext: OnEquip;OnStatusApplied
+
+Interrupt_ON_CAST_HIT
+
+Valiant Damage
+Interrupt_CombatInspiration_Damage
+    using: Interrupt_CombatInspiration_Attack
+    DisplayName: Valiant Damage
+    Description: Add an additional [1] damage to your weapon attack.
+    Icon: PassiveFeature_CombatInspiration_WeaponDamage
+    InterruptContext: OnCastHit
+    Conditions: not Dead(context.Observer) and Character() and IsWeaponAttack() and Self(context.Source,context.Observer) and HasDamageEffectFlag(DamageFlags.Hit) and not IsKillingBlow() and not AnyEntityIsItem()
+    Properties: IF(IsMeleeAttack()):DealDamage(ResourceRoll(BardicInspiration,1), MainMeleeWeaponDamageType);IF(IsRangedAttack()):DealDamage(ResourceRoll(BardicInspiration,1), MainRangedWeaponDamageType);RemoveStatus(OBSERVER_OBSERVER,BARDIC_INSPIRATION_COMBAT);ApplyStatus(OBSERVER_OBSERVER,INTERRUPT_BARDIC_INSPIRATION_COMBAT_DAMAGE,100,0)
+
+Interrupt_CombatInspiration_Damage_d8
+    using: Interrupt_CombatInspiration_Damage
+    DescriptionParams: 1d8
+
+Interrupt_CombatInspiration_Damage_d10
+    using: Interrupt_CombatInspiration_Damage
+    DescriptionParams: 1d10
+
+Giant Killer
+Interrupt_GiantKiller
+    DisplayName: Giant Killer
+    Description: If a Large or bigger creature attacks you, you can retaliate with a melee attack.
+    Icon: PassiveFeature_GiantKiller
+    InterruptContext: OnCastHit
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and SizeEqualOrGreater(Size.Large, context.Source) and IsMeleeAttack() and not HasStatus('INVISIBILITY', context.Source) and Self(context.Target,context.Observer) and not AnyEntityIsItem() and not DistanceToEntityGreaterThan(2, context.ObserverPosition, context.Source) and HasLastAttackTriggered()
+    Properties: UseAttack(SWAP);ApplyStatus(OBSERVER_OBSERVER,INTERRUPT_GIANTKILLER,100,0)
+    Cost: ReactionActionPoint:1
+    InterruptDefaultValue: Enabled
+    EnableCondition: not HasAnyStatus({'SG_Polymorph','SG_Blinded'}) or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied;OnStatusRemoved
+
+Hellish Rebuke
+Interrupt_HellishRebuke
+    DisplayName: Hellish Rebuke
+    Description: React to your next attacker with flames that deal [1].
+    DescriptionParams: DealDamage(2d10,Fire)
+    Icon: PassiveFeature_HellishRebuke
+    InterruptContext: OnCastHit
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: not HasVerbalComponentBlocked(context.Observer) and IsAbleToReact(context.Observer) and Enemy(context.Source,context.Observer) and HasFunctor(StatsFunctorType.DealDamage) and IsHit() and not AnyEntityIsItem() and HasLastAttackTriggered()
+    Properties: UseSpell(SWAP,Target_HellishRebuke,true,true,true)
+    Cost: ReactionActionPoint:1;SpellSlotsGroup:1:1:1
+    Stack: HellishRebuke
+    InterruptDefaultValue: Enabled;Ask
+    EnableCondition: not HasAnyStatus({'SG_Polymorph','SG_Blinded'}) or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied;OnStatusRemoved
+
+Interrupt_HellishRebuke_WarlockMI
+    using: Interrupt_HellishRebuke
+    ExtraDescription: Can be used once per <LSTag Tooltip="LongRest">Long Rest</LSTag>.
+    Cost: ReactionActionPoint:1;Interrupt_HellishRebukeWarlockMI_Charge:1
+    EnableCondition: HasActionResource('Interrupt_HellishRebukeWarlockMI_Charge', 1, 0, false, false, context.Source) and (not HasAnyStatus({'SG_Polymorph','SG_Blinded'}) or Tagged('MINDFLAYER'))
+    EnableContext: OnStatusApplied;OnStatusRemoved;OnActionResourcesChanged
+
+Interrupt_HellishRebuke_2
+    using: Interrupt_HellishRebuke
+    DescriptionParams: DealDamage(3d10,Fire)
+    Properties: UseSpell(SWAP,Target_HellishRebuke_2,true,true,true)
+    Cost: ReactionActionPoint:1;SpellSlotsGroup:1:1:2
+
+Infernal Legacy: Hellish Rebuke
+Interrupt_HellishRebuke_AsmodeusTiefling
+    using: Interrupt_HellishRebuke_2
+    DisplayName: Infernal Legacy: Hellish Rebuke
+    ExtraDescription: Can be used once per <LSTag Tooltip="LongRest">Long Rest</LSTag>.
+    Cost: ReactionActionPoint:1;Interrupt_HellishRebukeTiefling_Charge:1
+    EnableCondition: HasActionResource('Interrupt_HellishRebukeTiefling_Charge', 1, 0, false, false, context.Source) and (not HasAnyStatus({'SG_Polymorph','SG_Blinded'}) or Tagged('MINDFLAYER'))
+    EnableContext: OnStatusApplied;OnStatusRemoved;OnActionResourcesChanged
+
+Interrupt_HellishRebuke_3
+    using: Interrupt_HellishRebuke
+    DescriptionParams: DealDamage(4d10,Fire)
+    Properties: UseSpell(SWAP,Target_HellishRebuke_3,true,true,true)
+    Cost: ReactionActionPoint:1;SpellSlotsGroup:1:1:3
+
+Riposte
+Interrupt_Riposte
+    DisplayName: Riposte
+    Description: When a creature misses you with a melee attack, you can retaliate with a powerful strike that deals an additional 1d8 damage if you are wielding a melee weapon. 
+    Icon: PassiveFeature_Riposte
+    InterruptContext: OnCastHit
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and Enemy(context.Source,context.Observer) and IsMeleeAttack() and IsMiss() and not HasStatus('INVISIBILITY') and not AnyEntityIsItem() and not DistanceToEntityGreaterThan(2, context.ObserverPosition, context.Source) and HasLastAttackTriggered()
+    Properties: UseSpell(SWAP,Target_Riposte,true,true,true);ApplyStatus(OBSERVER_OBSERVER,INTERRUPT_RIPOSTE,100,0)
+    Cost: ReactionActionPoint:1;SuperiorityDie:1
+    InterruptDefaultValue: Enabled
+    EnableCondition: not HasAnyStatus({'SG_Polymorph','SG_Blinded'}) or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied;OnStatusRemoved
+
+Divine Smite
+Interrupt_Smite_Divine
+    DisplayName: Divine Smite
+    Description: Your weapon deals an additional [1], increased by [2] when attacking fiends or undead.
+    DescriptionParams: DealDamage(2d8,Radiant);DealDamage(1d8,Radiant)
+    ExtraDescription: This reaction won't trigger on a <LSTag Tooltip="CriticalHit">Critical Hit</LSTag>.
+    Icon: Action_Paladin_DivineSmite
+    InterruptContext: OnCastHit
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and not Item() and IsMeleeAttack() and not IsDivineSmite() and Self(context.Source,context.Observer) and HasDamageEffectFlag(DamageFlags.Hit) and IsWeaponAttack() and not IsCritical() and not IsKillingBlow() and not AnyEntityIsItem()
+    Properties: IF(not UndeadOrFiend(context.Target)):DealDamage(2d8,Radiant);IF(UndeadOrFiend(context.Target)):DealDamage(3d8,Radiant);ApplyStatus(INTERRUPT_SMITE_DIVINE_VFX,100,0)
+    Cost: SpellSlotsGroup:1:1:1
+    Stack: DivineSmite
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Interrupt_Smite_Divine_2
+    using: Interrupt_Smite_Divine
+    DescriptionParams: DealDamage(3d8,Radiant);DealDamage(1d8,Radiant)
+    Properties: IF(not UndeadOrFiend(context.Target)):DealDamage(3d8,Radiant);IF(UndeadOrFiend(context.Target)):DealDamage(4d8,Radiant);ApplyStatus(INTERRUPT_SMITE_DIVINE_VFX,100,0)
+    Cost: SpellSlotsGroup:1:1:2
+
+Interrupt_Smite_Divine_3
+    using: Interrupt_Smite_Divine
+    DescriptionParams: DealDamage(4d8,Radiant);DealDamage(1d8,Radiant)
+    Properties: IF(not UndeadOrFiend(context.Target)):DealDamage(4d8,Radiant);IF(UndeadOrFiend(context.Target)):DealDamage(5d8,Radiant);ApplyStatus(INTERRUPT_SMITE_DIVINE_VFX,100,0)
+    Cost: SpellSlotsGroup:1:1:3
+
+Interrupt_Smite_Divine_4
+    using: Interrupt_Smite_Divine
+    DescriptionParams: DealDamage(5d8,Radiant);DealDamage(1d8,Radiant)
+    Properties: IF(not UndeadOrFiend(context.Target)):DealDamage(5d8,Radiant);IF(UndeadOrFiend(context.Target)):DealDamage(6d8,Radiant);ApplyStatus(INTERRUPT_SMITE_DIVINE_VFX,100,0)
+    Cost: SpellSlotsGroup:1:1:4
+
+Interrupt_Smite_Divine_5
+    using: Interrupt_Smite_Divine_4
+    Cost: SpellSlotsGroup:1:1:5
+
+Interrupt_Smite_Divine_6
+    using: Interrupt_Smite_Divine_4
+    Cost: SpellSlotsGroup:1:1:6
+
+Interrupt_Smite_Divine_NPC
+    using: Interrupt_Smite_Divine
+    InterruptDefaultValue: Enabled
+
+Interrupt_Smite_Divine_2_NPC
+    using: Interrupt_Smite_Divine_2
+    InterruptDefaultValue: Enabled
+
+Interrupt_Smite_Divine_3_NPC
+    using: Interrupt_Smite_Divine_3
+    InterruptDefaultValue: Enabled
+
+Divine Smite on Critical Hit
+Interrupt_Smite_Divine_Critical
+    using: Interrupt_Smite_Divine
+    DisplayName: Divine Smite on Critical Hit
+    ExtraDescription: Deals an additional [1] to fiends and undead.<br><br>This reaction only triggers when you land a <LSTag Tooltip="CriticalHit">Critical Hit</LSTag>.
+    Icon: Action_Paladin_DivineSmite
+    Conditions: IsAbleToReact(context.Observer) and not Item() and IsMeleeAttack() and not IsDivineSmite() and Self(context.Source,context.Observer) and HasDamageEffectFlag(DamageFlags.Hit) and IsWeaponAttack() and IsCritical() and not IsKillingBlow() and not AnyEntityIsItem()
+    Cost: SpellSlotsGroup:1:1:1
+    InterruptDefaultValue: Enabled
+
+Interrupt_Smite_Divine_Critical_2
+    using: Interrupt_Smite_Divine_Critical
+    DescriptionParams: DealDamage(3d8,Radiant);
+    Properties: IF(not UndeadOrFiend(context.Target)):DealDamage(3d8,Radiant);IF(UndeadOrFiend(context.Target)):DealDamage(4d8,Radiant);ApplyStatus(INTERRUPT_SMITE_DIVINE_VFX,100,0)
+    Cost: SpellSlotsGroup:1:1:2
+
+Interrupt_Smite_Divine_Critical_3
+    using: Interrupt_Smite_Divine_Critical
+    DescriptionParams: DealDamage(4d8,Radiant);
+    Properties: IF(not UndeadOrFiend(context.Target)):DealDamage(4d8,Radiant);IF(UndeadOrFiend(context.Target)):DealDamage(5d8,Radiant);ApplyStatus(INTERRUPT_SMITE_DIVINE_VFX,100,0)
+    Cost: SpellSlotsGroup:1:1:3
+
+Interrupt_Smite_Divine_Critical_4
+    using: Interrupt_Smite_Divine_Critical
+    DescriptionParams: DealDamage(5d8,Radiant);
+    Properties: IF(not UndeadOrFiend(context.Target)):DealDamage(5d8,Radiant);IF(UndeadOrFiend(context.Target)):DealDamage(6d8,Radiant);ApplyStatus(INTERRUPT_SMITE_DIVINE_VFX,100,0)
+    Cost: SpellSlotsGroup:1:1:4
+
+Interrupt_Smite_Divine_Critical_5
+    using: Interrupt_Smite_Divine_Critical_4
+    Cost: SpellSlotsGroup:1:1:5
+
+Interrupt_Smite_Divine_Critical_6
+    using: Interrupt_Smite_Divine_Critical_4
+    Cost: SpellSlotsGroup:1:1:6
+
+Interrupt_OTHERS
+
+Opportunity Attack
+Interrupt_AttackOfOpportunity
+    DisplayName: Opportunity Attack
+    Description: Attack an enemy moving out of your reach.
+    Icon: PassiveFeature_AttackOfOpportunity
+    InterruptContext: OnLeaveAttackRange
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and not Self(context.Observer, context.Target) and Enemy() and not HasStatus('SANCTUARY',context.Source) and not WieldingWeapon('Ammunition', false, false, context.Source) and not (not Player(context.Source) and Tagged('AI_IGNORED_TARGET')  and not HasStatus('GNOLL_SUDDENRUSH')) and not HasStatus('SHOCKWAVE') and not (HasStatus('MOBILE_NO_AOO', context.Source) and HasStatus('MOBILE_NO_AOO_SOURCE', context.Target)) and not HasStatus('FLAMING_SPHERE_AURA') and not HasStatus('SNEAKING',context.Target) and not HasStatus('SG_Ignore_AOO',context.Target)  and not AnyEntityIsItem() and not HasSpellFlag(SpellFlags.IgnoreAoO, context.Target)
+    Properties: IF(not HasPassive('Sentinel_ZeroSpeed',context.Source)):UseAttack();IF(HasPassive('Sentinel_ZeroSpeed',context.Source)):UseSpell(Target_Sentinel_AttackOfOpportunity,true,true,true);TutorialEvent(SWAP,f658a860-7e3e-44fd-807b-88d3c0c31217)
+    Cost: ReactionActionPoint:1
+    InterruptDefaultValue: Enabled
+    EnableCondition: not HasStatus('SG_Blinded')
+    EnableContext: OnStatusApplied;OnStatusRemoved
+
+Controlled Chaos
+Interrupt_ControlledChaos
+    DisplayName: Controlled Chaos
+    Description: Induce a  <LSTag Type="Passive" Tooltip="WildMagic">Wild Magic Surge</LSTag> on the nearby spellcaster.
+    Icon: PassiveFeature_WildMagicSurge
+    InterruptContext: OnSpellCast
+    InterruptContextScope: Nearby
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and not Self(context.Source, context.Observer) and Enemy(context.Source, context.Observer) and IsSpell() and not Uninterruptible() and not AnyEntityIsItem()
+    Properties: TriggerRandomCast(OBSERVER_SOURCE,1,0,WildMagicEvil);UseSpell(OBSERVER_SOURCE,Target_ControlledChaos,true,true,true)
+    Cost: ReactionActionPoint:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Interrupt_Counterspell_4
+    using: Interrupt_Counterspell
+    Roll: TryCounterspellHigherLevel(4)
+    Cost: ReactionActionPoint:1;SpellSlotsGroup:1:1:4
+
+Interrupt_Counterspell_5
+    using: Interrupt_Counterspell
+    Roll: TryCounterspellHigherLevel(5)
+    Cost: ReactionActionPoint:1;SpellSlotsGroup:1:1:5
+
+Interrupt_Counterspell_6
+    using: Interrupt_Counterspell
+    Roll: TryCounterspellHigherLevel(6)
+    Cost: ReactionActionPoint:1;SpellSlotsGroup:1:1:6
+
+Destructive Wrath
+Interrupt_DestructiveWrath
+    DisplayName: Destructive Wrath
+    Description: When you roll Thunder or Lightning damage, you can use your <LSTag Type="ActionResource" Tooltip="ChannelDivinity">Channel Divinity</LSTag> to deal maximum damage instead.
+    Icon: PassiveFeature_DestructiveWrath
+    InterruptContext: OnSpellCast
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: Self(context.Source,context.Observer) and (SpellDamageTypeIs(DamageType.Lightning) or SpellDamageTypeIs(DamageType.Thunder)) and not AnyEntityIsItem()
+    Properties: ApplyStatus(OBSERVER_OBSERVER,DESTRUCTIVE_WRATH,100,1)
+    Cost: ChannelDivinity:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Elemental Affinity: Resistance
+Interrupt_ElementalAffinity
+    DisplayName: Elemental Affinity: Resistance
+    Description: When you cast a spell that deals damage matching your draconic ancestry, you can spend 1 <LSTag Type="ActionResource" Tooltip="SorceryPoint">Sorcery Point</LSTag> to gain <LSTag Tooltip="Resistant">Resistance</LSTag> to that damage type.
+    Icon: Skill_Sorcerer_Passive_ElementalAffinity_Resistance
+    InterruptContext: OnSpellCast
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: Self(context.Source,context.Observer) and ElementalAffinityCheck() and not AnyEntityIsItem()
+    Properties: IF(HasPassive('DraconicAncestry_Black',context.Source) or HasPassive('DraconicAncestry_Copper',context.Source)):ApplyStatus(OBSERVER_OBSERVER,ELEMENTALAFFINITY_ACID,100,-1);IF(HasPassive('DraconicAncestry_Silver',context.Source) or HasPassive('DraconicAncestry_White',context.Source)):ApplyStatus(OBSERVER_OBSERVER,ELEMENTALAFFINITY_COLD,100,-1);IF(HasPassive('DraconicAncestry_Red',context.Source)  or HasPassive('DraconicAncestry_Gold',context.Source) or HasPassive('DraconicAncestry_Brass',context.Source)):ApplyStatus(OBSERVER_OBSERVER,ELEMENTALAFFINITY_FIRE,100,-1);IF(HasPassive('DraconicAncestry_Blue',context.Source) or HasPassive('DraconicAncestry_Bronze',context.Source)):ApplyStatus(OBSERVER_OBSERVER,ELEMENTALAFFINITY_LIGHTNING,100,-1);IF(HasPassive('DraconicAncestry_Green',context.Source)):ApplyStatus(OBSERVER_OBSERVER,ELEMENTALAFFINITY_POISON,100,-1)
+    Cost: SorceryPoint:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Heart of the Storm: Lightning
+Interrupt_HeartOfTheStorm_Lightning
+    DisplayName: Heart of the Storm: Lightning
+    Description: When you cast a spell of Level 1 or higher that deals Lightning damage, you cause a small, local storm. All enemies within [2] take [1].
+    DescriptionParams: DealDamage(ClassLevel(Sorcerer)/2,Lightning);Distance(6)
+    Icon: PassiveFeature_HeartOfTheStorm_Lightning
+    InterruptContext: OnSpellCast
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: Self(context.Source, context.Observer) and IsSpell() and SpellDamageTypeIs(DamageType.Lightning) and not AnyEntityIsItem()
+    Properties: CreateExplosion(OBSERVER_OBSERVER,Projectile_HeartOfTheStorm_Lightning)
+    Stack: HeartOfTheStorm
+    InterruptDefaultValue: Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Heart of the Storm: Thunder
+Interrupt_HeartOfTheStorm_Thunder
+    using: Interrupt_HeartOfTheStorm_Lightning
+    DisplayName: Heart of the Storm: Thunder
+    Description: When you cast a spell of Level 1 or higher that deals Thunder damage, you cause a small, local storm. All enemies within [2] take [1].
+    DescriptionParams: DealDamage(ClassLevel(Sorcerer)/2,Thunder);Distance(6)
+    Icon: PassiveFeature_HeartOfTheStorm_Thunder
+    Conditions: Self(context.Source, context.Observer) and IsSpell() and SpellDamageTypeIs(DamageType.Thunder) and not AnyEntityIsItem()
+    Properties: CreateExplosion(OBSERVER_OBSERVER,Projectile_HeartOfTheStorm_Thunder)
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+
+Instinctive Charm
+Interrupt_InstinctiveCharm
+    DisplayName: Instinctive Charm
+    Description: <LSTag Type="Status" Tooltip="CHARMED">Charm</LSTag> an enemy attacking you. They will attack a new target if possible.
+    Icon: PassiveFeature_InstinctiveCharm
+    InterruptContext: OnSpellCast
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and HasStringInSpellRoll('Attack') and not AnyEntityIsItem() and not HasStatus('INSTINCTIVE_CHARM_UNTARGETABLE',context.Source,context.Observer)
+    Roll: not SavingThrow(Ability.Wisdom, SourceSpellDC(14,context.Observer,Ability.Intelligence),AdvantageOnCharmPerson(),false,context.Source)
+    Success: Counterspell();ApplyStatus(SWAP,CHARMED,100,1);IF(HasAnyExtraAttack(context.Source)):ApplyStatus(SELF,EXTRA_ATTACK_Q,100,1);IF(not HasAnyExtraAttack(context.Source)):ApplyStatus(SELF,EXTRA_ATTACK,100,1)
+    Failure: ApplyStatus(OBSERVER_SOURCE,INSTINCTIVE_CHARM_UNTARGETABLE, 100, -1)
+    Cost: ReactionActionPoint:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Mage Slayer
+Interrupt_MageSlayer
+    DisplayName: Mage Slayer
+    Description: Attack an enemy as a <LSTag Type="ActionResource" Tooltip="ReactionActionPoint">reaction</LSTag> if they cast a spell near you. 
+    Icon: PassiveFeature_MageSlayer_AttackACaster
+    InterruptContext: OnSpellCast
+    InterruptContextScope: Nearby
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and not Self(context.Source, context.Observer) and Enemy(context.Source, context.Observer) and IsSpell() and not Uninterruptible() and not DistanceToEntityGreaterThan(2, context.ObserverPosition, context.Source) and not AnyEntityIsItem()
+    Properties: UseAttack(OBSERVER_SOURCE)
+    Cost: ReactionActionPoint:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Psionic Backlash
+Interrupt_TAD_PsionicBacklash
+    DisplayName: Psionic Backlash
+    Description: When a nearby enemy casts a spell, you use your reaction to deal [1] for every level of that spell.
+    DescriptionParams: DealDamage(1d4, Psychic)
+    Icon: TadpoleSuperPower_PsionicBacklash
+    InterruptContext: OnSpellCast
+    InterruptContextScope: Nearby
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and not Self(context.Source, context.Observer) and IsSpell() and not IsCantrip() and Enemy(context.Source, context.Observer) and not AnyEntityIsItem()
+    Properties: DealDamage(OBSERVER_SOURCE,1d4*SpellPowerLevel,Psychic);UseSpell(OBSERVER_SOURCE,Target_TAD_PsionicBacklash,true,true,true)
+    Cost: ReactionActionPoint:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Psionic Dominance
+Interrupt_TAD_PsionicDominance
+    DisplayName: Psionic Dominance
+    Description: When an enemy within [1] targets you with a spell of a Level that is lower than or equal to your <LSTag Tooltip="ProficiencyBonus">Proficiency Bonus</LSTag>, you can use your reaction to nullify the spell.
+    DescriptionParams: Distance(18)
+    Icon: TadpoleSuperPower_PsionicDominance
+    InterruptContext: OnSpellCast
+    InterruptContextScope: Nearby
+    Container: YesNoDecision
+    Conditions: not HasSpellCastBlocked(context.Observer) and IsAbleToReact(context.Observer) and not Self(context.Source, context.Observer) and Enemy(context.Source, context.Observer) and IsSpell() and not Uninterruptible() and SpellPowerLevelEqualOrLessThan(context.Observer.ProficiencyBonus) and not AnyEntityIsItem() and not HasStringInSpellRoll('WeaponAttack')
+    Properties: Counterspell();UseSpell(OBSERVER_SOURCE,Target_TAD_PsionicDominance,true,true,true)
+    Cost: ReactionActionPoint:1;Interrupt_TAD_PsionicDominance_Charge:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: HasActionResource('Interrupt_TAD_PsionicDominance_Charge', 1, 0, false, false, context.Source) and (not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER'))
+    EnableContext: OnActionResourcesChanged
+
+Bend Luck
+Interrupt_BendLuck_Bonus
+    DisplayName: Bend Luck
+    Description: When an ally makes an <LSTag Tooltip="AttackRoll">Attack Roll</LSTag> or <LSTag Tooltip="SavingThrow">Saving Throw</LSTag>, it receives a +[1] bonus.
+    DescriptionParams: 1d4
+    Icon: Skill_Sorcerer_Passive_BendLuck
+    InterruptContext: OnPostRoll
+    InterruptContextScope: Nearby
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and ((not Self(context.Source,context.Observer) and HasInterruptedAttack() and Ally(context.Source, context.Observer) and IsFlatValueInterruptInteresting(4, context.Source)) or (not Self(context.Target,context.Observer) and HasInterruptedSavingThrow() and Ally(context.Target, context.Observer) and IsFlatValueInterruptInteresting(4))) and not AnyEntityIsItem()
+    Properties: AdjustRoll(1d4);IF(not Self(context.Target,context.Observer) and HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_BendLuck_Interrupt_Positive,true,true,true);IF(not Self(context.Target,context.Observer) and HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_BendLuck_Interrupt_Positive,true,true,true)
+    Cost: ReactionActionPoint:1;SorceryPoint:2
+    Stack: BendLuck
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Interrupt_BendLuck_Malus
+    using: Interrupt_BendLuck_Bonus
+    Description: When an enemy makes an <LSTag Tooltip="AttackRoll">Attack Roll</LSTag> or <LSTag Tooltip="SavingThrow">Saving Throw</LSTag>, it receives a -[1] penalty.
+    Conditions: IsAbleToReact(context.Observer) and ((not Self(context.Source,context.Observer) and HasInterruptedAttack() and Enemy(context.Source, context.Observer) and IsFlatValueInterruptInteresting(4, context.Source)) or (not Self(context.Target,context.Observer) and HasInterruptedSavingThrow() and Enemy(context.Target, context.Observer) and IsFlatValueInterruptInteresting(4))) and not AnyEntityIsItem()
+    Properties: AdjustRoll(-1d4);IF(not Self(context.Target,context.Observer) and HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_BendLuck_Interrupt_Negative,true,true,true);IF(not Self(context.Target,context.Observer) and HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_BendLuck_Interrupt_Negative,true,true,true)
+
+Entropic Ward
+Interrupt_EntropicWard
+    DisplayName: Entropic Ward
+    Description: Impose <LSTag Tooltip="Disadvantage">Disadvantage</LSTag> on an <LSTag Tooltip="AttackRoll">Attack Roll</LSTag> against you.<br><br>If the attack misses, you gain <LSTag Tooltip="Advantage">Advantage</LSTag> on your next Attack Roll against the attacker for 1 turn.
+    Icon: PassiveFeature_EntropicWard
+    InterruptContext: OnPostRoll
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and HasInterruptedAttack() and not AnyEntityIsItem() and IsRerollInterruptInteresting(context.Source)
+    Properties: SetDisadvantage();ApplyStatus(OBSERVER_OBSERVER,ENTROPIC_WARD_USED,100,1)
+    Cost: ReactionActionPoint:1;Interrupt_EntropicWard_Charge:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: HasActionResource('Interrupt_EntropicWard_Charge', 1, 0, false, false, context.Source) and (not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER'))
+    EnableContext: OnActionResourcesChanged
+
+Protection
+Interrupt_FightingStyle_Protection
+    DisplayName: Protection
+    Description: When you have a shield, impose <LSTag Tooltip="Disadvantage">Disadvantage</LSTag> on an attack against your allies when you are within [1]. You must be able to see the attacker.
+    DescriptionParams: Distance(1.5)
+    Icon: PassiveFeature_FightingStyle_Protection
+    InterruptContext: OnPostRoll
+    InterruptContextScope: Nearby
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and HasShieldEquipped(context.Observer) and not Self(context.Source,context.Observer) and not Self(context.Target,context.Observer) and Ally(context.Target, context.Observer) and HasInterruptedAttack() and not DistanceToEntityGreaterThan(2, context.ObserverPosition, context.Target) and not AnyEntityIsItem() and IsRerollInterruptInteresting(context.Source)
+    Properties: SetDisadvantage();ApplyStatus(OBSERVER_TARGET,INTERRUPT_FIGHTINGSTYLE_PROTECTION,100,0)
+    Cost: ReactionActionPoint:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: HasShieldEquipped(context.Source) and (not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER'))
+    EnableContext: OnStatusApplied;OnEquip
+
+Guided Strike
+Interrupt_GuidedStrike
+    DisplayName: Guided Strike
+    Description: Gain a +[1] bonus to your <LSTag Tooltip="AttackRoll">Attack Roll</LSTag>.
+    DescriptionParams: 10
+    Icon: PassiveFeature_GuidedStrike
+    InterruptContext: OnPostRoll
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: Self(context.Source,context.Observer) and HasInterruptedAttack() and not AnyEntityIsItem() and IsFlatValueInterruptInteresting(10, context.Source)
+    Properties: AdjustRoll(10);ApplyStatus(OBSERVER_SOURCE,GUIDED_STRIKE,100,1)
+    Cost: ChannelDivinity:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Illusory Self
+Interrupt_IllusorySelf
+    DisplayName: Illusory Self
+    Description: Interpose an illusory duplicate of yourself between you and an attacker's strike, making them miss their attack.
+    ExtraDescription: You must <LSTag Tooltip="ShortRest">Short Rest</LSTag> to use this feature again.
+    Icon: PassiveFeature_IllusorySelf
+    InterruptContext: OnPostRoll
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and HasInterruptedAttack() and not AnyEntityIsItem() and IsSetInterruptInteresting(1, context.Source)
+    Properties: SetRoll(1);ApplyStatus(INTERRUPT_ILLUSORY_SELF,100,0)
+    Cost: ReactionActionPoint:1;Interrupt_IllusorySelf_Charge:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: HasActionResource('Interrupt_IllusorySelf_Charge', 1, 0, false, false, context.Source) and (not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER'))
+    EnableContext: OnActionResourcesChanged
+
+Indomitable
+Interrupt_Indomitable
+    DisplayName: Indomitable
+    Description: Whenever you fail a <LSTag Tooltip="SavingThrow">Saving Throw</LSTag>, you can roll again, using the new result instead. 
+    Icon: PassiveFeature_Indomitable
+    InterruptContext: OnPostRoll
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: not Dead(context.Observer) and HasInterruptedSavingThrow() and Self(context.Observer,context.Target) and not AnyEntityIsItem() and IsRerollInterruptInteresting()
+    Properties: SetReroll(19,true)
+    Cost: Interrupt_Indomitable:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: HasActionResource('Interrupt_Indomitable', 1, 0, false, false, context.Source) and (not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER'))
+    EnableContext: OnActionResourcesChanged
+
+Legendary Resistance
+Interrupt_LegendaryResistance
+    DisplayName: Legendary Resistance
+    Description: Use a <LSTag Type="ActionResource" Tooltip="ReactionActionPoint">reaction</LSTag> to increase your <LSTag Tooltip="SavingThrow">Saving Throw</LSTag> result by 10.
+    Icon: Action_TransmuterStone_Resistance
+    InterruptContext: OnPostRoll
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: not Self(context.Source,context.Observer) and Self(context.Target,context.Observer) and HasInterruptedSavingThrow() and not AnyEntityIsItem()
+    Properties: AdjustRoll(10);ApplyStatus(OBSERVER_OBSERVER,INTERRUPT_LEGENDARY_RESISTANCE,100,0)
+    Cost: LegendaryResistanceCharge:1
+    Stack: LegendaryResistance
+    InterruptDefaultValue: Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Legendary Resistance
+Interrupt_LegendaryResistance_Strength
+    using: Interrupt_LegendaryResistance
+    DisplayName: Legendary Resistance
+    Description: Use a <LSTag Type="ActionResource" Tooltip="ReactionActionPoint">reaction</LSTag> to increase your Strength <LSTag Tooltip="SavingThrow">Saving Throw</LSTag> result by 10.
+    Conditions: not Self(context.Source,context.Observer) and Self(context.Target,context.Observer) and HasInterruptedSavingThrow() and HasSavingThrowWithAbility(Ability.Strength) and not AnyEntityIsItem()
+
+Legendary Resistance
+Interrupt_LegendaryResistance_Dexterity
+    using: Interrupt_LegendaryResistance
+    DisplayName: Legendary Resistance
+    Description: Use a <LSTag Type="ActionResource" Tooltip="ReactionActionPoint">reaction</LSTag> to increase your Dexterity <LSTag Tooltip="SavingThrow">Saving Throw</LSTag> result by 10.
+    Conditions: not Self(context.Source,context.Observer) and Self(context.Target,context.Observer) and HasInterruptedSavingThrow() and HasSavingThrowWithAbility(Ability.Dexterity) and not AnyEntityIsItem()
+
+Legendary Resistance:
+Interrupt_LegendaryResistance_Constitution
+    using: Interrupt_LegendaryResistance
+    DisplayName: Legendary Resistance:
+    Description: Use a <LSTag Type="ActionResource" Tooltip="ReactionActionPoint">reaction</LSTag> to increase your Constitution <LSTag Tooltip="SavingThrow">Saving Throw</LSTag> result by 10.
+    Conditions: not Self(context.Source,context.Observer) and Self(context.Target,context.Observer) and HasInterruptedSavingThrow() and HasSavingThrowWithAbility(Ability.Constitution) and not AnyEntityIsItem()
+
+Legendary Resistance
+Interrupt_LegendaryResistance_Intelligence
+    using: Interrupt_LegendaryResistance
+    DisplayName: Legendary Resistance
+    Description: Use a <LSTag Type="ActionResource" Tooltip="ReactionActionPoint">reaction</LSTag> to increase your Intelligence <LSTag Tooltip="SavingThrow">Saving Throw</LSTag> result by 10.
+    Conditions: not Self(context.Source,context.Observer) and Self(context.Target,context.Observer) and HasInterruptedSavingThrow() and HasSavingThrowWithAbility(Ability.Intelligence) and not AnyEntityIsItem()
+
+Legendary Resistance
+Interrupt_LegendaryResistance_Wisdom
+    using: Interrupt_LegendaryResistance
+    DisplayName: Legendary Resistance
+    Description: Use a <LSTag Type="ActionResource" Tooltip="ReactionActionPoint">reaction</LSTag> to increase your Wisdom <LSTag Tooltip="SavingThrow">Saving Throw</LSTag> result by 10.
+    Conditions: not Self(context.Source,context.Observer) and Self(context.Target,context.Observer) and HasInterruptedSavingThrow() and HasSavingThrowWithAbility(Ability.Wisdom) and not AnyEntityIsItem()
+
+Legendary Resistance
+Interrupt_LegendaryResistance_Charisma
+    using: Interrupt_LegendaryResistance
+    DisplayName: Legendary Resistance
+    Description: Use a <LSTag Type="ActionResource" Tooltip="ReactionActionPoint">reaction</LSTag> to increase your Charisma <LSTag Tooltip="SavingThrow">Saving Throw</LSTag> result by 10.
+    Conditions: not Self(context.Source,context.Observer) and Self(context.Target,context.Observer) and HasInterruptedSavingThrow() and HasSavingThrowWithAbility(Ability.Charisma) and not AnyEntityIsItem()
+
+Legendary Resistance
+Interrupt_LegendaryResistance_CrowdControl
+    using: Interrupt_LegendaryResistance
+    DisplayName: Legendary Resistance
+    Description: Use a <LSTag Type="ActionResource" Tooltip="ReactionActionPoint">reaction</LSTag> to increase your crowd control <LSTag Tooltip="SavingThrow">Saving Throw</LSTag> result by 10.
+    Conditions: not Self(context.Source,context.Observer) and Self(context.Target,context.Observer) and HasInterruptedSavingThrow() and AppliesCrowdControlStatus() and not AnyEntityIsItem()
+
+Lucky: Reroll Attacker's Die
+Interrupt_Lucky_ReplaceAttackersDie
+    DisplayName: Lucky: Reroll Attacker's Die
+    Description: Spend a <LSTag Type="ActionResource" Tooltip="LuckPoint">Luck Point</LSTag> to force a creature to reroll its <LSTag Tooltip="AttackRoll">Attack Roll</LSTag>. 
+    Icon: PassiveFeature_Lucky_ReplaceAttackersDie
+    InterruptContext: OnPostRoll
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: not Dead(context.Observer) and HasInterruptedAttack() and Self(context.Observer,context.Target) and not AnyEntityIsItem() and IsRerollInterruptInteresting(context.Source)
+    Properties: SetReroll(20,true)
+    Cost: LuckPoint:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Lucky: Reroll with Advantage
+Interrupt_Lucky_RollAdditionalDie
+    DisplayName: Lucky: Reroll with Advantage
+    Description: Spend a <LSTag Type="ActionResource" Tooltip="LuckPoint">Luck Point</LSTag> to gain <LSTag Tooltip="Advantage">Advantage</LSTag> on your <LSTag Tooltip="AttackRoll">Attack Roll</LSTag> or <LSTag Tooltip="SavingThrow">Saving Throw</LSTag>.
+    Icon: PassiveFeature_Lucky_RollAdditionalDie
+    InterruptContext: OnPostRoll
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: not Dead(context.Observer) and (HasInterruptedAttack() and Self(context.Observer,context.Source) and IsRerollInterruptInteresting(context.Source)) or (HasInterruptedSavingThrow() and Self(context.Observer,context.Target) and IsRerollInterruptInteresting()) and not AnyEntityIsItem()
+    Properties: SetReroll(19,false)
+    Cost: LuckPoint:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Portent Die: 1
+Interrupt_Portent_1
+    DisplayName: Portent Die: 1
+    Description: Change the die of a nearby <LSTag Tooltip="AttackRoll">Attack Roll</LSTag> or <LSTag Tooltip="SavingThrow">Saving Throw</LSTag> to [1].
+    DescriptionParams: 1
+    ExtraDescription: Bonuses and penalties will still be added to the number.<br>You regain your <LSTag Tooltip="PortentDie">Portent Dice</LSTag> when you take a <LSTag Tooltip="LongRest">Long Rest</LSTag>.
+    Icon: PassiveFeature_Portent_1
+    InterruptContext: OnPostRoll
+    InterruptContextScope: Nearby
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(1, context.Source)) or (HasInterruptedSavingThrow() and IsPortentInterruptInteresting(1))) and not AnyEntityIsItem()
+    Properties: SetRoll(1);RemoveStatus(OBSERVER_OBSERVER,PORTENT_1);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)
+    Cost: Interrupt_Portent_1:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Portent Die: 2
+Interrupt_Portent_2
+    using: Interrupt_Portent_1
+    DisplayName: Portent Die: 2
+    DescriptionParams: 2
+    Icon: PassiveFeature_Portent_2
+    Conditions: IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(2, context.Source)) or (HasInterruptedSavingThrow() and IsPortentInterruptInteresting(2))) and not AnyEntityIsItem()
+    Properties: SetRoll(2);RemoveStatus(OBSERVER_OBSERVER,PORTENT_2);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)
+    Cost: Interrupt_Portent_2:1
+
+Portent Die: 3
+Interrupt_Portent_3
+    using: Interrupt_Portent_1
+    DisplayName: Portent Die: 3
+    DescriptionParams: 3
+    Icon: PassiveFeature_Portent_3
+    Conditions: IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(3, context.Source)) or (HasInterruptedSavingThrow() and IsPortentInterruptInteresting(3))) and not AnyEntityIsItem()
+    Properties: SetRoll(3);RemoveStatus(OBSERVER_OBSERVER,PORTENT_3);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)
+    Cost: Interrupt_Portent_3:1
+
+Portent Die: 4
+Interrupt_Portent_4
+    using: Interrupt_Portent_1
+    DisplayName: Portent Die: 4
+    DescriptionParams: 4
+    Icon: PassiveFeature_Portent_4
+    Conditions: IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(4, context.Source)) or (HasInterruptedSavingThrow() and IsPortentInterruptInteresting(4))) and not AnyEntityIsItem()
+    Properties: SetRoll(4);RemoveStatus(OBSERVER_OBSERVER,PORTENT_4);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)
+    Cost: Interrupt_Portent_4:1
+
+Portent Die: 5
+Interrupt_Portent_5
+    using: Interrupt_Portent_1
+    DisplayName: Portent Die: 5
+    DescriptionParams: 5
+    Icon: PassiveFeature_Portent_5
+    Conditions: IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(5, context.Source)) or (HasInterruptedSavingThrow() and IsPortentInterruptInteresting(5))) and not AnyEntityIsItem()
+    Properties: SetRoll(5);RemoveStatus(OBSERVER_OBSERVER,PORTENT_5);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)
+    Cost: Interrupt_Portent_5:1
+
+Portent Die: 6
+Interrupt_Portent_6
+    using: Interrupt_Portent_1
+    DisplayName: Portent Die: 6
+    DescriptionParams: 6
+    Icon: PassiveFeature_Portent_6
+    Conditions: IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(6, context.Source)) or (HasInterruptedSavingThrow() and IsPortentInterruptInteresting(6))) and not AnyEntityIsItem()
+    Properties: SetRoll(6);RemoveStatus(OBSERVER_OBSERVER,PORTENT_6);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)
+    Cost: Interrupt_Portent_6:1
+
+Portent Die: 7
+Interrupt_Portent_7
+    using: Interrupt_Portent_1
+    DisplayName: Portent Die: 7
+    DescriptionParams: 7
+    Icon: PassiveFeature_Portent_7
+    Conditions: IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(7, context.Source)) or (HasInterruptedSavingThrow() and IsPortentInterruptInteresting(7))) and not AnyEntityIsItem()
+    Properties: SetRoll(7);RemoveStatus(OBSERVER_OBSERVER,PORTENT_7);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)
+    Cost: Interrupt_Portent_7:1
+
+Portent Die: 8
+Interrupt_Portent_8
+    using: Interrupt_Portent_1
+    DisplayName: Portent Die: 8
+    DescriptionParams: 8
+    Icon: PassiveFeature_Portent_8
+    Conditions: IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(8, context.Source)) or (HasInterruptedSavingThrow() and IsPortentInterruptInteresting(8))) and not AnyEntityIsItem()
+    Properties: SetRoll(8);RemoveStatus(OBSERVER_OBSERVER,PORTENT_8);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)
+    Cost: Interrupt_Portent_8:1
+
+Portent Die: 9
+Interrupt_Portent_9
+    using: Interrupt_Portent_1
+    DisplayName: Portent Die: 9
+    DescriptionParams: 9
+    Icon: PassiveFeature_Portent_9
+    Conditions: IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(9, context.Source)) or (HasInterruptedSavingThrow() and IsPortentInterruptInteresting(9))) and not AnyEntityIsItem()
+    Properties: SetRoll(9);RemoveStatus(OBSERVER_OBSERVER,PORTENT_9);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)
+    Cost: Interrupt_Portent_9:1
+
+Portent Die: 10
+Interrupt_Portent_10
+    using: Interrupt_Portent_1
+    DisplayName: Portent Die: 10
+    DescriptionParams: 10
+    Icon: PassiveFeature_Portent_10
+    Conditions: IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(10, context.Source)) or (HasInterruptedSavingThrow() and IsPortentInterruptInteresting(10))) and not AnyEntityIsItem()
+    Properties: SetRoll(10);RemoveStatus(OBSERVER_OBSERVER,PORTENT_10);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)
+    Cost: Interrupt_Portent_10:1
+
+Portent Die: 11
+Interrupt_Portent_11
+    using: Interrupt_Portent_1
+    DisplayName: Portent Die: 11
+    DescriptionParams: 11
+    Icon: PassiveFeature_Portent_11
+    Conditions: IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(11, context.Source)) or (HasInterruptedSavingThrow() and IsPortentInterruptInteresting(11))) and not AnyEntityIsItem()
+    Properties: SetRoll(11);RemoveStatus(OBSERVER_OBSERVER,PORTENT_11);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)
+    Cost: Interrupt_Portent_11:1
+
+Portent Die: 12
+Interrupt_Portent_12
+    using: Interrupt_Portent_1
+    DisplayName: Portent Die: 12
+    DescriptionParams: 12
+    Icon: PassiveFeature_Portent_12
+    Conditions: IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(12, context.Source)) or (HasInterruptedSavingThrow() and IsPortentInterruptInteresting(12))) and not AnyEntityIsItem()
+    Properties: SetRoll(12);RemoveStatus(OBSERVER_OBSERVER,PORTENT_12);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)
+    Cost: Interrupt_Portent_12:1
+
+Portent Die: 13
+Interrupt_Portent_13
+    using: Interrupt_Portent_1
+    DisplayName: Portent Die: 13
+    DescriptionParams: 13
+    Icon: PassiveFeature_Portent_13
+    Conditions: IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(13, context.Source)) or (HasInterruptedSavingThrow() and IsPortentInterruptInteresting(13))) and not AnyEntityIsItem()
+    Properties: SetRoll(13);RemoveStatus(OBSERVER_OBSERVER,PORTENT_13);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)
+    Cost: Interrupt_Portent_13:1
+
+Portent Die: 14
+Interrupt_Portent_14
+    using: Interrupt_Portent_1
+    DisplayName: Portent Die: 14
+    DescriptionParams: 14
+    Icon: PassiveFeature_Portent_14
+    Conditions: IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(14, context.Source)) or (HasInterruptedSavingThrow() and IsPortentInterruptInteresting(14))) and not AnyEntityIsItem()
+    Properties: SetRoll(14);RemoveStatus(OBSERVER_OBSERVER,PORTENT_14);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)
+    Cost: Interrupt_Portent_14:1
+
+Portent Die: 15
+Interrupt_Portent_15
+    using: Interrupt_Portent_1
+    DisplayName: Portent Die: 15
+    DescriptionParams: 15
+    Icon: PassiveFeature_Portent_15
+    Conditions: IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(15, context.Source)) or (HasInterruptedSavingThrow() and IsPortentInterruptInteresting(15))) and not AnyEntityIsItem()
+    Properties: SetRoll(15);RemoveStatus(OBSERVER_OBSERVER,PORTENT_15);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)
+    Cost: Interrupt_Portent_15:1
+
+Portent Die: 16
+Interrupt_Portent_16
+    using: Interrupt_Portent_1
+    DisplayName: Portent Die: 16
+    DescriptionParams: 16
+    Icon: PassiveFeature_Portent_16
+    Conditions: IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(16, context.Source)) or (HasInterruptedSavingThrow() and IsPortentInterruptInteresting(16))) and not AnyEntityIsItem()
+    Properties: SetRoll(16);RemoveStatus(OBSERVER_OBSERVER,PORTENT_16);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)
+    Cost: Interrupt_Portent_16:1
+
+Portent Die: 17
+Interrupt_Portent_17
+    using: Interrupt_Portent_1
+    DisplayName: Portent Die: 17
+    DescriptionParams: 17
+    Icon: PassiveFeature_Portent_17
+    Conditions: IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(17, context.Source)) or (HasInterruptedSavingThrow() and IsPortentInterruptInteresting(17))) and not AnyEntityIsItem()
+    Properties: SetRoll(17);RemoveStatus(OBSERVER_OBSERVER,PORTENT_17);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)
+    Cost: Interrupt_Portent_17:1
+
+Portent Die: 18
+Interrupt_Portent_18
+    using: Interrupt_Portent_1
+    DisplayName: Portent Die: 18
+    DescriptionParams: 18
+    Icon: PassiveFeature_Portent_18
+    Conditions: IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(18, context.Source)) or (HasInterruptedSavingThrow() and IsPortentInterruptInteresting(18))) and not AnyEntityIsItem()
+    Properties: SetRoll(18);RemoveStatus(OBSERVER_OBSERVER,PORTENT_18);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)
+    Cost: Interrupt_Portent_18:1
+
+Portent Die: 19
+Interrupt_Portent_19
+    using: Interrupt_Portent_1
+    DisplayName: Portent Die: 19
+    DescriptionParams: 19
+    Icon: PassiveFeature_Portent_19
+    Conditions: IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(19, context.Source)) or (HasInterruptedSavingThrow() and IsPortentInterruptInteresting(19))) and not AnyEntityIsItem()
+    Properties: SetRoll(19);RemoveStatus(OBSERVER_OBSERVER,PORTENT_19);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)
+    Cost: Interrupt_Portent_19:1
+
+Portent Die: 20
+Interrupt_Portent_20
+    using: Interrupt_Portent_1
+    DisplayName: Portent Die: 20
+    DescriptionParams: 20
+    Icon: PassiveFeature_Portent_20
+    Conditions: IsAbleToReact(context.Observer) and ((HasInterruptedAttack() and IsPortentInterruptInteresting(20, context.Source)) or (HasInterruptedSavingThrow() and IsPortentInterruptInteresting(20))) and not AnyEntityIsItem()
+    Properties: SetRoll(20);RemoveStatus(OBSERVER_OBSERVER,PORTENT_20);IF(HasInterruptedAttack()):UseSpell(OBSERVER_SOURCE,Target_Portent_Interrupt,true,true,true);IF(HasInterruptedSavingThrow()):UseSpell(OBSERVER_TARGET,Target_Portent_Interrupt,true,true,true)
+    Cost: Interrupt_Portent_20:1
+
+Ring of Evasion
+Interrupt_RingOfEvasion
+    DisplayName: Ring of Evasion
+    Description: When you make a Dexterity <LSTag Tooltip="SavingThrow">Saving Throw</LSTag>, you can use your reaction to succeed instead. 
+    InterruptContext: OnPostRoll
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: Self(context.Target,context.Observer) and HasSavingThrowWithAbility(Ability.Dexterity) and not AnyEntityIsItem() and IsSetInterruptInteresting(20)
+    Properties: SetRoll(20)
+    Cost: ReactionActionPoint:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Shield
+Interrupt_Shield_Wizard
+    DisplayName: Shield
+    Description: When you are about to be hit by an enemy, increase your <LSTag Tooltip="ArmourClass">Armour Class</LSTag> by 5. You take no damage from <LSTag Type="Spell" Tooltip="Projectile_MagicMissile">Magic Missile</LSTag>.
+    Icon: PassiveFeature_Shield
+    InterruptContext: OnPostRoll;OnPreDamage
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and ((HasInterruptedAttack() and IsFlatValueInterruptInteresting(5, context.Source)) or IsSpellChildOrVariantFromContext('Projectile_MagicMissile')) and not AnyEntityIsItem() and not HasStatus('SHIELD',context.Observer)
+    Properties: IF(HasInterruptedAttack()):AdjustRoll(-5);IF(IsSpellChildOrVariantFromContext('Projectile_MagicMissile')):SetRoll(0);ApplyStatus(INTERRUPT_SHIELD_WIZARD,100,1);ApplyStatus(OBSERVER_OBSERVER,SHIELD,100,1)
+    Cost: ReactionActionPoint:1;SpellSlotsGroup:1:1:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Interrupt_Shield_Sorcerer
+    using: Interrupt_Shield_Wizard
+    Properties: IF(HasInterruptedAttack()):AdjustRoll(-5);IF(IsSpellChildOrVariantFromContext('Projectile_MagicMissile')):SetRoll(0);ApplyStatus(INTERRUPT_SHIELD_SORCERER,100,1);ApplyStatus(OBSERVER_OBSERVER,SHIELD,100,1)
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Interrupt_Shield_Warlock
+    using: Interrupt_Shield_Wizard
+    Properties: IF(HasInterruptedAttack()):AdjustRoll(-5);IF(IsSpellChildOrVariantFromContext('Projectile_MagicMissile')):SetRoll(0);ApplyStatus(INTERRUPT_SHIELD_WARLOCK,100,1);ApplyStatus(OBSERVER_OBSERVER,SHIELD,100,1)
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Interrupt_Shield_Sorcerer_2
+    using: Interrupt_Shield_Sorcerer
+    Cost: ReactionActionPoint:1;SpellSlotsGroup:1:1:2
+
+Interrupt_Shield_Warlock_2
+    using: Interrupt_Shield_Warlock
+    Cost: ReactionActionPoint:1;SpellSlotsGroup:1:1:2
+
+Interrupt_Shield_Wizard_2
+    using: Interrupt_Shield_Wizard
+    Cost: ReactionActionPoint:1;SpellSlotsGroup:1:1:2
+
+Interrupt_Shield_Sorcerer_3
+    using: Interrupt_Shield_Sorcerer
+    Cost: ReactionActionPoint:1;SpellSlotsGroup:1:1:3
+
+Interrupt_Shield_Warlock_3
+    using: Interrupt_Shield_Warlock
+    Cost: ReactionActionPoint:1;SpellSlotsGroup:1:1:3
+
+Interrupt_Shield_Wizard_3
+    using: Interrupt_Shield_Wizard
+    Cost: ReactionActionPoint:1;SpellSlotsGroup:1:1:3
+
+Interrupt_Shield_Sorcerer_4
+    using: Interrupt_Shield_Sorcerer
+    Cost: ReactionActionPoint:1;SpellSlotsGroup:1:1:4
+
+Interrupt_Shield_Warlock_4
+    using: Interrupt_Shield_Warlock
+    Cost: ReactionActionPoint:1;SpellSlotsGroup:1:1:4
+
+Interrupt_Shield_Wizard_4
+    using: Interrupt_Shield_Wizard
+    Cost: ReactionActionPoint:1;SpellSlotsGroup:1:1:4
+
+Interrupt_Shield_Sorcerer_5
+    using: Interrupt_Shield_Sorcerer
+    Cost: ReactionActionPoint:1;SpellSlotsGroup:1:1:5
+
+Interrupt_Shield_Warlock_5
+    using: Interrupt_Shield_Warlock
+    Cost: ReactionActionPoint:1;SpellSlotsGroup:1:1:5
+
+Interrupt_Shield_Wizard_5
+    using: Interrupt_Shield_Wizard
+    Cost: ReactionActionPoint:1;SpellSlotsGroup:1:1:5
+
+Interrupt_Shield_Sorcerer_6
+    using: Interrupt_Shield_Sorcerer
+    Cost: ReactionActionPoint:1;SpellSlotsGroup:1:1:6
+
+Interrupt_Shield_Warlock_6
+    using: Interrupt_Shield_Warlock
+    Cost: ReactionActionPoint:1;SpellSlotsGroup:1:1:6
+
+Interrupt_Shield_Wizard_6
+    using: Interrupt_Shield_Wizard
+    Cost: ReactionActionPoint:1;SpellSlotsGroup:1:1:6
+
+Luck of the Far Realms
+Interrupt_TAD_LuckOfTheFarRealms
+    DisplayName: Luck of the Far Realms
+    Description: When you make a successful <LSTag Tooltip="AttackRolls">Attack Roll</LSTag> against a foe,  you can change that hit into a <LSTag Tooltip="CriticalHit">Critical Hit</LSTag>.
+    Icon: TadpoleSuperPower_LuckOfTheFarRealm
+    InterruptContext: OnPostRoll
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and Self(context.Source,context.Observer) and HasInterruptedAttack() and LuckOfTheFarRealmCheck() and not AnyEntityIsItem()
+    Properties: SetRoll(20)
+    Cost: ReactionActionPoint:1;Interrupt_LuckOfTheFarRealms_Charge:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: HasActionResource('Interrupt_LuckOfTheFarRealms_Charge', 1, 0, false, false, context.Source) and (not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER'))
+    EnableContext: OnActionResourcesChanged
+
+Tides of Chaos
+Interrupt_TidesOfChaos
+    DisplayName: Tides of Chaos
+    Description: Gain <LSTag Tooltip="Advantage">Advantage</LSTag> on your next <LSTag Tooltip="AttackRoll">Attack Roll</LSTag>, <LSTag Tooltip="AbilityCheck">Ability Check</LSTag>, or <LSTag Tooltip="SavingThrow">Saving Throw</LSTag>.<br><br>Increased chance of <LSTag Tooltip="WildMagic">Wild Magic</LSTag> surge afterwards.
+    Icon: Skill_Sorcerer_Passive_TidesOfChaos
+    InterruptContext: OnPostRoll
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: not Dead(context.Observer) and ((Self(context.Source,context.Observer) and HasInterruptedAttack() and IsRerollInterruptInteresting(context.Source)) or (Self(context.Target,context.Observer) and HasInterruptedSavingThrow() and IsRerollInterruptInteresting())) and not AnyEntityIsItem()
+    Properties: SetAdvantage();ApplyStatus(OBSERVER_OBSERVER,TIDES_OF_CHAOS,100,-1)
+    Cost: TidesOfChaos:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Uncanny Dodge
+Interrupt_UncannyDodge
+    DisplayName: Uncanny Dodge
+    Description: On a hit, receive half damage from a foe's attack.
+    Icon: PassiveFeature_UncannyDodge
+    InterruptContext: OnPostRoll
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and HasInterruptedAttack() and not AnyEntityIsItem()
+    Cost: ReactionActionPoint:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Improved Warding Flare
+Interrupt_WardingFlare_Improved
+    using: Interrupt_WardingFlare
+    DisplayName: Improved Warding Flare
+    Description: Impose <LSTag Tooltip="Disadvantage">Disadvantage</LSTag> on an ally's attacker, possibly causing their attack to miss.
+    Icon: PassiveFeature_ImprovedFlare
+    InterruptContextScope: Nearby
+    Conditions: IsAbleToReact(context.Observer) and Enemy(context.Source,context.Observer) and not Self(context.Target,context.Observer) and HasInterruptedAttack() and not AnyEntityIsItem() and IsRerollInterruptInteresting(context.Source)
+    Properties: SetDisadvantage();ApplyStatus(OBSERVER_TARGET,PASSIVE_WARDING_FLARE,100,0);IF(not Self(context.Target,context.Observer)):UseSpell(OBSERVER_TARGET,Target_ImprovedFlare_Interrupt,true,true,true)
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+War God's Blessing
+Interrupt_WarGodsBlessing
+    using: Interrupt_GuidedStrike
+    DisplayName: War God's Blessing
+    Description: Grant a nearby ally a +[1] bonus to their <LSTag Tooltip="AttackRoll">Attack Roll</LSTag>.
+    Icon: PassiveFeature_WarGodsBlessing
+    InterruptContextScope: Nearby
+    Conditions: IsAbleToReact(context.Observer) and not Self(context.Source,context.Observer) and Ally(context.Source,context.Observer) and HasInterruptedAttack() and not AnyEntityIsItem() and IsFlatValueInterruptInteresting(10, context.Source)
+    Properties: AdjustRoll(10);ApplyStatus(OBSERVER_SOURCE,WAR_GODS_BLESSING,100,0);UseSpell(OBSERVER_SOURCE,Target_WarGodsBlessing_Interrupt,true,true,true)
+    Cost: ChannelDivinity:1;ReactionActionPoint:1
+
+Dampen Elements
+Interrupt_DampenElements
+    DisplayName: Dampen Elements
+    Description: When you or an ally gets hit with Acid, Cold, Fire, Lightning, or Thunder damage, you can use your reaction to halve the attack's damage.
+    Icon: PassiveFeature_DampenElements
+    InterruptContext: OnPreDamage
+    InterruptContextScope: Nearby
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and (Self(context.Target,context.Observer) or Ally(context.Target,context.Observer)) and DampenElementsCheck(context.HitDescription.MainDamageType, context.Target) and not AnyEntityIsItem()
+    Properties: SetDamageResistance(Acid);SetDamageResistance(Cold);SetDamageResistance(Fire);SetDamageResistance(Lightning);SetDamageResistance(Thunder);ApplyStatus(OBSERVER_TARGET,INTERRUPT_DAMPEN_ELEMENTS,100,0);IF(not Self(context.Target,context.Observer)):UseSpell(OBSERVER_TARGET,Target_DampenElements_Interrupt,true,true,true)
+    Cost: ReactionActionPoint:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Deflect Missiles
+Interrupt_DeflectMissiles
+    DisplayName: Deflect Missiles
+    Description: Reduce the damage from a ranged weapon attack by 1d10 + your Dexterity <LSTag Tooltip="AbilityModifier">Modifier</LSTag> + your monk level.<br><br>If the damage is reduced to 0, you use a Ki Point to <LSTag Type="Spell" Tooltip="Projectile_Deflect_Missiles">Deflect the Missile</LSTag>.
+    ExtraDescription: You can only reduce damage from the attack - any additional effects can't be negated.
+    Icon: PassiveFeature_DeflectMissiles
+    InterruptContext: OnPreDamage
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and IsRangedWeaponAttack() and not HasStatus('SG_Polymorph_BeastShape') and not AnyEntityIsItem()
+    Properties: AdjustRoll(OBSERVER_OBSERVER,-(1d10+DexterityModifier+ClassLevel(Monk)));ApplyStatus(OBSERVER_TARGET,INTERRUPT_DEFLECT_MISSILES_HIT,100,1);RestoreResource(DeflectMissiles_Charge,1,0)
+    Cost: ReactionActionPoint:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Parry
+Interrupt_Parry
+    DisplayName: Parry
+    Description: Parry the next melee attack that hits you to reduce the damage by [1].
+    DescriptionParams: 1d8+DexterityModifier
+    Icon: PassiveFeature_Parry
+    InterruptContext: OnPreDamage
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and IsMeleeWeaponAttack() and not AnyEntityIsItem()
+    Properties: AdjustRoll(OBSERVER_OBSERVER,-(LevelMapValue(SuperiorityDie)+DexterityModifier))
+    Cost: ReactionActionPoint:1;SuperiorityDie:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Projected Ward
+Interrupt_ProjectedWard
+    DisplayName: Projected Ward
+    Description: When a nearby ally takes damage, you can use your <LSTag Type="Passive" Tooltip="ArcaneWard">Arcane Ward</LSTag> to reduce the damage equal to its charges and then lose 1 charge. 
+    DescriptionParams: RegainHitPoints(2*Level+IntelligenceModifier)
+    Icon: PassiveFeature_ProjectedWard
+    InterruptContext: OnPreDamage
+    InterruptContextScope: Nearby
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and Ally(context.Target,context.Observer) and not Self(context.Target,context.Observer) and HasStatus('ARCANE_WARD',context.Observer) and not AnyEntityIsItem()
+    Properties: AdjustRoll(OBSERVER_TARGET,-(ARCANE_WARD.Duration));ApplyStatus(INTERRUPT_PROJECTED_WARD,100,0);ApplyStatus(OBSERVER_OBSERVER,ARCANE_WARD,100,ARCANE_WARD.Duration-1);UseSpell(OBSERVER_TARGET,Target_ProjectedWard_Interrupt,true,true,true)
+    Cost: ReactionActionPoint:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Deflect Missiles
+Interrupt_DeflectMissiles_Return
+    DisplayName: Deflect Missiles
+    Description: Catch a projectile from a ranged weapon attack and shoot it back at your attacker.
+    Icon: PassiveFeature_DeflectMissiles
+    InterruptContext: OnCastHit
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and IsAttackType(AttackType.RangedWeaponAttack) and not (IsCriticalMiss() or IsMiss()) and HasActionResource('DeflectMissiles_Charge', 1, 0, false, false, context.Observer) and not AnyEntityIsItem()
+    Properties: UseSpell(SWAP,Projectile_Deflect_Missiles,true,true,true,c4598bdb-fc07-40dd-a62c-90cc138bd76f);UseActionResource(OBSERVER_OBSERVER,DeflectMissiles_Charge,1,0)
+    Cost: KiPoint:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasAnyStatus({'SG_Polymorph','SG_Blinded'}) or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied;OnStatusRemoved
+
+Divine Strike: Frigid Depths
+Interrupt_DivineStrike_Cold
+    DisplayName: Divine Strike: Frigid Depths
+    Description: Deal an additional [1].
+    DescriptionParams: DealDamage(1d8,Cold)
+    Icon: Action_DivineStrike_Melee
+    InterruptContext: OnCastHit
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: Self(context.Source,context.Observer) and IsWeaponAttack() and not IsCritical() and not IsKillingBlow() and IsHit() and not IsDivineStrike() and Character() and not AnyEntityIsItem()
+    Properties: DealDamage(1d8,Cold)
+    Cost: Interrupt_DivineStrike:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: HasActionResource('Interrupt_DivineStrike', 1, 0, false, false, context.Source) and (not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER'))
+    EnableContext: OnActionResourcesChanged
+
+Divine Strike: Frigid Depths
+Interrupt_DivineStrike_Cold_Critical
+    using: Interrupt_DivineStrike_Cold
+    DisplayName: Divine Strike: Frigid Depths
+    Conditions: Self(context.Source,context.Observer) and IsWeaponAttack() and IsCritical() and not IsKillingBlow() and IsHit() and not IsDivineStrike() and Character() and not AnyEntityIsItem()
+
+Divine Strike: Molten Flame
+Interrupt_DivineStrike_Fire
+    using: Interrupt_DivineStrike_Cold
+    DisplayName: Divine Strike: Molten Flame
+    DescriptionParams: DealDamage(1d8,Fire)
+    Properties: DealDamage(1d8,Fire)
+
+Divine Strike: Molten Flame
+Interrupt_DivineStrike_Fire_Critical
+    using: Interrupt_DivineStrike_Fire
+    DisplayName: Divine Strike: Molten Flame
+    Conditions: Self(context.Source,context.Observer) and IsWeaponAttack() and IsCritical() and not IsKillingBlow() and IsHit() and not IsDivineStrike() and Character() and not AnyEntityIsItem()
+
+Divine Strike: Scything Bolts
+Interrupt_DivineStrike_Lightning
+    using: Interrupt_DivineStrike_Cold
+    DisplayName: Divine Strike: Scything Bolts
+    DescriptionParams: DealDamage(1d8,Lightning)
+    Properties: DealDamage(1d8,Lightning)
+
+Divine Strike: Doom Bolts
+Interrupt_DivineStrike_Lightning_Critical
+    using: Interrupt_DivineStrike_Lightning
+    DisplayName: Divine Strike: Doom Bolts
+    Conditions: Self(context.Source,context.Observer) and IsWeaponAttack() and IsCritical() and not IsKillingBlow() and IsHit() and not IsDivineStrike() and Character() and not AnyEntityIsItem()
+
+Divine Strike: Nightshade Poison
+Interrupt_DivineStrike_Poison
+    using: Interrupt_DivineStrike_Cold
+    DisplayName: Divine Strike: Nightshade Poison
+    DescriptionParams: DealDamage(1d8,Poison)
+    Properties: DealDamage(1d8,Poison)
+
+Divine Strike: Nightshade Poison
+Interrupt_DivineStrike_Poison_Critical
+    using: Interrupt_DivineStrike_Poison
+    DisplayName: Divine Strike: Nightshade Poison
+    Conditions: Self(context.Source,context.Observer) and IsWeaponAttack() and IsCritical() and not IsKillingBlow() and IsHit() and not IsDivineStrike() and Character() and not AnyEntityIsItem()
+
+Divine Strike: Honour Shining Bright
+Interrupt_DivineStrike_Radiant
+    using: Interrupt_DivineStrike_Cold
+    DisplayName: Divine Strike: Honour Shining Bright
+    DescriptionParams: DealDamage(1d8,Radiant)
+    Properties: DealDamage(1d8,Radiant)
+
+Divine Strike: Brightsoul Bash
+Interrupt_DivineStrike_Radiant_Critical
+    using: Interrupt_DivineStrike_Radiant
+    DisplayName: Divine Strike: Brightsoul Bash
+    Conditions: Self(context.Source,context.Observer) and IsWeaponAttack() and IsCritical() and not IsKillingBlow() and IsHit() and not IsDivineStrike() and Character() and not AnyEntityIsItem()
+
+Divine Strike: Thunder
+Interrupt_DivineStrike_Thunder
+    using: Interrupt_DivineStrike_Cold
+    DisplayName: Divine Strike: Thunder
+    DescriptionParams: DealDamage(1d8,Thunder)
+    Properties: DealDamage(1d8,Thunder)
+
+Divine Strike: Thunder
+Interrupt_DivineStrike_Thunder_Critical
+    using: Interrupt_DivineStrike_Thunder
+    DisplayName: Divine Strike: Thunder
+    Conditions: Self(context.Source,context.Observer) and IsWeaponAttack() and IsCritical() and not IsKillingBlow() and IsHit() and not IsDivineStrike() and Character() and not AnyEntityIsItem()
+
+Divine Strike: Brutish Slam
+Interrupt_DivineStrike_MeleeWeapon
+    using: Interrupt_DivineStrike_Cold
+    DisplayName: Divine Strike: Brutish Slam
+    DescriptionParams: DealDamage(1d8,MainMeleeWeaponDamageType)
+    Icon: Action_DivineStrike_Melee
+    Conditions: Self(context.Source,context.Observer) and IsWeaponAttack() and IsMeleeAttack() and not IsCritical() and not IsKillingBlow() and IsHit() and not IsDivineStrike() and Character() and not AnyEntityIsItem()
+    Properties: DealDamage(1d8,MainMeleeWeaponDamageType)
+
+Divine Strike: Brutish Slam
+Interrupt_DivineStrike_MeleeWeapon_Critical
+    using: Interrupt_DivineStrike_MeleeWeapon
+    DisplayName: Divine Strike: Brutish Slam
+    Conditions: Self(context.Source,context.Observer) and IsWeaponAttack() and IsMeleeAttack() and IsCritical() and not IsKillingBlow() and IsHit() and not IsDivineStrike() and Character() and not AnyEntityIsItem()
+
+Divine Strike: Death From Afar
+Interrupt_DivineStrike_RangedWeapon
+    using: Interrupt_DivineStrike_Cold
+    DisplayName: Divine Strike: Death From Afar
+    DescriptionParams: DealDamage(1d8,MainRangedWeaponDamageType)
+    Icon: Action_DivineStrike_Ranged
+    Conditions: Self(context.Source,context.Observer) and IsWeaponAttack() and IsRangedAttack() and not IsCritical() and not IsKillingBlow() and IsHit() and not IsDivineStrike() and Character() and not AnyEntityIsItem()
+    Properties: DealDamage(1d8,MainRangedWeaponDamageType)
+
+Divine Strike: Death From Afar
+Interrupt_DivineStrike_RangedWeapon_Critical
+    using: Interrupt_DivineStrike_RangedWeapon
+    DisplayName: Divine Strike: Death From Afar
+    Conditions: Self(context.Source,context.Observer) and IsWeaponAttack() and IsRangedAttack() and IsCritical() and not IsKillingBlow() and IsHit() and not IsDivineStrike() and Character() and not AnyEntityIsItem()
+
+Divine Retaliation
+Interrupt_GuardianOfFaith_Retaliate
+    DisplayName: Divine Retaliation
+    Description: Strike back at the enemy that attacked you.
+    Icon: Spell_Evocation_SacredFlame
+    InterruptContext: OnCastHit
+    InterruptContextScope: Nearby
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and Ally(context.Observer,context.Target) and Enemy(context.Source,context.Observer) and not DistanceToGreaterThan(context.ObserverPosition, context.SourcePosition, 3) and not HasStatus('INVISIBILITY') and not AnyEntityIsItem() and HasLastAttackTriggered()
+    Properties: UseAttack(OBSERVER_SOURCE)
+    InterruptDefaultValue: Enabled
+    EnableCondition: not HasAnyStatus({'SG_Polymorph','SG_Blinded'}) or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied;OnStatusRemoved
+
+Interrupt_HellishRebuke_Myrmidon
+    using: Interrupt_HellishRebuke
+    Conditions: IsAbleToReact(context.Observer) and Enemy(context.Source,context.Observer) and HasFunctor(StatsFunctorType.DealDamage) and IsHit() and not HasStatus('SILENCED',context.Source) and not AnyEntityIsItem() and HasLastAttackTriggered()
+    Properties: UseSpell(SWAP,Target_HellishRebuke_Myrmidon,true,true,true)
+    Cost: ReactionActionPoint:1
+    EnableCondition: not HasAnyStatus({'SG_Polymorph','SG_Blinded'}) or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied;OnStatusRemoved
+
+Misty Escape
+Interrupt_MistyEscape
+    DisplayName: Misty Escape
+    Description: Upon taking damage, become <LSTag Type="Status" Tooltip="INVISIBLE">Invisible</LSTag>. On your next turn, you can cast <LSTag Type="Spell" Tooltip="Target_MistyStep">Misty Step</LSTag>, though this will break your invisibility.
+    Icon: PassiveFeature_MistyEscape
+    InterruptContext: OnCastHit
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and Enemy(context.Source,context.Observer) and HasFunctor(StatsFunctorType.DealDamage) and IsHit() and not AnyEntityIsItem() and HasLastAttackTriggered()
+    Properties: UseSpell(OBSERVER_OBSERVER,Shout_Invisibility_MistyEscape,true,true,true)
+    Cost: ReactionActionPoint:1;Interrupt_MistyEscape:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: HasActionResource('Interrupt_MistyEscape', 1, 0, false, false, context.Source) and (not HasAnyStatus({'SG_Polymorph','SG_Blinded'}) or Tagged('MINDFLAYER'))
+    EnableContext: OnActionResourcesChanged;OnStatusApplied;OnStatusRemoved
+
+Tenacity
+Interrupt_Overwhelm
+    DisplayName: Tenacity
+    Description: When you miss an attack, deal [1] anyway.
+    DescriptionParams: DealDamage(max(1,StrengthModifier), Bludgeoning)
+    Icon: PassiveAction_Overwhelm
+    InterruptContext: OnCastHit
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: Self(context.Source,context.Observer) and (IsCriticalMiss() or IsMiss()) and IsMeleeWeaponAttack() and IsProficientWithEquippedWeapon() and not AnyEntityIsItem()
+    Properties: DealDamage(max(1,StrengthModifier), Bludgeoning)
+    Cost: ReactionActionPoint:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Sentinel
+Interrupt_Sentinel
+    DisplayName: Sentinel
+    Description: When an ally is attacked by a nearby creature, you may strike the attacker.
+    Icon: PassiveFeature_Sentinel_Attack
+    InterruptContext: OnCastHit
+    InterruptContextScope: Nearby
+    Container: YesNoDecision
+    Conditions: not Self(context.Target,context.Observer) and not Self(context.Source,context.Observer) and Ally(context.Target, context.Observer) and Enemy(context.Source, context.Observer) and not HasPassive('Sentinel_Attack',context.Target) and IsAbleToReact(context.Observer) and IsMeleeAttack() and not DistanceToEntityGreaterThan(2, context.ObserverPosition, context.Source) and not AnyEntityIsItem() and HasLastAttackTriggered()
+    Properties: UseAttack(OBSERVER_SOURCE)
+    Cost: ReactionActionPoint:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasAnyStatus({'SG_Polymorph','SG_Blinded'}) or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied;OnStatusRemoved
+
+Sneak Attack
+Interrupt_SneakAttack
+    DisplayName: Sneak Attack
+    Description: Deal extra damage to a foe you have <LSTag Tooltip="Advantage">Advantage</LSTag> against.
+    Icon: Action_SneakAttack_Melee
+    InterruptContext: OnCastHit
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: Self(context.Source,context.Observer) and HasDamageEffectFlag(DamageFlags.Hit) and ((WieldingFinesseWeaponInSpecificHand(context.Observer,false) and IsMainHandAttack()) or (WieldingFinesseWeaponInSpecificHand(context.Observer,true) and IsOffHandAttack()) or IsThrowAttackRoll()) and not IsCritical() and not IsKillingBlow() and (HasDamageEffectFlag(DamageFlags.AttackAdvantage) or HasAllyWithinRange('SG_Incapacitated',1.5)) and not HasDamageEffectFlag(DamageFlags.AttackDisadvantage) and not (SpellId('Projectile_SneakAttack') or SpellId('Target_SneakAttack')) and not AnyEntityIsItem()
+    Properties: IF(IsMeleeAttack()):DealDamage(LevelMapValue(SneakAttack), MainMeleeWeaponDamageType);IF(IsRangedAttack()):DealDamage(LevelMapValue(SneakAttack), MainRangedWeaponDamageType);IF(HasPassive('MAG_ForcefulSneakAttack_Passive', context.Source)):DealDamage(1d4, Force)
+    Cost: SneakAttack_Charge:1
+    Stack: SneakAttack
+    Cooldown: OncePerTurn
+    InterruptDefaultValue: Enabled
+    EnableCondition: HasActionResource('SneakAttack_Charge',1,0,false,false,context.Source) and (WieldingFinesseWeaponInSpecificHand(context.Source, false) or WieldingFinesseWeaponInSpecificHand(context.Source, true) or WieldingWeapon('Ammunition', false, true, context.Source) or SpellTypeIs(SpellType.Throw)) and (not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER'))
+    EnableContext: OnActionResourcesChanged;OnEquip
+
+Sneak Attack (Critical Hit)
+Interrupt_SneakAttack_Critical
+    using: Interrupt_SneakAttack
+    DisplayName: Sneak Attack (Critical Hit)
+    Conditions: Self(context.Source,context.Observer) and ((WieldingFinesseWeaponInSpecificHand(context.Observer,false) and IsMainHandAttack()) or (WieldingFinesseWeaponInSpecificHand(context.Observer,true) and IsOffHandAttack()) or IsThrowAttackRoll()) and HasDamageEffectFlag(DamageFlags.Hit) and IsCritical() and not IsKillingBlow() and (HasDamageEffectFlag(DamageFlags.AttackAdvantage) or HasAllyWithinRange('SG_Incapacitated',1.5)) and not HasDamageEffectFlag(DamageFlags.AttackDisadvantage) and not (SpellId('Projectile_SneakAttack') or SpellId('Target_SneakAttack')) and not AnyEntityIsItem()
+    InterruptDefaultValue: Enabled
+
+Storm's Fury
+Interrupt_StormsFury
+    DisplayName: Storm's Fury
+    Description: When struck by a melee attack, you may deal thunder damage to the attacker and possibly push them back.
+    Icon: GenericIcon_DamageType_Thunder
+    InterruptContext: OnCastHit
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and Enemy(context.Source,context.Observer) and HasFunctor(StatsFunctorType.DealDamage) and IsHit() and IsMeleeAttack() and not AnyEntityIsItem() and HasLastAttackTriggered()
+    Properties: UseSpell(SWAP,Target_StormsFury,true,true,true)
+    Cost: ReactionActionPoint:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasAnyStatus({'SG_Polymorph','SG_Blinded'}) or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied;OnStatusRemoved
+
+Wrath of the Storm: Lightning
+Interrupt_WrathOfTheStorm_Lightning
+    DisplayName: Wrath of the Storm: Lightning
+    Description: If a nearby enemy attacks you, you can retaliate with a strike of lightning that deals [1].
+    DescriptionParams: DealDamage(2d8,Lightning)
+    ExtraDescription: On Save: Target still takes half damage.
+    Icon: PassiveFeature_WrathOfTheStorm_Lightning
+    InterruptContext: OnCastHit
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: Self(context.Target,context.Observer) and not Self(context.Source,context.Observer) and Enemy(context.Source,context.Observer) and IsAbleToReact(context.Observer) and IsAttack() and IsHit() and not DistanceToGreaterThan(context.SourcePosition, context.TargetPosition, 2) and not AnyEntityIsItem() and HasLastAttackTriggered()
+    Properties: UseSpell(OBSERVER_SOURCE,Target_WrathOfTheStorm_Lightning,true,true,true)
+    Cost: ReactionActionPoint:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasAnyStatus({'SG_Polymorph','SG_Blinded'}) or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied;OnStatusRemoved
+
+Wrath of the Storm: Thunder
+Interrupt_WrathOfTheStorm_Thunder
+    using: Interrupt_WrathOfTheStorm_Lightning
+    DisplayName: Wrath of the Storm: Thunder
+    Description: If a nearby enemy attacks you, you can retaliate with a burst of thunder that deals [1].
+    DescriptionParams: DealDamage(2d8,Thunder)
+    Icon: PassiveFeature_WrathOfTheStorm_Thunder
+    Properties: UseSpell(OBSERVER_SOURCE,Target_WrathOfTheStorm_Thunder,true,true,true)
+
+Charm
+Interrupt_TAD_Charm
+    DisplayName: Charm
+    Description: <LSTag Type="Status" Tooltip="CHARMED">Charm</LSTag> an enemy that attacks you, preventing them from attacking you until their next turn. 
+    Icon: TadpoleSuperPower_Charm
+    InterruptContext: OnCastHit
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and Enemy(context.Source,context.Observer) and IsAttack() and not HasStatus('INVISIBILITY') and not AnyEntityIsItem() and HasLastAttackTriggered() and not IsImmuneToStatus('SG_Charmed',context.Source)
+    Properties: UseSpell(OBSERVER_SOURCE,Target_TAD_Charm,true,true,true)
+    Cost: ReactionActionPoint:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasAnyStatus({'SG_Polymorph','SG_Blinded'}) or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied;OnStatusRemoved
+
+Unstable Backlash
+Interrupt_Unstable_Backlash
+    DisplayName: Unstable Backlash
+    Description: While <LSTag Type="Status" Tooltip="RAGE">Raging</LSTag>, when you take damage or fail a <LSTag Tooltip="SavingThrow">Saving Throw</LSTag>, you trigger another Wild Magic effect. This replaces your current Wild Magic effect.
+    Icon: PassiveFeature_Generic_Magical
+    InterruptContext: OnCastHit
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: HasStatus('SG_Rage') and IsAbleToReact(context.Observer) and Self(context.Target,context.Observer) and Enemy(context.Source,context.Observer) and not AnyEntityIsItem() and not IsKillingBlow() and (TotalDamageDoneGreaterThan(0) or not (HasSavingThrowWithAbility(Ability.None) or HasDamageEffectFlag(DamageFlags.SavingThrow))) and HasLastAttackTriggered()
+    Properties: RemoveStatus(OBSERVER_OBSERVER,WILD_MAGIC_BARBARIAN_TELEPORT);RemoveStatus(OBSERVER_OBSERVER,WILD_MAGIC_BARBARIAN__EXPLODING_FLUMPH);RemoveStatus(OBSERVER_OBSERVER,WILD_MAGIC_BARBARIAN_WEAPON_INFUSION);RemoveStatus(OBSERVER_OBSERVER,WILD_MAGIC_BARBARIAN_MAGIC_RETRIBUTION);RemoveStatus(OBSERVER_OBSERVER,WILD_MAGIC_BARBARIAN_PROTECTIVE_LIGHTS);RemoveStatus(OBSERVER_OBSERVER,WILD_MAGIC_BARBARIAN_VINE_GROWTH);RemoveStatus(OBSERVER_OBSERVER,WILD_MAGIC_BARBARIAN_LIGHT_BOLT);RemoveStatus(OBSERVER_OBSERVER,WILD_MAGIC_BARBARIAN__EXPLODING_FLUMPH);RemoveStatus(OBSERVER_OBSERVER,WILD_MAGIC_BARBARIAN__EXPLODING_FLUMPH);TriggerRandomCast(1,0,WildMagicBarbarian)
+    Cost: ReactionActionPoint:1
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied
+
+Polearm Master: Opportunity Attack
+Interrupt_PolearmMaster
+    DisplayName: Polearm Master: Opportunity Attack
+    Description: Make an <LSTag Tooltip="OpportunityAttack">Opportunity Attack</LSTag> whenever a creature enters your reach.
+    ExtraDescription: Prerequisite: Must be wielding a glaive, halberd, quarterstaff, or spear.
+    Icon: PassiveFeature_PolearmMaster_AttackOfOpportunity
+    InterruptContext: OnEnterAttackRange
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: IsAbleToReact(context.Observer) and (HasWeaponProperty(WeaponProperties.Reach, GetActiveWeapon(context.Source)) or Tagged('WPN_STAVE', GetActiveWeapon(context.Source, true)) or Tagged('WPN_SPEAR', GetActiveWeapon(context.Source, true))) and Enemy() and not WieldingWeapon('Ammunition', false, false, context.Source) and not (not Player(context.Source) and Tagged('AI_IGNORED_TARGET')  and not HasStatus('GNOLL_SUDDENRUSH')) and not HasStatus('SHOCKWAVE') and not (HasStatus('MOBILE_NO_AOO', context.Source) and HasStatus('MOBILE_NO_AOO_SOURCE', context.Target)) and not HasStatus('FLAMING_SPHERE_AURA') and not HasStatus('SNEAKING',context.Target) and not HasStatus('SG_Ignore_AOO',context.Target) and not AnyEntityIsItem()
+    Properties: IF(not HasPassive('Sentinel_ZeroSpeed',context.Source)):UseAttack();IF(HasPassive('Sentinel_ZeroSpeed',context.Source)):UseSpell(Target_Sentinel_AttackOfOpportunity,true,true,true)
+    Cost: ReactionActionPoint:1
+    Stack: AttackOfOpportunity
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasAnyStatus({'SG_Polymorph','SG_Blinded'}) or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied;OnStatusRemoved
+
+War Caster: Opportunity Spell
+Interrupt_WarCaster
+    DisplayName: War Caster: Opportunity Spell
+    Description: Cast <LSTag Type="Spell" Tooltip="Target_ShockingGrasp">Shocking Grasp</LSTag> at a creature moving out of range.
+    Icon: PassiveFeature_WarCaster_OpportunitySpell
+    InterruptContext: OnLeaveAttackRange
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: not HasSpellCastBlocked(context.Observer) and IsAbleToReact(context.Observer) and Self(context.Observer, context.Source) and not Self(context.Observer, context.Target) and Enemy() and not WieldingWeapon('Ammunition', false, false, context.Source) and not HasStatus('SG_Incapacitated', context.Source) and not HasStatus('SG_Unconscious', context.Source) and not (not Player(context.Source) and Tagged('AI_IGNORED_TARGET')  and not HasStatus('GNOLL_SUDDENRUSH')) and not HasStatus('SHOCKWAVE') and not (HasStatus('MOBILE_NO_AOO', context.Source) and HasStatus('MOBILE_NO_AOO_SOURCE', context.Target)) and not HasStatus('FLAMING_SPHERE_AURA') and not HasStatus('SNEAKING',context.Target) and not HasStatus('SG_Ignore_AOO',context.Target) and not AnyEntityIsItem()
+    Properties: UseSpell(Target_ShockingGrasp,true,true,true)
+    Cost: ReactionActionPoint:1
+    Stack: AttackOfOpportunity
+    InterruptDefaultValue: Ask;Enabled
+    EnableCondition: not HasAnyStatus({'SG_Polymorph','SG_Blinded'}) or Tagged('MINDFLAYER')
+    EnableContext: OnStatusApplied;OnStatusRemoved
+
+Interrupt_MONSTER
+
+Self-Detonation Protocol
+Interrupt_SteelWatcher_Biped_SelfDestruct_Begin
+    DisplayName: Self-Detonation Protocol
+    Description: Initiate a countdown sequence that ends with <LSTag Type="Spell" Tooltip="Projectile_SteelWatcher_Biped_SelfDestructExplosion">Self-Detonation</LSTag>.
+    Icon: PassiveFeature_Generic_Explosion
+    InterruptContext: OnCastHit
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: HasFunctor(StatsFunctorType.DealDamage) and IsHit() and HasHPPercentageLessThan(30, context.Observer) and not HasStatus('STEELWATCHER_BIPED_SELFDESTRUCT_BEGIN', context.Observer) and not (SpellId('Target_Smite_Banishing') or SpellId('Projectile_Smite_Banishing'))
+    Properties: UseSpell(OBSERVER_OBSERVER,Shout_SteelWatcher_Biped_SelfDestruct_Begin,true,true,true)
+    InterruptDefaultValue: Enabled
+    EnableCondition: not HasStatus('SG_Blinded')
+    EnableContext: OnStatusApplied;OnStatusRemoved
+
+Self-Detonation Protocol
+Interrupt_SteelWatcher_Biped_SelfDestruct_Begin_BanishingSmite
+    DisplayName: Self-Detonation Protocol
+    Description: Initiate a countdown sequence that ends with <LSTag Type="Spell" Tooltip="Projectile_SteelWatcher_Biped_SelfDestructExplosion">Self-Detonation</LSTag>.
+    Icon: PassiveFeature_Generic_Explosion
+    InterruptContext: OnCastHit
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: HasFunctor(StatsFunctorType.DealDamage) and IsHit() and HasHPPercentageLessThan(30, context.Observer) and not HasStatus('STEELWATCHER_BIPED_SELFDESTRUCT_BEGIN', context.Observer) and (SpellId('Target_Smite_Banishing') or SpellId('Projectile_Smite_Banishing'))
+    Properties: ApplyStatus(OBSERVER_OBSERVER,STEELWATCHER_BIPED_SELFDESTRUCT_BEGIN,100,1)
+    InterruptDefaultValue: Enabled
+
+Corpulent Rage
+Interrupt_Berserk_FleshGolem
+    DisplayName: Corpulent Rage
+    Description: As your health diminishes, let out a bone-quaking roar that pushes back anyone near you, and go <LSTag Type="Status" Tooltip="SHA_NECROMANCER_FLESH_BERSERK">Berserk</LSTag>.
+    Icon: Action_Barbarian_Frenzy
+    InterruptContext: OnCastHit
+    InterruptContextScope: Self
+    Container: YesNoDecision
+    Conditions: HasFunctor(StatsFunctorType.DealDamage) and IsHit() and HasHPPercentageLessThan(40, context.Observer) and not HasStatus('SHA_NECROMANCER_FLESH_BERSERK', context.Observer)
+    Properties: UseSpell(OBSERVER_OBSERVER,Shout_Berserk_FleshGolem,true,true,true)
+    InterruptDefaultValue: Enabled
+    EnableCondition: not HasStatus('SG_Blinded')
+    EnableContext: OnStatusApplied;OnStatusRemoved
+
+Interrupt_Shield_Mindflayer
+    using: Interrupt_Shield_Wizard
+    Cost: ReactionActionPoint:1;Interupt_Shield_MindFlayer:1
+    Cooldown: OncePerCombat
+    EnableCondition: HasActionResource('Interupt_Shield_MindFlayer', 1, 0, false, false, context.Source) and (not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER'))
+    EnableContext: 
+
+Interrupt_CounterSpell_MindFlayer
+    using: Interrupt_Counterspell
+    Cost: ReactionActionPoint:1;Interupt_CounterSpell_MindFlayer:1
+    Cooldown: OncePerCombat
+    EnableCondition: HasActionResource('Interupt_CounterSpell_MindFlayer', 1, 0, false, false, context.Source) and (not HasStatus('SG_Polymorph') or Tagged('MINDFLAYER'))
+    EnableContext: 
+
+===== Parsing finished =====

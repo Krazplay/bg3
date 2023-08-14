@@ -1,0 +1,334 @@
+=====  Parsing start   =====
+
+Outcome WildMagic
+    GroupName: WildMagic
+    Level: 2
+    Spell: Shout_WildMagic_Burning
+    UUID: 0d6df6f9-53cd-4928-80c5-1ad0a512c424
+
+Outcome WildMagicTurn
+    GroupName: WildMagicTurn
+    Level: 2
+    Spell: Shout_WildMagic_TurnMagic
+    UUID: c4ebe6f2-cdc5-4132-9e01-5eaf8efd54fd
+
+Outcome WildMagic
+    GroupName: WildMagic
+    Spell: Shout_WildMagic_Teleport
+    UUID: e647e4a8-6bee-41d9-a7e2-5c59131581fe
+
+Outcome WildMagic
+    GroupName: WildMagic
+    Spell: Shout_WildMagic_Enchant
+    UUID: f2906ebb-563c-4cfd-9e50-3a5799023757
+
+Outcome WildMagic
+    ClassLevel: 2
+    ClassUUID: WildMagic
+    GroupName: WildMagic
+    Spell: Shout_WildMagic_SorceryPoints
+    UUID: 251645bd-541a-49c7-89c9-be69d918697c
+
+Outcome WildMagic
+    GroupName: WildMagic
+    Spell: Shout_WildMagic_Fog
+    UUID: 23eb7d3f-7957-47db-817b-f2e595db94c4
+
+Outcome WildMagic
+    GroupName: WildMagic
+    Spell: Shout_WildMagic_Blur
+    UUID: 2e417adc-af89-4f4e-adf0-08685b0e0f28
+
+Outcome WildMagic
+    GroupName: WildMagic
+    Spell: Shout_WildMagic_Heal
+    UUID: 950700ad-d5f1-409e-856b-4f27c1d66dcb
+
+Outcome WildMagic
+    GroupName: WildMagic
+    Spell: Shout_WildMagic_Mephit
+    UUID: 83de74d7-ef17-4f7b-9313-11de1a6c0158
+
+Outcome WildMagic
+    GroupName: WildMagic
+    Spell: Shout_WildMagic_Swap
+    UUID: c784f735-d0da-4685-bf27-a94544079710
+
+Outcome WildMagic
+    GroupName: WildMagic
+    Level: 2
+    Spell: Shout_WildMagic_Fly
+    UUID: 3cec72ce-d053-460f-84a3-c0bf527bf2c3
+
+Outcome WildMagic
+    GroupName: WildMagic
+    Spell: Shout_WildMagic_ActionSurge
+    UUID: 1e46e6d8-c997-4165-b5b2-b443125cc265
+
+Outcome WildMagic
+    GroupName: WildMagic
+    Level: 2
+    Spell: Shout_WildMagic_SpikeGrowth
+    UUID: def728f0-5730-4d9d-aab8-37c26dd1698e
+
+Outcome WildMagic
+    GroupName: WildMagic
+    Level: 2
+    Spell: Shout_WildMagic_Entangle
+    UUID: 95ed70fa-bef9-4966-b918-54789f83f06c
+
+Outcome WildMagic
+    GroupName: WildMagic
+    Level: 2
+    Spell: Shout_WildMagic_Slow
+    UUID: 781f3731-f93b-435f-8b24-e080ecca804d
+
+Outcome WildMagic
+    GroupName: WildMagic
+    Level: 10
+    Spell: Shout_WildMagic_Cambion
+    UUID: 73670295-5d5b-4087-baae-c2ec64e9dcd9
+
+Outcome WildMagic
+    GroupName: WildMagic
+    Level: 2
+    Spell: Shout_WildMagic_Polymorph
+    UUID: 499e5fcb-0c6d-4127-b42f-b861d28cd69a
+
+Outcome WildMagic
+    GroupName: WildMagic
+    Level: 2
+    Spell: Shout_WildMagic_EnlargeReduce
+    UUID: 0c8eaf8d-42ad-4cfb-ac90-3deee8c1a855
+
+Outcome WildMagic
+    GroupName: WildMagic
+    Level: 2
+    Spell: Shout_WildMagic_ResilientSphere
+    UUID: c95daaf4-1934-45c9-b3c4-bf869b3da676
+
+Outcome WildMagic
+    GroupName: WildMagic
+    Level: 2
+    Spell: Shout_WildMagic_Telekinesis
+    UUID: 5ad7d526-5fb6-454d-8ee7-d56766c8bc15
+
+Outcome WildMagic
+    GroupName: WildMagic
+    Level: 2
+    Spell: Shout_WildMagic_SpeakWithAnimals
+    UUID: de0b3868-9e6d-4f0b-9d27-c8710e87ca00
+
+Outcome WildMagic
+    GroupName: WildMagic
+    Level: 2
+    Spell: Shout_WildMagic_Shield
+    UUID: 738ebdcd-94f1-4278-aa22-e194e7cf521b
+
+Outcome WildMagic
+    GroupName: WildMagic
+    Level: 2
+    Spell: Shout_WildMagic_CatsAndDogs
+    UUID: 1763d3d3-a8c6-410d-a9d6-7aefac932aca
+
+Outcome WildMagicBarbarian
+    GroupName: WildMagicBarbarian
+    Spell: Shout_WildMagicBarbarian_Teleport_Activate
+    UUID: 9f5a920d-287a-4fa1-b77d-53502d0a9058
+
+Outcome WildMagicBarbarian
+    GroupName: WildMagicBarbarian
+    Spell: Shout_WildMagicBarbarian_ShadowyTendrils
+    UUID: cef687cf-954a-4815-ae82-8674d7bcce64
+
+Outcome WildMagicBarbarian
+    GroupName: WildMagicBarbarian
+    Spell: Shout_WildMagicBarbarian_ExplodingFlumph_Activate
+    UUID: 30bee187-0b7a-4d1b-aa38-bd737e632327
+
+Outcome WildMagicBarbarian
+    GroupName: WildMagicBarbarian
+    Spell: Shout_WildMagicBarbarian_WeaponInfusion
+    UUID: b0048ef7-e44d-4284-b0a2-a109df0a43eb
+
+Outcome WildMagicBarbarian
+    GroupName: WildMagicBarbarian
+    Spell: Shout_WildMagicBarbarian_MagicRetribution
+    UUID: e73add7b-3bc8-478a-a414-22c44eb5eba4
+
+Outcome WildMagicBarbarian
+    GroupName: WildMagicBarbarian
+    Spell: Shout_WildMagicBarbarian_ProtectiveLights
+    UUID: df6ac140-88b5-44e7-858d-b65ade1ff9c2
+
+Outcome WildMagicBarbarian
+    GroupName: WildMagicBarbarian
+    Spell: Shout_WildMagicBarbarian_VineGrowth
+    UUID: f6098f67-9ce8-4f4c-93da-833c515a7ec5
+
+Outcome WildMagicBarbarian
+    GroupName: WildMagicBarbarian
+    Spell: Shout_WildMagicBarbarian_LightBolt_Activate
+    UUID: c18084e6-7a16-4282-84b2-ecf83b62ef02
+
+Outcome Blink
+    GroupName: Blink
+    Spell: Shout_Blink_Activate
+    UUID: e872e54f-db72-4aaf-aac3-ab5c3b8f3364
+
+Outcome MagicAllergy
+    GroupName: MagicAllergy
+    Spell: Shout_MagicAllergy_SelfHeal
+    UUID: 5df6a6c1-cccd-4cfb-b8fd-d719eca0e2ae
+
+Outcome MagicAllergy
+    GroupName: MagicAllergy
+    Spell: Shout_MagicAllergy_SelfHeal
+    UUID: 909570ca-5b01-41f9-bae3-9ef1ed4577db
+
+Outcome MagicAllergy
+    GroupName: MagicAllergy
+    Spell: Shout_MagicAllergy_SelfHeal
+    UUID: 6f26f937-68b6-4988-b09b-4cfcddf90fff
+
+Outcome MagicAllergy
+    GroupName: MagicAllergy
+    Spell: Shout_MagicAllergy_ForceExplosion
+    UUID: 60a38fb5-46e3-4b16-9c54-2e41f4f74634
+
+Outcome MagicAllergy
+    GroupName: MagicAllergy
+    Spell: Shout_MagicAllergy_ForceExplosion
+    UUID: d5d42523-fbd5-4186-9c6d-61df5bf9deb8
+
+Outcome MagicAllergy
+    GroupName: MagicAllergy
+    Spell: Shout_MagicAllergy_ForceExplosion
+    UUID: f04b1098-7f18-4c7e-9c1b-9a42fcbdc312
+
+Outcome MagicAllergy
+    GroupName: MagicAllergy
+    Spell: Shout_MagicAllergy_ForceExplosion
+    UUID: 9c5a1c67-92fc-42bb-ad40-41fd096f1bc4
+
+Outcome MagicAllergy
+    GroupName: MagicAllergy
+    Spell: Shout_MagicAllergy_ForceExplosion
+    UUID: 097e7a07-bb68-4776-9149-74ac1f0d825a
+
+Outcome MagicAllergy
+    GroupName: MagicAllergy
+    Spell: Shout_MagicAllergy_ForceExplosion
+    UUID: f9edf3ae-b1bd-49ba-a2b5-9748f1097eb1
+
+Outcome MagicAllergy
+    GroupName: MagicAllergy
+    Spell: Shout_MagicAllergy_ForceExplosion
+    UUID: 186d7ba2-e552-4872-96f4-6b1d8a50eaa2
+
+Outcome MagicAllergy
+    GroupName: MagicAllergy
+    Spell: Shout_MagicAllergy_ForceExplosion
+    UUID: c68ef1e9-4aeb-4a84-8d6e-8057a6cd3868
+
+Outcome MagicAllergy
+    GroupName: MagicAllergy
+    Spell: Shout_MagicAllergy_Enlarge
+    UUID: 5919e898-b4e8-46b1-99bf-a0889f5dec7d
+
+Outcome MagicAllergy
+    GroupName: MagicAllergy
+    Spell: Shout_MagicAllergy_Enlarge
+    UUID: 5fc9ed59-7bc2-408a-b96d-30d2da4a5aa2
+
+Outcome MagicAllergy
+    GroupName: MagicAllergy
+    Spell: Shout_MagicAllergy_Enlarge
+    UUID: a60275c2-0a58-4775-9d05-87d321e8b003
+
+Outcome MagicAllergy
+    GroupName: MagicAllergy
+    Spell: Shout_MagicAllergy_GremishkaSpawn
+    UUID: 1aaa6f34-84d7-4f9a-9b2e-50d2242f8c1e
+
+Outcome MagicAllergy
+    GroupName: MagicAllergy
+    Spell: Shout_MagicAllergy_GremishkaSpawn
+    UUID: 32d5e445-cffc-44bc-b015-1cf747dee4ff
+
+Outcome MagicAllergy
+    GroupName: MagicAllergy
+    Spell: Shout_MagicAllergy_GremishkaSpawn
+    UUID: c9111380-58e6-47ba-9a47-3385b6aad166
+
+Outcome MagicAllergy
+    GroupName: MagicAllergy
+    Spell: Shout_MagicAllergy_Polymorph
+    UUID: 686248af-46f0-4580-816e-a8ff462c18bf
+
+Outcome MagicAllergy
+    GroupName: MagicAllergy
+    Spell: Shout_MagicAllergy_Polymorph
+    UUID: 2ce6300e-b835-4fe7-a5f1-cd046379ca5d
+
+Outcome MagicAllergy
+    GroupName: MagicAllergy
+    Spell: Shout_MagicAllergy_Polymorph
+    UUID: b9f81dff-2e0c-44b1-ad4f-2d45cc06e80b
+
+Outcome WildMagicEvil
+    GroupName: WildMagicEvil
+    Spell: Shout_WildMagic_ActionSurge
+    UUID: 36d1aa87-acb4-47d5-8506-ad296af4297a
+
+Outcome WildMagicEvil
+    GroupName: WildMagicEvil
+    Spell: Shout_WildMagic_Burning
+    UUID: 29ddd5f4-158b-4012-b51d-b818a8899aac
+
+Outcome WildMagicEvil
+    GroupName: WildMagicEvil
+    Spell: Shout_WildMagic_Fog
+    UUID: 6577df47-0fca-4f51-ad49-0a86ae7de67e
+
+Outcome WildMagicEvil
+    GroupName: WildMagicEvil
+    Spell: Shout_WildMagic_Mephit
+    UUID: 5ac5150d-f96c-4b4c-ad46-0df144d27dac
+
+Outcome WildMagicEvil
+    GroupName: WildMagicEvil
+    Spell: Shout_WildMagic_ResilientSphere
+    UUID: 3403c8a8-d1fe-4620-b0bd-55e1578bd297
+
+Outcome WildMagicEvil
+    GroupName: WildMagicEvil
+    Spell: Shout_WildMagic_Polymorph
+    UUID: 8484e383-b103-41f7-b16a-463c40ee8aac
+
+Outcome WildMagicEvil
+    GroupName: WildMagicEvil
+    Spell: Shout_WildMagic_Cambion
+    UUID: e5e6a264-3ca4-4c70-8c17-2bb3691df866
+
+Outcome WildMagicEvil
+    GroupName: WildMagicEvil
+    Spell: Shout_WildMagic_Slow
+    UUID: 04c98647-b51e-42f5-b162-e47a69bd9777
+
+Outcome WildMagicEvil
+    GroupName: WildMagicEvil
+    Spell: Shout_WildMagic_SpikeGrowth
+    UUID: ff956436-3e9d-43ef-b8d7-d147bd6bc9c3
+
+Outcome WildMagicEvil
+    GroupName: WildMagicEvil
+    Spell: Shout_WildMagic_Entangle
+    UUID: 988d4cea-0d40-4e9c-9c56-edc4c91a85a1
+
+Outcome WildMagicEvil
+    GroupName: WildMagicEvil
+    Spell: Shout_WildMagic_CatsAndDogs
+    UUID: fad4b786-388d-49fb-9263-0c5c0994c00f
+
+===== Parsing finished =====

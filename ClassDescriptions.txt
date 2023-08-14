@@ -1,0 +1,878 @@
+=====  Parsing start   =====
+
+Class Barbarian
+    BaseHp: 12
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    ClassEquipment: EQP_CC_Barbarian
+    ClassHotbarColumns: 5
+    CommonHotbarColumns: 9
+    Description: The strong embrace the wild that hides inside - keen instincts, primal physicality, and most of all, an unbridled, unquenchable rage.
+    DisplayName: Barbarian
+    HpPerLevel: 7
+    ItemsHotbarColumns: 2
+    LearningStrategy: 1
+    Name: Barbarian
+    PrimaryAbility: 1 (Strength)
+    ProgressionTableUUID: 60bbcc97-5381-4898-bc15-908c072895de
+    SoundClassType: Barbarian
+    SpellCastingAbility: 6 (Charisma)
+    UUID: d8cadb42-0ff9-4049-afaf-e5d78d06a399
+
+Class Berserker
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: Violence is both a means and an end. You follow a path of untrammelled fury, slick with blood, as you thrill in the chaos of battle, heedless of your own well-being.
+    DisplayName: Berserker
+    LearningStrategy: 1
+    Name: BerserkerPath
+    ParentGuid: d8cadb42-0ff9-4049-afaf-e5d78d06a399
+    PrimaryAbility: 1 (Strength)
+    ProgressionTableUUID: b2a03b63-809f-4df9-a179-bf5b899082ef
+    SoundClassType: Barbarian
+    SpellCastingAbility: 6 (Charisma)
+    UUID: 32eee7d8-1b2f-4de5-b9ee-78fbd286c6ef
+
+Class Wildheart
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: Your attunement with nature and its beasts inspires your rage, empowering you with supernatural might.
+    DisplayName: Wildheart
+    LearningStrategy: 1
+    Name: TotemWarriorPath
+    ParentGuid: d8cadb42-0ff9-4049-afaf-e5d78d06a399
+    PrimaryAbility: 1 (Strength)
+    ProgressionTableUUID: 48f1760f-86e7-401c-ad52-633fffbae49e
+    SoundClassType: Barbarian
+    SpellCastingAbility: 6 (Charisma)
+    UUID: 2e585948-d775-451d-b58b-15b75321d11e
+
+Class Bard
+    BaseHp: 8
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    ClassEquipment: EQP_CC_Bard
+    ClassHotbarColumns: 5
+    CommonHotbarColumns: 9
+    Description: You know music is more than a fancy - it is power. Through study and adventure, you have mastered song, speech, and the magic within.
+    DisplayName: Bard
+    HpPerLevel: 5
+    IsSomaticWithInstrument: true
+    ItemsHotbarColumns: 2
+    LearningStrategy: 1
+    MulticlassSpellcasterModifier: 1
+    Name: Bard
+    PrimaryAbility: 6 (Charisma)
+    ProgressionTableUUID: 229c98da-2cd1-4a5e-8051-9d90ec7931e7
+    SoundClassType: Bard
+    SpellCastingAbility: 6 (Charisma)
+    SpellList: c98f2011-31e1-4e9a-8061-62c8679c645e
+    UUID: 92cd50b6-eb1b-4824-8adb-853e90c34c90
+
+Class College of Lore
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: You pursue beauty and truth, collecting knowledge from scholarly tomes to peasants' tales, and use your gifts to hold both audiences and enemies spellbound.
+    DisplayName: College of Lore
+    LearningStrategy: 1
+    Name: LoreCollege
+    ParentGuid: 92cd50b6-eb1b-4824-8adb-853e90c34c90
+    PrimaryAbility: 6 (Charisma)
+    ProgressionTableUUID: 36e6ea13-317e-4e6e-ac63-fe6d50e9f014
+    SoundClassType: Bard
+    SpellCastingAbility: 6 (Charisma)
+    UUID: d21368ac-c776-465c-9dcf-6123dd52734f
+
+Class College of Valour
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: You wander the land to witness and relate the deeds of the mighty, keeping alive the memory of heroes of the past and inspiring heroes of the future.
+    DisplayName: College of Valour
+    LearningStrategy: 1
+    Name: ValorCollege
+    ParentGuid: 92cd50b6-eb1b-4824-8adb-853e90c34c90
+    PrimaryAbility: 6 (Charisma)
+    ProgressionTableUUID: d58a305f-3ccf-440c-b069-2abd9235ac03
+    SoundClassType: Bard
+    SpellCastingAbility: 6 (Charisma)
+    UUID: 2b46330d-0ada-4eb5-a131-3d250a41ca6a
+
+Class Cleric
+    BaseHp: 8
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    ClassEquipment: EQP_CC_Cleric
+    Description: Clerics are representatives of the gods they worship, wielding potent divine magic for good or ill.
+    DisplayName: Cleric
+    HasGod: true
+    HpPerLevel: 5
+    LearningStrategy: 1
+    MulticlassSpellcasterModifier: 1
+    MustPrepareSpells: true
+    Name: Cleric
+    PrimaryAbility: 5 (Wisdom)
+    ProgressionTableUUID: 64474b62-b4f5-46b3-b94a-c676c6da3116
+    SoundClassType: Cleric
+    SpellCastingAbility: 5 (Wisdom)
+    SpellList: 42acd9d3-3b44-4d08-a061-3fd2f69aa4bf
+    SubclassTitle: hee3ec834g1a90g4f22g9f78g2d0195c29d37
+    UUID: 114e7aee-d1d4-4371-8d90-8a2080592faf
+
+Class Life Domain
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: The Life domain is an aspect of many good deities, offering spells that protect and restore the mind, body, and soul.
+    DisplayName: Life Domain
+    LearningStrategy: 1
+    MustPrepareSpells: true
+    Name: LifeDomain
+    ParentGuid: 114e7aee-d1d4-4371-8d90-8a2080592faf
+    PrimaryAbility: 5 (Wisdom)
+    ProgressionTableUUID: 9b56beb6-2a68-42a4-b81b-7a890a1b6b99
+    ShortName: hb47a2fb8g2ba6g4c42gb8edg9216a3087eb1
+    SoundClassType: Cleric
+    SpellCastingAbility: 5 (Wisdom)
+    SpellList: 79f6a154-c3e0-4a6a-ad96-faa89166d1cc
+    UUID: 4b5da2f5-b999-4623-8bff-a63df5560fb3
+
+Class Light Domain
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: The Light domain is offered by deities of justice, majesty, and primordial flame, providing spells that dispel darkness and harm the undead.
+    DisplayName: Light Domain
+    LearningStrategy: 1
+    MustPrepareSpells: true
+    Name: LightDomain
+    ParentGuid: 114e7aee-d1d4-4371-8d90-8a2080592faf
+    PrimaryAbility: 5 (Wisdom)
+    ProgressionTableUUID: 6ec6caad-2dfa-4661-8edd-5c4eca0e044c
+    ShortName: hc0b2a797ga126g45d5g8cdfgc65425b5ff40
+    SoundClassType: Cleric
+    SpellCastingAbility: 5 (Wisdom)
+    SpellList: ad589eda-d471-49fb-a629-f9c5a1860666
+    UUID: c54d7591-b305-4f22-b2a7-1bf5c4a3470a
+
+Class Trickery Domain
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: A domain shared by wicked, chaotic, and mischievous deities alike, those who channel Trickery specialise in deception and illusion magic.
+    DisplayName: Trickery Domain
+    LearningStrategy: 1
+    MustPrepareSpells: true
+    Name: TrickeryDomain
+    ParentGuid: 114e7aee-d1d4-4371-8d90-8a2080592faf
+    PrimaryAbility: 5 (Wisdom)
+    ProgressionTableUUID: 044e4e07-6980-479f-80e5-3c4a84e691d1
+    ShortName: h7726d242g89deg4527gbb84g4d565c0f9e2a
+    SoundClassType: Cleric
+    SpellCastingAbility: 5 (Wisdom)
+    SpellList: 25157f12-3bfb-4df0-a322-a3109066037a
+    UUID: f013d01b-3310-43f7-81bf-a51130442b5e
+
+Class Druid
+    BaseHp: 8
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    ClassEquipment: EQP_CC_Druid
+    Description: Druids channel the elemental forces of nature and share a deep kinship with animals. Mastery of Wild Shape allows them to transform into beasts from all over the Realms.
+    DisplayName: Druid
+    HpPerLevel: 5
+    LearningStrategy: 1
+    MulticlassSpellcasterModifier: 1
+    MustPrepareSpells: true
+    Name: Druid
+    PrimaryAbility: 5 (Wisdom)
+    ProgressionTableUUID: 6e7b7bad-e122-4679-8b3c-8f8987a9d466
+    SoundClassType: Druid
+    SpellCastingAbility: 5 (Wisdom)
+    SpellList: fd366d4e-4063-4b6f-9cd9-26889bcd6465
+    UUID: 457d0a6e-9da8-4f95-a225-18382f0e94b5
+
+Class Circle of the Land
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: Druids of this Circle connect to powerful magic that flows through the earth and binds all living things together. 
+    DisplayName: Circle of the Land
+    LearningStrategy: 1
+    MustPrepareSpells: true
+    Name: CircleOfTheLand
+    ParentGuid: 457d0a6e-9da8-4f95-a225-18382f0e94b5
+    PrimaryAbility: 5 (Wisdom)
+    ProgressionTableUUID: ba1f14d6-d40b-47ce-b071-91b491d87b27
+    SoundClassType: Druid
+    SpellCastingAbility: 5 (Wisdom)
+    SpellList: 2c5a2f80-4da9-4aab-b9f4-500335eeffee
+    UUID: 7458da78-34b7-4150-a42f-37197ab04510
+
+Class Circle of the Moon
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: Druids sworn to the moon draw on its mercurial nature to transform into massive creatures and primal elementals.
+    DisplayName: Circle of the Moon
+    LearningStrategy: 1
+    MustPrepareSpells: true
+    Name: CircleOfTheMoon
+    ParentGuid: 457d0a6e-9da8-4f95-a225-18382f0e94b5
+    PrimaryAbility: 5 (Wisdom)
+    ProgressionTableUUID: ede8583c-434b-4fb2-87a8-af8e0e239d62
+    SoundClassType: Druid
+    SpellCastingAbility: 5 (Wisdom)
+    UUID: 3eab0689-e51b-4634-a690-0375d3cb2716
+
+Class Fighter
+    BaseHp: 10
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    ClassEquipment: EQP_CC_Fighter
+    ClassHotbarColumns: 5
+    CommonHotbarColumns: 9
+    Description: Fighters have mastered the art of combat, wielding weapons with unmatched skill and wearing armour like a second skin.
+    DisplayName: Fighter
+    HpPerLevel: 6
+    ItemsHotbarColumns: 2
+    LearningStrategy: 1
+    Name: Fighter
+    PrimaryAbility: 1 (Strength)
+    ProgressionTableUUID: ba4e707e-4bbd-4630-963b-ce2f2947f971
+    SoundClassType: Fighter
+    SpellCastingAbility: 0 ()
+    UUID: 721dfac3-92d4-41f5-b773-b7072a86232f
+
+Class Battle Master
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: Battle Masters are paragons of tactical superiority, combining combat manoeuvres and experience in the field to dominate every fight.
+    DisplayName: Battle Master
+    LearningStrategy: 1
+    Name: BattleMaster
+    ParentGuid: 721dfac3-92d4-41f5-b773-b7072a86232f
+    PrimaryAbility: 1 (Strength)
+    ProgressionTableUUID: 69eb2e41-0317-46d7-a6b6-3593de1a5220
+    SoundClassType: Fighter
+    SpellCastingAbility: 0 ()
+    UUID: e668c6f1-5149-4b10-ab7e-3637ed444066
+
+Class Eldritch Knight
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: Eldritch Knights study magic to supplement their weaponry, allowing them to overcome resistance from the toughest foes.
+    DisplayName: Eldritch Knight
+    LearningStrategy: 1
+    MulticlassSpellcasterModifier: 0.34000000000000002
+    Name: EldritchKnight
+    ParentGuid: 721dfac3-92d4-41f5-b773-b7072a86232f
+    PrimaryAbility: 1 (Strength)
+    ProgressionTableUUID: 2db3f02e-dfa9-4235-b9bd-28a89bf41435
+    SoundClassType: Fighter
+    SpellCastingAbility: 4 (Intelligence)
+    SpellList: 0e33c4d4-d784-4cfb-852e-e510dd100ef2
+    UUID: b722614a-303f-411a-bb19-a1882ad1f4cc
+
+Class Monk
+    BaseHp: 8
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    ClassEquipment: EQP_CC_Monk
+    Description: Channel your cosmic enlightenment by deftly dodging and efficiently disassembling your foes through stunning strikes and a whirlwind of martial art attacks. 
+    DisplayName: Monk
+    HpPerLevel: 5
+    LearningStrategy: 1
+    Name: Monk
+    PrimaryAbility: 2 (Dexterity)
+    ProgressionTableUUID: fe1319a2-86be-469c-aab5-e3b0bd714e0e
+    SoundClassType: Monk
+    SpellCastingAbility: 5 (Wisdom)
+    UUID: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+
+Class Paladin
+    BaseHp: 10
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: Fuelled by the Oath you swore to uphold justice and righteousness, you are a beacon of hope in dark times.
+    DisplayName: Paladin
+    HasGod: false
+    HpPerLevel: 6
+    LearningStrategy: 1
+    MulticlassSpellcasterModifier: 0.5
+    MustPrepareSpells: true
+    Name: Paladin
+    PrimaryAbility: 1 (Strength)
+    ProgressionTableUUID: ba2afe85-acba-4ea1-a238-2b4543f47821
+    SoundClassType: Paladin
+    SpellCastingAbility: 6 (Charisma)
+    SpellList: 4ed41a6d-19fd-4ca8-940a-072314b71e43
+    UUID: ff4d9497-023c-434a-bd14-82fc367e991c
+
+Class Oath of the Ancients
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    ClassEquipment: EQP_CC_Paladin_Ancients
+    Description: You fight on the side of light in the cosmic struggle against darkness to preserve the sanctity of life and the beauty of nature.
+    DisplayName: Oath of the Ancients
+    LearningStrategy: 1
+    MustPrepareSpells: true
+    Name: Ancients
+    ParentGuid: ff4d9497-023c-434a-bd14-82fc367e991c
+    PrimaryAbility: 1 (Strength)
+    ProgressionTableUUID: b82864a7-b093-4553-a802-e176831029c1
+    SoundClassType: Paladin
+    SpellCastingAbility: 6 (Charisma)
+    SpellList: 3bcdea33-af00-4a43-9f77-279a49982924
+    UUID: b36d247e-d39f-4ae9-9476-3ec315c55789
+
+Class Oath of Devotion
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    ClassEquipment: EQP_CC_Paladin_Devotion
+    Description: Following the ideal of the knight in shining armour, you act with honour and virtue to protect the weak and pursue the greater good.
+    DisplayName: Oath of Devotion
+    LearningStrategy: 1
+    MustPrepareSpells: true
+    Name: Devotion
+    ParentGuid: ff4d9497-023c-434a-bd14-82fc367e991c
+    PrimaryAbility: 1 (Strength)
+    ProgressionTableUUID: 941ca27d-02f7-4f59-bd33-63fa3366134d
+    SoundClassType: Paladin
+    SpellCastingAbility: 6 (Charisma)
+    SpellList: 5d53e0f2-12a3-4a9e-819e-3d1c5b64496b
+    UUID: 1c761ad0-6f5f-409e-ac1d-ddf6f85c1fc4
+
+Class Oathbreaker
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: You have broken your sacred Oath in pursuit of power and ambition. Only darkness remains to fuel you now.
+    DisplayName: Oathbreaker
+    LearningStrategy: 1
+    MustPrepareSpells: true
+    Name: Oathbreaker
+    ParentGuid: ff4d9497-023c-434a-bd14-82fc367e991c
+    PrimaryAbility: 1 (Strength)
+    ProgressionTableUUID: f0d6f933-4532-463f-b378-a1e8b0164325
+    SoundClassType: Paladin
+    SpellCastingAbility: 6 (Charisma)
+    SpellList: ba84af1b-cd77-458f-b99f-0062be22745c
+    UUID: 6fb3831e-45d8-4b30-9714-6fe73988921b
+
+Class Ranger
+    BaseHp: 10
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    ClassEquipment: EQP_CC_Ranger
+    ClassHotbarColumns: 5
+    CommonHotbarColumns: 9
+    Description: Rangers are unrivalled scouts and trackers, honing a deep connection with nature in order to hunt their favoured prey.
+    DisplayName: Ranger
+    HpPerLevel: 6
+    ItemsHotbarColumns: 2
+    LearningStrategy: 1
+    MulticlassSpellcasterModifier: 0.5
+    Name: Ranger
+    PrimaryAbility: 2 (Dexterity)
+    ProgressionTableUUID: 8f068974-ed32-43fc-a9d9-028be1c01a9c
+    SoundClassType: Ranger
+    SpellCastingAbility: 5 (Wisdom)
+    SpellList: ffd3b636-d424-4120-87ae-4499a34828dc
+    UUID: 36be18ba-23db-4dff-bfa6-ae105ce43144
+
+Class Beast Master
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: Beast Masters bind themselves to an animal companion, sharing an intelligent bond that flourishes in and out of combat.
+    DisplayName: Beast Master
+    LearningStrategy: 1
+    Name: BeastMaster
+    ParentGuid: 36be18ba-23db-4dff-bfa6-ae105ce43144
+    PrimaryAbility: 2 (Dexterity)
+    ProgressionTableUUID: 1ba04e99-e329-471d-a656-bbd5a363d7c8
+    SoundClassType: Ranger
+    SpellCastingAbility: 5 (Wisdom)
+    UUID: 6fd9547d-cc28-400e-bfa9-3a85baa70f24
+
+Class Hunter
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: Hunters seek the most dangerous prey in Faerûn, from ancient dragons to massive hordes of undead, and excel at slaying them all.
+    DisplayName: Hunter
+    LearningStrategy: 1
+    Name: Hunter
+    ParentGuid: 36be18ba-23db-4dff-bfa6-ae105ce43144
+    PrimaryAbility: 2 (Dexterity)
+    ProgressionTableUUID: b19bc1ec-d7ee-4023-9f58-5056fd99be24
+    SoundClassType: Ranger
+    SpellCastingAbility: 5 (Wisdom)
+    UUID: 0aa1cff9-c45f-4d00-a95b-99a7aa96dd06
+
+Class Rogue
+    BaseHp: 8
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    ClassEquipment: EQP_CC_Rogue
+    ClassHotbarColumns: 5
+    CommonHotbarColumns: 9
+    Description: With stealth, skill, and uncanny reflexes, rogues' versatility lets them get the upper hand in almost any situation.
+    DisplayName: Rogue
+    HpPerLevel: 5
+    ItemsHotbarColumns: 2
+    LearningStrategy: 1
+    Name: Rogue
+    PrimaryAbility: 2 (Dexterity)
+    ProgressionTableUUID: 9a44e828-92db-4d6c-acbc-a4f8ef340415
+    SoundClassType: Rogue
+    SpellCastingAbility: 0 ()
+    UUID: e8b1eab0-ef11-40a2-8a0b-cee8d062bf2a
+
+Class Thief
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: Thieves use their skills in stealth and larceny to acquire whatever they wish, whether from a third story window or the depths of long-forgotten ruins.
+    DisplayName: Thief
+    LearningStrategy: 1
+    Name: Thief
+    ParentGuid: e8b1eab0-ef11-40a2-8a0b-cee8d062bf2a
+    PrimaryAbility: 2 (Dexterity)
+    ProgressionTableUUID: f6acc595-46b4-4d96-b7d5-6f33366fc2de
+    SoundClassType: Rogue
+    SpellCastingAbility: 0 ()
+    UUID: 32c7b8df-a6ec-4848-a9db-c0dce781beb9
+
+Class Arcane Trickster
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: Arcane Tricksters are rogues with a clever touch of magic, using illusions and enchantments to keep their opponents on the back foot.
+    DisplayName: Arcane Trickster
+    LearningStrategy: 1
+    MulticlassSpellcasterModifier: 0.34000000000000002
+    Name: ArcaneTrickster
+    ParentGuid: e8b1eab0-ef11-40a2-8a0b-cee8d062bf2a
+    PrimaryAbility: 2 (Dexterity)
+    ProgressionTableUUID: 7205dbe2-5eef-4cd6-ad7f-45b3dc254f78
+    SoundClassType: Rogue
+    SpellCastingAbility: 4 (Intelligence)
+    SpellList: c3a861a2-6bbc-4ff6-96e4-a4accf10d957
+    UUID: ede4778e-7602-440f-9075-b4bc8dc31cea
+
+Class Sorcerer
+    BaseHp: 6
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    ClassEquipment: EQP_CC_Sorcerer
+    Description: Sorcerers are natural spellcasters, drawing on inherent magic from a gift or bloodline.
+    DisplayName: Sorcerer
+    HpPerLevel: 4
+    LearningStrategy: 1
+    MulticlassSpellcasterModifier: 1
+    Name: Sorcerer
+    PrimaryAbility: 6 (Charisma)
+    ProgressionTableUUID: e2416b02-953a-4ce8-aa8f-eb98d549d86d
+    SoundClassType: Sorcerer
+    SpellCastingAbility: 6 (Charisma)
+    SpellList: 2ba5248a-f014-409d-ab26-b50116f7e477
+    UUID: 784001e2-c96d-4153-beb6-2adbef5abc92
+
+Class Draconic Bloodline
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    ClassEquipment: EQP_CC_Sorcerer_DraconicAncestry
+    Description: Your veins carry draconic magic, the result of a powerful dragon ancestor.
+    DisplayName: Draconic Bloodline
+    LearningStrategy: 1
+    Name: DraconicBloodline
+    ParentGuid: 784001e2-c96d-4153-beb6-2adbef5abc92
+    PrimaryAbility: 6 (Charisma)
+    ProgressionTableUUID: 35aa255d-3eb7-4e93-8092-7545ced25b09
+    SoundClassType: Sorcerer
+    SpellCastingAbility: 6 (Charisma)
+    UUID: 36286b0a-26f9-4b4e-9311-fd1404301d20
+
+Class Wild Magic
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: Your powers come from ancient forces of chaos. They churn within you - waiting to burst free at any time.
+    DisplayName: Wild Magic
+    LearningStrategy: 1
+    Name: WildMagic
+    ParentGuid: 784001e2-c96d-4153-beb6-2adbef5abc92
+    PrimaryAbility: 6 (Charisma)
+    ProgressionTableUUID: dbf5281b-5a6e-486d-92db-ff67a0a3842b
+    SoundClassType: Sorcerer
+    SpellCastingAbility: 6 (Charisma)
+    UUID: 14374d37-a70e-41a8-9dc5-85a23f8b5dd2
+
+Class Warlock
+    BaseHp: 8
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    ClassEquipment: EQP_CC_Warlock
+    Description: Bound by a pact to an all-powerful patron, warlocks trade their loyalty for supernatural abilities and unique magic.
+    DisplayName: Warlock
+    HpPerLevel: 5
+    LearningStrategy: 1
+    Name: Warlock
+    PrimaryAbility: 6 (Charisma)
+    ProgressionTableUUID: a7a958f1-d858-4021-9fa7-cf87e7d71377
+    SoundClassType: Warlock
+    SpellCastingAbility: 6 (Charisma)
+    SpellList: 32879c22-4858-48ef-8f8d-22e6d395b396
+    UUID: b4225a4b-4bbe-4d97-9e3c-4719dbd1487c
+
+Class The Fiend
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: Warlocks in service to fiends work towards corrupting, destructive ends - intentionally or otherwise - and receive hellish blessings in turn.
+    DisplayName: The Fiend
+    LearningStrategy: 1
+    Name: Fiend
+    ParentGuid: b4225a4b-4bbe-4d97-9e3c-4719dbd1487c
+    PrimaryAbility: 6 (Charisma)
+    ProgressionTableUUID: 2700b42c-3b2f-4fc7-b881-4acc4f0a3a1f
+    SoundClassType: Warlock
+    SpellCastingAbility: 6 (Charisma)
+    SpellList: 69d140ce-e988-4007-b069-30fe2e5f0d2f
+    UUID: 8866db28-7dda-4fd6-93ed-20eca16314f0
+
+Class The Great Old One
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: Warlocks bound to eldritch beings in the Far Realm work towards inscrutable goals, gaining strange powers over entropy and the mind.
+    DisplayName: The Great Old One
+    LearningStrategy: 1
+    Name: GreatOldOne
+    ParentGuid: b4225a4b-4bbe-4d97-9e3c-4719dbd1487c
+    PrimaryAbility: 6 (Charisma)
+    ProgressionTableUUID: 216e779e-3452-466c-933d-fb5723b90802
+    SoundClassType: Warlock
+    SpellCastingAbility: 6 (Charisma)
+    SpellList: 9bcde680-356e-445e-abdb-c21f3400648b
+    UUID: e1e4a21f-9405-46ec-81a0-ccc8d58d9736
+
+Class Wizard
+    BaseHp: 6
+    CanLearnSpells: true
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    ClassEquipment: EQP_CC_Wizard
+    Description: Wizards master the arcane by specialising in individual schools of magic, combining ancient spells with modern research.
+    DisplayName: Wizard
+    HpPerLevel: 4
+    IsDefaultForUseSpellAction: true
+    LearningStrategy: 1
+    MulticlassSpellcasterModifier: 1
+    MustPrepareSpells: true
+    Name: Wizard
+    PrimaryAbility: 4 (Intelligence)
+    ProgressionTableUUID: d18eda7e-4b7d-490d-9952-cd33a3c60479
+    SoundClassType: Wizard
+    SpellCastingAbility: 4 (Intelligence)
+    SpellList: beb9389e-24f8-49b0-86a5-e8d08b6fdc2e
+    UUID: a865965f-501b-46e9-9eaa-7748e8c04d09
+
+Class Abjuration
+    CanLearnSpells: true
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: Abjuration spells summon wards, banish enemies, and nullify magic, suitable for those who wish to defend themselves and others. Learning Abjuration spells from scrolls only costs you 25g per spell level, not 50. 
+    DisplayName: Abjuration
+    LearningStrategy: 1
+    MustPrepareSpells: true
+    Name: AbjurationSchool
+    ParentGuid: a865965f-501b-46e9-9eaa-7748e8c04d09
+    PrimaryAbility: 4 (Intelligence)
+    ProgressionTableUUID: 9f0fd3ac-7520-45fa-9f7d-08b1ca6eacf3
+    SoundClassType: Wizard
+    SpellCastingAbility: 4 (Intelligence)
+    UUID: e6a0eb75-7a01-4f40-8563-24ba2615e99b
+
+Class Evocation
+    CanLearnSpells: true
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: Evocation spells focus elemental energy into powerful attacks and enchantments. Those who specialise in this school are known as evokers. Learning Evocation spells from scrolls only costs you 25g per spell level, not 50. 
+    DisplayName: Evocation
+    LearningStrategy: 1
+    MustPrepareSpells: true
+    Name: EvocationSchool
+    ParentGuid: a865965f-501b-46e9-9eaa-7748e8c04d09
+    PrimaryAbility: 4 (Intelligence)
+    ProgressionTableUUID: 953e6528-acd2-48b5-95e7-9d54ad555d39
+    SoundClassType: Wizard
+    SpellCastingAbility: 4 (Intelligence)
+    UUID: c059dca1-c17d-4dce-8260-83ede5070eac
+
+Class Wild Magic
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: The wild influence of magic has transformed you, suffusing you with an arcane power that churns within you, waiting to be released.
+    DisplayName: Wild Magic
+    LearningStrategy: 1
+    Name: WildMagicPath
+    ParentGuid: d8cadb42-0ff9-4049-afaf-e5d78d06a399
+    PrimaryAbility: 1 (Strength)
+    ProgressionTableUUID: 7d5237b0-9ac6-4344-8171-43fa2f553e2f
+    SoundClassType: Barbarian
+    SpellCastingAbility: 0 ()
+    UUID: d6bf00fc-3518-4d63-ba8b-03532c1abc4d
+
+Class College of Swords
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: A highly trained and skilled warrior, you use your prowess with words and weapons to fight and entertain in equal measure.
+    DisplayName: College of Swords
+    LearningStrategy: 1
+    Name: SwordsCollege
+    ParentGuid: 92cd50b6-eb1b-4824-8adb-853e90c34c90
+    PrimaryAbility: 6 (Charisma)
+    ProgressionTableUUID: 68f61c89-be48-41aa-acb6-2f3bd15303c7
+    SoundClassType: Bard
+    SpellCastingAbility: 6 (Charisma)
+    UUID: c4bd5252-d68a-4330-9431-5e8ab24c5f29
+
+Class Knowledge Domain
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: Adaptable and adroit in all manner of languages and skills, your mind is an intellectual cup brimming with exquisite knowing.
+    DisplayName: Knowledge Domain
+    LearningStrategy: 1
+    MustPrepareSpells: true
+    Name: KnowledgeDomain
+    ParentGuid: 114e7aee-d1d4-4371-8d90-8a2080592faf
+    PrimaryAbility: 5 (Wisdom)
+    ProgressionTableUUID: 4709e126-1b45-4baf-93a2-be66ed4487d2
+    ShortName: h333f3c0ag222eg453cga248ga524f9b21137
+    SoundClassType: Cleric
+    SpellCastingAbility: 5 (Wisdom)
+    SpellList: 6e728725-5a3a-42f4-ae6c-93b803e5d979
+    UUID: ebe18794-b5e1-41c4-befa-4b9d6922b0ec
+
+Class Nature Domain
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: You embody the vast viridian power of the natural world, an avatar of the subtle divinity of fruitfall, avian migration, woodland silence, and the landslide's roaring fury. 
+    DisplayName: Nature Domain
+    LearningStrategy: 1
+    MustPrepareSpells: true
+    Name: NatureDomain
+    ParentGuid: 114e7aee-d1d4-4371-8d90-8a2080592faf
+    PrimaryAbility: 5 (Wisdom)
+    ProgressionTableUUID: c668b65d-2848-4feb-981f-eb54cc5ceb15
+    ShortName: h4bd4988bgc309g4e04g8127g3e3d1cef4082
+    SoundClassType: Cleric
+    SpellCastingAbility: 5 (Wisdom)
+    SpellList: 38f8f794-6c62-4641-bcb9-2d1a733badaa
+    UUID: 6dec76d0-df22-411c-8a78-3d6fb843ae50
+
+Class Tempest Domain
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: Your faith has made you the very thunder that quakes the black firmament, the lightning coursing through the veins of a terrible storm. 
+    DisplayName: Tempest Domain
+    LearningStrategy: 1
+    MustPrepareSpells: true
+    Name: TempestDomain
+    ParentGuid: 114e7aee-d1d4-4371-8d90-8a2080592faf
+    PrimaryAbility: 5 (Wisdom)
+    ProgressionTableUUID: 0630b55b-36f4-41d2-aacc-28e99d6ae252
+    ShortName: ha3615807gc20cg4bd1ga91bg1dcc29e9bd5d
+    SoundClassType: Cleric
+    SpellCastingAbility: 5 (Wisdom)
+    SpellList: 264c3b2d-8445-40f6-9a2f-383de3baa01e
+    UUID: 89bacf1b-8f15-4972-ada7-bf59c7c78441
+
+Class War Domain
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: Fortified by holy zeal, you brandish an arsenal of sacramental savagery to use against those you deem unrighteous. 
+    DisplayName: War Domain
+    LearningStrategy: 1
+    MustPrepareSpells: true
+    Name: WarDomain
+    ParentGuid: 114e7aee-d1d4-4371-8d90-8a2080592faf
+    PrimaryAbility: 5 (Wisdom)
+    ProgressionTableUUID: 8f6048bc-47b8-49fa-956a-8a364807f6ec
+    ShortName: hcb63e908g7495g4b3bga6f6ge3df61958148
+    SoundClassType: Cleric
+    SpellCastingAbility: 5 (Wisdom)
+    SpellList: d76e6293-e2e3-4e63-9ef1-655556b18833
+    UUID: b9ccf90e-b35b-4b73-b896-8ed2d32ae8c6
+
+Class Circle of the Spores
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: Viewing death, necrosis, fungal growth, and sporulation as just another part of life, you can manipulate such spores to augment yourself and harm your foes.
+    DisplayName: Circle of the Spores
+    LearningStrategy: 1
+    MustPrepareSpells: true
+    Name: CircleOfTheSpores
+    ParentGuid: 457d0a6e-9da8-4f95-a225-18382f0e94b5
+    PrimaryAbility: 5 (Wisdom)
+    ProgressionTableUUID: 288c9d1e-ab18-46dd-8fa3-d4fcfa44147a
+    SoundClassType: Druid
+    SpellCastingAbility: 5 (Wisdom)
+    SpellList: 877f8053-b97f-4b75-99e2-6e6834a11e87
+    UUID: 4b61af6c-4a44-436e-aa0a-0d11a2d6b8ee
+
+Class Champion
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: You approach the complex problems posed by combat with one distinctly effective solution - you hit those problems, really quite hard.
+    DisplayName: Champion
+    LearningStrategy: 1
+    Name: Champion
+    ParentGuid: 721dfac3-92d4-41f5-b773-b7072a86232f
+    PrimaryAbility: 1 (Strength)
+    ProgressionTableUUID: 9b2ff703-7924-4a66-b119-ae4d716a4522
+    SoundClassType: Fighter
+    SpellCastingAbility: 0 ()
+    UUID: 0a01dc6b-ab1a-4c0e-8a5e-4787fe1f2caf
+
+Class Way of the Four Elements
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: You focus your ki to bend the elements to your will, using them as an extension of your own body.
+    DisplayName: Way of the Four Elements
+    LearningStrategy: 1
+    Name: FourElements
+    ParentGuid: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    PrimaryAbility: 5 (Wisdom)
+    ProgressionTableUUID: 6c9fac23-d01a-4e0d-bfb1-28bed5581ee2
+    SoundClassType: Monk
+    SpellCastingAbility: 5 (Wisdom)
+    UUID: 22894c32-54cf-49ea-b366-44bfcf01bb2a
+
+Class Way of the Open Hand
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: You specialise in unarmed combat, using your hands and your control of ki to heal or inflict grievous hurt.
+    DisplayName: Way of the Open Hand
+    LearningStrategy: 1
+    Name: OpenHand
+    ParentGuid: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    PrimaryAbility: 2 (Dexterity)
+    ProgressionTableUUID: 5a9bf488-fda7-4e49-a3fa-e0aad24fbf43
+    SoundClassType: Monk
+    SpellCastingAbility: 5 (Wisdom)
+    UUID: 2a5e3097-384c-4d29-8d6e-054fdfd26b80
+
+Class Way of Shadow
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: You value the arts of stealth and subterfuge, bending the shadows to your will to strike without warning.
+    DisplayName: Way of Shadow
+    LearningStrategy: 1
+    Name: Shadow
+    ParentGuid: c4598bdb-fc07-40dd-a62c-90cc138bd76f
+    PrimaryAbility: 2 (Dexterity)
+    ProgressionTableUUID: 6e1a1046-1202-410b-9d80-91c819a8bcca
+    SoundClassType: ShadowMonk
+    SpellCastingAbility: 5 (Wisdom)
+    UUID: bf46d73f-d406-4cb8-9a1d-e6e758ca02c7
+
+Class Gloom Stalker
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: Emerging like a horrible gift from the envelope of darkness and shadow, you ambush and put down your foes before they can even scream. 
+    DisplayName: Gloom Stalker
+    LearningStrategy: 1
+    Name: GloomStalker
+    ParentGuid: 36be18ba-23db-4dff-bfa6-ae105ce43144
+    PrimaryAbility: 2 (Dexterity)
+    ProgressionTableUUID: caa60bb8-8ca3-4871-b034-e10a6bc8ca29
+    SoundClassType: Ranger
+    SpellCastingAbility: 5 (Wisdom)
+    SpellList: 54450a9e-a079-4449-9463-089916803d9c
+    UUID: d5f10e55-84e3-409b-aa64-2098c9550319
+
+Class Assassin
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: You prefer to deal sublime punishment to a single foe at a time - not in a duel, mind, because a duel implies chivalry, and you're too busy getting the job done for honour.
+    DisplayName: Assassin
+    LearningStrategy: 1
+    Name: Assassin
+    ParentGuid: e8b1eab0-ef11-40a2-8a0b-cee8d062bf2a
+    PrimaryAbility: 2 (Dexterity)
+    ProgressionTableUUID: 43c75b78-757b-4875-9932-427bc95278a0
+    SoundClassType: Rogue
+    SpellCastingAbility: 0 ()
+    UUID: b53a8061-f31d-4985-adfe-d4d691a918d9
+
+Class Storm Sorcery
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    ClassEquipment: EQP_CC_Sorcerer_StormSorcery
+    Description: Whether crackling with the energy of ancient deluges or pierced by gales and hurricanes, your lineage is a strange tapestry scrawled by a tempest. 
+    DisplayName: Storm Sorcery
+    LearningStrategy: 1
+    Name: StormSorcery
+    ParentGuid: 784001e2-c96d-4153-beb6-2adbef5abc92
+    PrimaryAbility: 6 (Charisma)
+    ProgressionTableUUID: fac6ea25-a7f8-4793-b331-d884041e5adb
+    SoundClassType: Sorcerer
+    SpellCastingAbility: 6 (Charisma)
+    SpellList: c572712a-eabf-4659-8289-ea1fa4a0d234
+    UUID: d379fdae-b401-4731-8d50-277c73919ae3
+
+Class Conjuration
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: Compelled by shape and motion, your favoured arcane style involves summoning creatures and objects, as well as displacing them in space. Learning Conjuration spells from scrolls only costs you 25g per spell level, not 50. 
+    DisplayName: Conjuration
+    LearningStrategy: 1
+    MustPrepareSpells: true
+    Name: ConjurationSchool
+    ParentGuid: a865965f-501b-46e9-9eaa-7748e8c04d09
+    PrimaryAbility: 4 (Intelligence)
+    ProgressionTableUUID: 91892607-d017-4a06-b904-0788fc84bf6a
+    SoundClassType: Wizard
+    SpellCastingAbility: 4 (Intelligence)
+    UUID: 7a3feb8d-dda7-46ec-9029-1f302f537432
+
+Class Divination
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: You peer through time itself and can sculpt the future, like temporal clay, into a more favourable form. Learning Divination spells from scrolls only costs you 25g per spell level, not 50. 
+    DisplayName: Divination
+    LearningStrategy: 1
+    MustPrepareSpells: true
+    Name: DivinationSchool
+    ParentGuid: a865965f-501b-46e9-9eaa-7748e8c04d09
+    PrimaryAbility: 4 (Intelligence)
+    ProgressionTableUUID: 62f7418b-aeca-46e8-8dc8-dd4d4aa632c6
+    SoundClassType: Wizard
+    SpellCastingAbility: 4 (Intelligence)
+    UUID: 7577b0e1-a517-4f82-8f72-05a227dc5e88
+
+Class Enchantment
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: Your magic influences, beguiles, and bends the will and conviction of those around you. Learning Enchantment spells from scrolls only costs you 25g per spell level, not 50. 
+    DisplayName: Enchantment
+    LearningStrategy: 1
+    MustPrepareSpells: true
+    Name: EnchantmentSchool
+    ParentGuid: a865965f-501b-46e9-9eaa-7748e8c04d09
+    PrimaryAbility: 4 (Intelligence)
+    ProgressionTableUUID: 1c1d48af-42b7-4fac-a3ce-ca3525f1ccbe
+    SoundClassType: Wizard
+    SpellCastingAbility: 4 (Intelligence)
+    UUID: 46d31950-6917-444e-ac87-706702825215
+
+Class Necromancy
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: You walk through the valley of the shadow of death, and make lots of friends there. Learning Necromancy spells from scrolls only costs you 25g per spell level, not 50. 
+    DisplayName: Necromancy
+    LearningStrategy: 1
+    MustPrepareSpells: true
+    Name: NecromancySchool
+    ParentGuid: a865965f-501b-46e9-9eaa-7748e8c04d09
+    PrimaryAbility: 4 (Intelligence)
+    ProgressionTableUUID: 47c4579c-ea2c-474d-9667-62edec24e8eb
+    SoundClassType: Wizard
+    SpellCastingAbility: 4 (Intelligence)
+    UUID: fbb8347b-20e3-4846-ba91-0552cd12fc5f
+
+Class Illusion
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: You specialise in unravelling and restitching the fabric of reality to fool the unwary, the gullible, and the monstrous. Learning Illusion spells from scrolls only costs you 25g per spell level, not 50. 
+    DisplayName: Illusion
+    LearningStrategy: 1
+    MustPrepareSpells: true
+    Name: IllusionSchool
+    ParentGuid: a865965f-501b-46e9-9eaa-7748e8c04d09
+    PrimaryAbility: 4 (Intelligence)
+    ProgressionTableUUID: a78bdb33-84e2-4943-a593-3d68f178ba32
+    SoundClassType: Wizard
+    SpellCastingAbility: 4 (Intelligence)
+    UUID: 436c9e1a-3a39-48dd-b753-7cee1bd19c00
+
+Class Transmutation
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: Your innate fascination with the structure of things has granted you an incredible power over crude matter and its manipulation. Learning Transmutation spells from scrolls only costs you 25g per spell level, not 50. 
+    DisplayName: Transmutation
+    LearningStrategy: 1
+    MustPrepareSpells: true
+    Name: TransmutationSchool
+    ParentGuid: a865965f-501b-46e9-9eaa-7748e8c04d09
+    PrimaryAbility: 4 (Intelligence)
+    ProgressionTableUUID: 0bf3a1fe-f4e0-4bd3-aa97-ceec14afa407
+    SoundClassType: Wizard
+    SpellCastingAbility: 4 (Intelligence)
+    UUID: a12f2924-30b4-4185-9db9-2c5b383ff449
+
+Class The Archfey
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    Description: Graced by a lady or lord of the fey, you are imbued with all the sumptuous and scary qualities of your patron's extraordinary realm. 
+    DisplayName: The Archfey
+    LearningStrategy: 2
+    Name: Archfey
+    ParentGuid: b4225a4b-4bbe-4d97-9e3c-4719dbd1487c
+    PrimaryAbility: 6 (Charisma)
+    ProgressionTableUUID: 7e1e0190-bd32-4ca6-9623-8adebeba74d4
+    SoundClassType: Warlock
+    SpellCastingAbility: 6 (Charisma)
+    SpellList: f95ef4cc-5f75-4274-bda5-589175d2ac66
+    UUID: 733ddf8c-9ec4-4c5a-85e3-c70fd3df3c24
+
+Class Oath of Vengeance
+    CharacterCreationPose: 0f07ec6e-4ef0-434e-9a51-1353260ccff8
+    ClassEquipment: EQP_CC_Paladin_Vengance
+    Description: You have set aside even your own purity to right wrongs and deliver justice to those who have committed the most grievous sins.
+    DisplayName: Oath of Vengeance
+    LearningStrategy: 1
+    MustPrepareSpells: true
+    Name: Vengeance
+    ParentGuid: ff4d9497-023c-434a-bd14-82fc367e991c
+    PrimaryAbility: 1 (Strength)
+    ProgressionTableUUID: f769aa02-1f74-4fb6-b94c-8850143daa20
+    SoundClassType: Paladin
+    SpellCastingAbility: 6 (Charisma)
+    SpellList: 6e7cf070-d8fb-4c5c-a1bf-819bfd18ac72
+    UUID: 3cc3d397-c47d-4966-87ae-88827f73f645
+
+===== Parsing finished =====

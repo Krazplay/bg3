@@ -28,7 +28,8 @@ xml_localization.xpath('/contentList/content').each do |item|
 end
 
 # Loop on ClassDescription of both file
-(xml1.xpath('//node[@id="God"]')+xml2.xpath('//node[@id="ClassDescription"]')).each do |item|
+pathx = '//node[@id="God"]'
+(xml1.xpath(pathx)+xml2.xpath(pathx)).each do |item|
     # Store each attribute and its value
     storage = {}
     item.xpath('attribute').each do |attr|

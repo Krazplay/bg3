@@ -128,4 +128,22 @@ God Mielikki
     Name: Mielikki
     UUID: 8985ae89-0e72-4ebb-b4f6-14e4ecdd2c74
 
+God Bahamut
+    Description: The Angel of the Seven Heavens is the dragon god of justice. His ideals of mercy and just authority keep him locked in an inexorable rivalry with his sister, Tiamat. 
+    DisplayName: Bahamut
+    Name: Bahamut
+    UUID: f5084c3e-5ced-4d42-9e54-842d080d389f
+
+God Gruumsh
+    Description: The One-Eye is the orcs' patron deity - a god of war, conquest, and victory at all costs. He has held an ancient and immutable grudge against the elven pantheon since Corellon Larethian took his eye. 
+    DisplayName: Gruumsh
+    Name: Gruumsh
+    UUID: f50690bc-8364-4a8c-83d7-3f9bf4878546
+
+God Tiamat
+    Description: Tiamat the Many-Mawed is a roiling mass of avarice and hate currently trapped within the Nine Hells. The dragon god of greed eternally plots her escape, as do her many fanatics in world of Toril.
+    DisplayName: Tiamat
+    Name: Tiamat
+    UUID: 30da56bc-ab24-4641-86d7-0560d8ba1681
+
 ===== Parsing finished =====

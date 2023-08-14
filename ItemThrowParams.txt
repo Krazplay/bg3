@@ -1,0 +1,78 @@
+=====  Parsing start   =====
+
+ItemThrowParam
+    Conditions: Item() and Tagged('WPN_DAGGER')
+    MaxDistForOneRotation: 3
+    MaxDistForTwoRotations: 9
+    MaxDistForZeroRotations: 1
+    Priority: 1
+    RotationAxis: YAxisNegative
+    StartAngleY: 0
+    StartAngleZ: 90
+    UUID: 07a075f8-0df0-4146-bed5-eb5117644ba0
+
+ItemThrowParam
+    Conditions: Item() and (Tagged('WPN_CLUB') or Tagged('WPN_FLAIL') or Tagged('WPN_HANDAXE') or Tagged('WPN_HAND_CROSSBOW') or Tagged('WPN_HEAVY_CROSSBOW') or Tagged('WPN_LIGHT_CROSSBOW') or Tagged('WPN_LIGHT_HAMMER') or Tagged('WPN_MACE') or Tagged('WPN_MORNINGSTAR') or Tagged('WPN_SCIMITAR') or Tagged('WPN_SHORTBOW') or Tagged('WPN_SHORTSWORD') or Tagged('WPN_SICKLE') or Tagged('WPN_SLING'))
+    MaxDistForOneRotation: 10
+    MaxDistForTwoRotations: 20
+    MaxDistForZeroRotations: 2
+    Priority: 2
+    RotationAxis: YAxisNegative
+    StartAngleY: 0
+    StartAngleZ: 90
+    UUID: 966d5172-45b3-4438-b198-aba22130c14e
+
+ItemThrowParam
+    Conditions: Item() and (Tagged('ARROW') or Tagged('WPN_DART') or Tagged('WPN_GLAIVE') or Tagged('WPN_HALBERD') or Tagged('WPN_JAVELIN') or Tagged('WPN_PIKE') or Tagged('WPN_RAPIER') or Tagged('WPN_SPEAR') or Tagged('WPN_STAVE') or Tagged('WPN_TRIDENT') or Tagged('OBJ_LARGE_NOSPIN') or Tagged('OBJ_MEDIUM_NOSPIN') or Tagged('OBJ_SMALL_NOSPIN') or Tagged('OBJ_TINY_NOSPIN'))
+    Priority: 3
+    RotationAxis: None
+    UUID: 201ebff1-ae32-4bfb-b7d8-d18d739d8f89
+
+ItemThrowParam
+    Conditions: Item() and (Tagged('WPN_BATTLEAXE') or Tagged('WPN_GREATAXE') or Tagged('WPN_GREATCLUB') or Tagged('WPN_GREATSWORD') or Tagged('WPN_LONGBOW') or Tagged('WPN_LONGSWORD') or Tagged('WPN_MAUL') or Tagged('WPN_WARHAMMER'))
+    MaxDistForOneRotation: 15
+    MaxDistForTwoRotations: 30
+    MaxDistForZeroRotations: 2
+    Priority: 4
+    RotationAxis: YAxisNegative
+    StartAngleY: 0
+    StartAngleZ: 90
+    UUID: 1a083502-58a4-4405-ad6a-75dc7c97c4f3
+
+ItemThrowParam
+    Conditions: Item() and Tagged('OBJ_LARGE_SPIN')
+    MaxDistForOneRotation: 20
+    MaxDistForTwoRotations: 40
+    MaxDistForZeroRotations: 2
+    Priority: 5
+    RotationAxis: XAxisPositive
+    UUID: 77693164-ff62-4489-ad16-375c046b6314
+
+ItemThrowParam
+    Conditions: Item() and Tagged('OBJ_MEDIUM_SPIN')
+    MaxDistForOneRotation: 15
+    MaxDistForTwoRotations: 30
+    MaxDistForZeroRotations: 2
+    Priority: 6
+    RotationAxis: YAxisPositive
+    UUID: 31079f16-2a39-4a7e-86d4-c33d433c62b7
+
+ItemThrowParam
+    Conditions: Item() and Tagged('OBJ_SMALL_SPIN')
+    MaxDistForOneRotation: 12
+    MaxDistForTwoRotations: 24
+    MaxDistForZeroRotations: 2
+    Priority: 7
+    RotationAxis: XAxisPositive
+    UUID: c459dd61-8714-45a0-b3e3-514170ae417c
+
+ItemThrowParam
+    Conditions: Item() and Tagged('OBJ_TINY_SPIN')
+    MaxDistForOneRotation: 8
+    MaxDistForTwoRotations: 15
+    MaxDistForZeroRotations: 1
+    Priority: 8
+    RotationAxis: XAxisPositive
+    UUID: 19cca4c0-46f4-4bee-acff-635f044e8ea9
+
+===== Parsing finished =====

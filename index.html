@@ -10,16 +10,26 @@
         <div>Temporary quest file: <a href="./resultat.txt">resultat.txt</a></div>
         <div><a href="./ClassDescriptions.txt">Class Descriptions</a></div>
         <div><a href="./Gods.txt">Gods</a></div>
-        <div><a href="./ItemThrowParams.txt">ItemThrowParams</a></div>
+        <div><a href="./ItemThrowParams.txt">ItemThrowParams</a></div><br/>
+
         <div>Levelmaps folder (refers to the mapping of character/monster/quest/thing level => value, not geography!)</div>
         <div STYLE="padding:0 0 0 20px;"><a href="./ExperienceRewards.txt">ExperienceRewards</a> (file in Shared seems obsolete, so I'm parsing only SharedDev)</div>
         <div STYLE="padding:0 0 0 20px;"><a href="./GoldValues.txt">GoldValues</a></div>
-        <div STYLE="padding:0 0 0 20px;"><a href="./LevelMapValues.txt">LevelMapValues</a> (some abilities scaling are stored here)</div>
+        <div STYLE="padding:0 0 0 20px;"><a href="./LevelMapValues.txt">LevelMapValues</a> (some abilities scaling are stored here)</div><br/>
+
         <div>RandomCasts folder</div>
-        <div STYLE="padding:0 0 0 20px;"><a href="./Outcomes.txt">Outcomes</a></div>
+        <div STYLE="padding:0 0 0 20px;"><a href="./Outcomes.txt">Outcomes</a></div><br/>
+
         <div>Stats\Generated\Data folder</div>
-        <div STYLE="padding:0 0 0 20px;"><a href="./Interrupt.txt">Interrupt list</a> (Reactions)</div>
-        <div STYLE="padding:0 0 0 20px;"><a href="./Armor.txt">Armor list</a> (not done yet)</div>
-        <div STYLE="padding:0 0 0 20px;"><a href="./Weapon.txt">Weapon list</a> (not done yet)</div>
+        <div>Warning 1 - Some of those files are over 10MB. It's because everytime an item is the child of another item, I include the parent item, which itself can be a child of another one... </div>
+        <div>Warning 2 - I am only extracting 'Status' from templates currently (includes stuff like additional damage on weapons), it means some info are still missing like drinking or throwing effects.</div>
+        <div STYLE="padding:0 0 0 20px;"><a href="./Armor.txt">Armor list</a></div>
+        <div STYLE="padding:0 0 0 20px;"><a href="./Character.txt">Character list</a></div>
+        <div STYLE="padding:0 0 0 20px;"><a href="./Interrupt.txt">Interrupt list</a> (effects like Reactions)</div>
+        <div STYLE="padding:0 0 0 20px;"><a href="./Object.txt">Object list</a></div>
+        <div STYLE="padding:0 0 0 20px;"><a href="./Passive.txt">Character list</a></div>
+        <div STYLE="padding:0 0 0 20px;"><a href="./Spell.txt">Spell</a>, more like skills (files Spell_ Projectile/Rush/Shout/Target/Teleportation/Throw/Zone/etc...)</div>
+        <div STYLE="padding:0 0 0 20px;"><a href="./Status.txt">Status list</a></div>
+        <div STYLE="padding:0 0 0 20px;"><a href="./Weapon.txt">Weapon list</a></div>
     </body>
 </html>

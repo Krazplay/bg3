@@ -36,6 +36,18 @@
         <div STYLE="padding:0 0 0 20px;"><a href="./Spell.txt">Spell</a>, more like skills (files Spell_ Projectile/Rush/Shout/Target/Teleportation/Throw/Zone/etc...)</div>
         <div STYLE="padding:0 0 0 20px;"><a href="./Status.txt">Status</a></div>
         <div STYLE="padding:0 0 0 20px;"><a href="./Weapon.txt">Weapon</a></div>
+        <br/>
+
+        <div>Items missing in Stats\Generated\Data can be found in levels files. They are created for the level, they can overwrite parameters from the stats and template they're linked to.</div>
+        <div>From what I see the stats are always taken directly from another item, nothing added. To know the stats, you have to search the ID (Stats: WPN_Thing_A_0), the template is for apparences.</div>
+        <div>aka a weapon may use Weapon+1 template, if they don't overwrite anything it will look identical, but for the stats you have to look at the ITEM stats ID, not the one from the template!</div>
+        <div>I have filtered out everything which didn't have stats, then only items which have a localization string overwritten (name, description), sometimes the overwrite is identical to the original.</div>
+        <div>There are coordinates for the item but I have not checked if it match the game (using X and Z), I have not searched for what level is what, try to guess it or wait next week :p</div>
+        <div STYLE="padding:0 0 0 20px;"><a href="./levels/Armor.html">Armor</a></div>
+        <div STYLE="padding:0 0 0 20px;"><a href="./levels/Weapon.html">Weapon</a></div>
+        <div STYLE="padding:0 0 0 20px;"><a href="./levels/Object.html">Object</a></div>
+        <div STYLE="padding:0 0 0 20px;"><a href="./levels/undefined.html">undefined</a></div>
+
         <br/><br/>
         <div>Companions reaction affinity list</div>
         <div>Parsing of the dialogues files to find the answers (and the question related) which modify your reliation with your companions.</div>

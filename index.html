@@ -3,13 +3,22 @@
         <title>BG3 Data Parsing</title>
     </head>
     <body>
-        <div>Version Hotfix 2.1</div>
         <div>Ruby scripts used to produce the files are available on my <a href="https://github.com/Krazplay/bg3">github page here</a>.</div>
-        <div>(you have to provide the game data files, use LSLib Toolkit or equivalent to extract them from your game installation)</div>
         <br/>
-        <div><b>A first draft at parsing the Dialogs files: <a href="./dialogs.html">dialogs root page</a></b></div>
-        <div>Temporary quest file: <a href="./resultat.txt">resultat.txt</a></div>
+        <div><b>Stats\Generated\Data folder</b></div>
+        <div>Armors, weapons, characters, spells data, statuses files <a href='statsdata.html'>can be find through this page now</a>.</div>
+        <div>There are a lot of dupe entries currently (I named them _DUPE + random number), likely because the devs have to include the whole file again for a single change in hotfixes/patches.</div>
+        <div>Those dupes will be removed in the future, I intend to keep track of what was changed between patches.</div>
+        <div>This do not include all items because some of them are produced at the map-level, they are using stats from these lists but they change the name/description. See later below.</div>
+        <br>
+        <div><b>Parsing of the Dialogs files: <a href="./dialogs.html">dialogs root page</a></b></div>
+        <div><i>Still missing a lot of things but include flags, tags, and rolls.</i></div>
+        <br>
         <div><a href="./Races.html">Races</a> and <a href="./Classes.html">Classes</a></div>
+        <br>
+        <div>What is available below need to be reviewed, the data is likely not up-to-date with current game version</div>
+        <hr>
+        <div>Temporary quest file: <a href="./resultat.txt">resultat.txt</a></div>
         <div><a href="./Gods.txt">Gods</a></div>
         <div><a href="./ItemThrowParams.txt">ItemThrowParams</a></div><br/>
 
@@ -21,22 +30,6 @@
         <div>RandomCasts folder</div>
         <div STYLE="padding:0 0 0 20px;"><a href="./Outcomes.txt">Outcomes</a></div><br/>
 
-        <div>Stats\Generated\Data folder</div>
-        <div>V2 - Warning the file is around 20 MB, but it includes everything (armors, weapons, spells, etc...</div>
-        <div>Much more readable, tags are working. Currently only show the item root template, some items may lack name or description if they inherited further down. Will be fixed.</div>
-        <div STYLE="padding:0 0 0 20px;"><a href="./all_stats.html">All Stats (V2)</a></div><br/>
-
-        <div>Warning 1 - Some of those files are over 10MB. It's because everytime an item is the child of another item, I include the parent item, which itself can be a child of another one... </div>
-        <div>edit: I have started to remove useless top root templates/items which reduce the size a lot.</div>
-        <div>Warning 2 - I am only extracting 'Status' from templates currently (includes stuff like additional damage on weapons), it means some info are still missing like drinking or throwing effects.</div>
-        <div STYLE="padding:0 0 0 20px;"><a href="./Armor.txt">Armor</a></div>
-        <div STYLE="padding:0 0 0 20px;"><a href="./Character.txt">Character</a></div>
-        <div STYLE="padding:0 0 0 20px;"><a href="./Interrupt.txt">Interrupt</a> (effects like Reactions)</div>
-        <div STYLE="padding:0 0 0 20px;"><a href="./Object.txt">Object</a></div>
-        <div STYLE="padding:0 0 0 20px;"><a href="./Passive.txt">Passive</a></div>
-        <div STYLE="padding:0 0 0 20px;"><a href="./Spell.txt">Spell</a>, more like skills (files Spell_ Projectile/Rush/Shout/Target/Teleportation/Throw/Zone/etc...)</div>
-        <div STYLE="padding:0 0 0 20px;"><a href="./Status.txt">Status</a></div>
-        <div STYLE="padding:0 0 0 20px;"><a href="./Weapon.txt">Weapon</a></div>
         <br/>
 
         <div>Items missing in Stats\Generated\Data can be found in levels files. They are created for the level, they can overwrite parameters from the stats and template they're linked to.</div>
